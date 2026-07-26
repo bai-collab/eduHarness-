@@ -78,16 +78,16 @@
       "source": "workspace-brain",
       "version": 1,
       "kind": "workflow",
-      "canonical_sha256": "97D96EE7F8E2B2250FBC7B146F5652169F268FAFE447C3D9F954D956B44965E2",
+      "canonical_sha256": "686A56CA7D68E3CA5F379A9DB305D545FF1E7B7B9AAC94B7D3A1845EACCDBA31",
       "projections": {
         "claude": {
           "path": ".claude/skills/digital-learning-lesson-plan",
-          "sha256": "97D96EE7F8E2B2250FBC7B146F5652169F268FAFE447C3D9F954D956B44965E2",
+          "sha256": "686A56CA7D68E3CA5F379A9DB305D545FF1E7B7B9AAC94B7D3A1845EACCDBA31",
           "status": "projected"
         },
         "codex": {
           "path": ".agents/skills/digital-learning-lesson-plan",
-          "sha256": "97D96EE7F8E2B2250FBC7B146F5652169F268FAFE447C3D9F954D956B44965E2",
+          "sha256": "686A56CA7D68E3CA5F379A9DB305D545FF1E7B7B9AAC94B7D3A1845EACCDBA31",
           "status": "projected"
         }
       },

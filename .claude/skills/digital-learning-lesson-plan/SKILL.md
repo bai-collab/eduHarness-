@@ -8,10 +8,14 @@ description: Prepare Taiwan digital-learning improvement lesson plans with a sel
 
 把教案內容包裝成可追溯的數位學習精進計畫草稿；profile、年度、地方徵件或使用者模板不同時，保留差異，不混用欄位。
 
+## 預選交付格式
+
+未指定其他 profile 時，預設採用 `assets/moe-digital-teaching-plan-format.md`（教育部「中小學數位教學指引—數位學習教學方案設計格式」基準骨架）作為交付格式，涵蓋基本資訊、核心／數位素養、議題融入、教學活動設計、數位教學教案檢核表與鷹架表。此為穩定的部頒指引基準，非特定年度地方徵件；使用者若指定當年度或地方徵件模板則改用其格式，且徵件差異仍須確認來源與日期，不宣稱符合特定年度徵件。
+
 ## 觸發與反觸發
 
 - 觸發：`數位精進計畫教案`、`數位學習精進教案`、數位學習計畫／徵件格式。
-- 必須指定或確認 profile：教育部指引、當年度徵件、地方模板或使用者模板。
+- 預設 profile 為教育部指引基準骨架（見「預選交付格式」）；使用者未另指定時即採用，指定當年度徵件、地方模板或使用者模板時改用其格式並保留差異。
 - 若 profile、年度、平台、學習證據或 AI／個資揭露不明，先啟動「提示詞優化」並回報缺件。
 
 ## 必要輸入
@@ -20,7 +24,7 @@ description: Prepare Taiwan digital-learning improvement lesson plans with a sel
 
 ## 執行流程
 
-1. 建立 `submission-profile.md` 與 `platform-evidence-ledger.md`，記錄來源版本與適用年度。
+1. 建立 `submission-profile.md` 與 `platform-evidence-ledger.md`，記錄來源版本與適用年度；未指定其他 profile 時，`submission-profile.md` 預設綁定 `assets/moe-digital-teaching-plan-format.md` 並以其欄位為交付骨架。
 2. 建立 `digital-strategy-map.md`、`teacher-student-operation-matrix.md` 與 `learning-evidence-plan.md`。
 3. 對齊目標、活動、平台操作、評量、無網路 fallback 與教師審查。
 4. 產出 generic 或 profile-specific draft；格式與年度證據不足時標示 pending。
