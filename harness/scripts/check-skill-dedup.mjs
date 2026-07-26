@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 export const DEFAULT_REGISTRY = path.join(ROOT, "harness", "config", "skill-registry.json");
+export const REGISTRY_SCHEMA_VERSION = 2;
 const PLATFORMS = ["claude", "codex"];
 const NAME_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const HAN_PATTERN = /[\p{Script=Han}]/u;
@@ -27,6 +28,31 @@ function resolveInside(root, relative) {
   const prefix = `${path.resolve(root)}${path.sep}`.toLowerCase();
   if (!`${resolved}${path.sep}`.toLowerCase().startsWith(prefix)) return null;
   return resolved;
+}
+
+function isInside(root, candidate) {
+  const base = path.resolve(root);
+  const resolved = path.resolve(candidate);
+  return resolved.toLowerCase() === base.toLowerCase()
+    || `${resolved}${path.sep}`.toLowerCase().startsWith(`${base}${path.sep}`.toLowerCase());
+}
+
+export function findActiveSkillProjectionTransactions(root = ROOT) {
+  const transactionRoot = path.join(root, "scratch", "skill-projection-transactions");
+  if (!fs.existsSync(transactionRoot)) return [];
+  return fs.readdirSync(transactionRoot, { withFileTypes: true })
+    .filter(entry => entry.isDirectory())
+    .map(entry => path.join(transactionRoot, entry.name))
+    .filter(dir => {
+      const journal = path.join(dir, "journal.json");
+      if (!fs.existsSync(journal)) return false;
+      try {
+        const state = JSON.parse(fs.readFileSync(journal, "utf8")).state;
+        return !["COMMITTED", "ROLLED_BACK"].includes(state);
+      } catch {
+        return true;
+      }
+    });
 }
 
 function walkFiles(dir, list = []) {
@@ -94,11 +120,17 @@ function duplicates(values) {
   return [...repeated];
 }
 
-export function validateRegistryDefinition(registry, root = ROOT, { strictWorkspace = root === ROOT } = {}) {
+export function validateRegistryDefinition(registry, root = ROOT, { strictWorkspace = root === ROOT, ignoreTransactionFence = false } = {}) {
   const errors = [];
   const canonical = new Map();
-  if (registry.schema_version !== 1) errors.push("unsupported schema_version");
-  if (strictWorkspace && path.resolve(registry.workspace ?? "").toLowerCase() !== path.resolve(root).toLowerCase()) errors.push(`workspace must be ${path.resolve(root)}`);
+  if (registry.schema_version !== REGISTRY_SCHEMA_VERSION) {
+    errors.push(registry.schema_version === 1 ? "MIGRATION_REQUIRED registry schema v1 must be migrated to v2" : `unsupported schema_version (${registry.schema_version ?? "missing"})`);
+  }
+  if (registry.workspace !== undefined) errors.push("legacy workspace field is forbidden; use workspace_mode=repository-root");
+  if (registry.workspace_mode !== "repository-root") errors.push("workspace_mode must be repository-root");
+  const allowedTopLevel = new Set(["schema_version", "workspace_mode", "status", "policy", "projection_roots", "skills", "provider_owned_skills"]);
+  for (const key of Object.keys(registry)) if (!allowedTopLevel.has(key)) errors.push(`unknown registry field: ${key}`);
+  if (strictWorkspace && !ignoreTransactionFence && findActiveSkillProjectionTransactions(root).length) errors.push("SKILL_PROJECTION_TRANSACTION_ACTIVE use --recover before validation");
   const expectedPolicy = {
     projection_mode: "generated-mirror",
     auto_install_allowed: false,
@@ -204,8 +236,8 @@ export function evaluateSkillRegistry(registry, root = ROOT, options = {}) {
 
 function testRegistry(root) {
   return {
-    schema_version: 1,
-    workspace: root,
+    schema_version: REGISTRY_SCHEMA_VERSION,
+    workspace_mode: "repository-root",
     status: "projection-required",
     policy: {
       canonical_root: "brain/skills",
@@ -266,6 +298,13 @@ function selfTest() {
     const englishTitle = structuredClone(registry);
     englishTitle.skills[0].display_title_zh_tw = "Sample Skill";
     if (!evaluateSkillRegistry(englishTitle, root, { strictWorkspace: false }).errors.some(error => error.includes("Traditional Chinese visible title"))) throw new Error("English-only visible title was not rejected");
+    const legacy = structuredClone(registry);
+    legacy.workspace = root;
+    if (!evaluateSkillRegistry(legacy, root, { strictWorkspace: false }).errors.some(error => error.includes("legacy workspace field"))) throw new Error("legacy workspace was not rejected");
+    const wrongRoot = path.join(root, "nested-clone");
+    fs.mkdirSync(wrongRoot, { recursive: true });
+    const portable = evaluateSkillRegistry(registry, wrongRoot, { strictWorkspace: false });
+    if (!portable.errors.some(error => error.includes("canonical SKILL.md missing"))) throw new Error("missing nested clone fixture was not rejected");
     console.log("SKILL_DEDUP_SELF_TEST_OK");
   } finally {
     fs.rmSync(root, { recursive: true, force: true });

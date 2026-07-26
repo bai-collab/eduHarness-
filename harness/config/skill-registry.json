@@ -1,6 +1,6 @@
 {
-  "schema_version": 1,
-  "workspace": "F:\\eduHarness",
+  "schema_version": 2,
+  "workspace_mode": "repository-root",
   "status": "projected",
   "policy": {
     "canonical_root": "brain/skills",

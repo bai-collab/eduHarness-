@@ -11,7 +11,8 @@
 1. 安裝 [Claude Code](https://claude.com/claude-code)（或相容的 AI 編碼助理）。
 2. 下載本專案：
    ```bash
-   git clone https://github.com/bai-collab/eduHarness-.git F:\eduHarness
+   git clone https://github.com/bai-collab/eduHarness-.git eduHarness
+   cd eduHarness
    ```
    （放其他路徑也可以，路徑不影響使用。）
 3. 用 Claude Code 開啟該資料夾，直接對它說你要做的事（例：「幫我把這份課綱命 20 題選擇題」），對應技能會自動載入。
@@ -42,6 +43,21 @@ API 契約設計、安全與強化、規格驅動開發、測試驅動開發、�
 - `brain/skills/`：技能原始版本（唯一可編輯處）
 - `.claude/skills/`、`.agents/skills/`：自動投影（請勿直接編輯）
 - `harness/scripts/`：投影與防重工具（改了技能後跑 `node harness/scripts/project-skills.mjs --apply` 重新投影）
+
+## 可攜式 Registry 與復原
+
+分享版 registry 使用 `workspace_mode: repository-root`，不會保存建立 clone 的電腦絕對路徑。請在 repository root 執行：
+
+```bash
+node harness/scripts/check-skill-dedup.mjs --require-ready
+node harness/scripts/project-skills.mjs
+```
+
+若偵測到中斷的投影交易，必須先明確復原，再進行下一次 apply：
+
+```bash
+node harness/scripts/project-skills.mjs --recover
+```
 
 ## 版本
 
