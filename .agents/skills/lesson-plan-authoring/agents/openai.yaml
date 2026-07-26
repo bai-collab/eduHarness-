@@ -1,0 +1,7 @@
+interface:
+  display_name: "教案撰寫"
+  short_description: "把課程目標、活動與評量整理成可覆核教案草稿"
+  default_prompt: "使用 $lesson-plan-authoring 撰寫教案；先確認學段、科目、節數、目標、教材、設備、學習者差異、評量目的與評量方式，並產出差異化計畫、教案內評量設計與各 tier 的評量對齊；缺件先回報。"
+
+policy:
+  allow_implicit_invocation: true

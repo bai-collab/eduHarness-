@@ -1,0 +1,7 @@
+interface:
+  display_name: "API 與介面設計"
+  short_description: "設計可驗證且一致的 API 契約、錯誤模型、版本策略與相容性"
+  default_prompt: "使用 $api-design 設計這個功能的 API 契約與錯誤模型。"
+
+policy:
+  allow_implicit_invocation: true

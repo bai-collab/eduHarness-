@@ -1,0 +1,7 @@
+interface:
+  display_name: "AI 文件 Markdown 轉換"
+  short_description: "內容閱讀先轉 Markdown，格式與版面審查則保留並檢查原始文件"
+  default_prompt: "使用 $document-to-markdown-ingestion 準備這份文件供 AI 讀取。"
+
+policy:
+  allow_implicit_invocation: true

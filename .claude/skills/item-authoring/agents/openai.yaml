@@ -1,0 +1,7 @@
+interface:
+  display_name: "試題命題"
+  short_description: "Turn supplied curriculum sources into reviewable digital-learning item banks with coverage and human-review contracts"
+  default_prompt: "Use $item-authoring to turn the supplied curriculum source into a reviewable item bank draft with coverage matrix and human-review brief."
+
+policy:
+  allow_implicit_invocation: true

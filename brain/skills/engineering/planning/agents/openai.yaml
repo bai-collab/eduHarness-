@@ -1,0 +1,7 @@
+interface:
+  display_name: "任務規劃與分解"
+  short_description: "把已核准規格拆成可執行步驟、依賴、驗收條件與回滾計畫"
+  default_prompt: "使用 $planning-and-task-breakdown 把這份規格拆成可執行計畫。"
+
+policy:
+  allow_implicit_invocation: true

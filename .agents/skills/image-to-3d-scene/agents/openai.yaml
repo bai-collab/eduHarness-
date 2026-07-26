@@ -1,0 +1,7 @@
+interface:
+  display_name: "圖片轉3D"
+  short_description: "把一張場景圖片重建成可自由環繞的 Three.js 3D 展示頁：程序化素材、瀏覽器截圖比對迭代到可公開發佈"
+  default_prompt: "使用 $image-to-3d-scene 把這張圖片重建成可自由環繞的 Three.js 3D 展示頁：先寫場景規格（佈局、光照、色盤、氛圍），素材全部程序化生成，完成後在瀏覽器截圖與原圖比對，迭代到可公開發佈的水準。"
+
+policy:
+  allow_implicit_invocation: true

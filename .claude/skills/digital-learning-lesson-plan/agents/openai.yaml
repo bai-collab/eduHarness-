@@ -1,0 +1,7 @@
+interface:
+  display_name: "數位學習精進教案"
+  short_description: "依年度 profile 與平台證據整理數位學習精進教案"
+  default_prompt: "使用 $digital-learning-lesson-plan 建立數位學習精進教案；先確認 profile、年度、平台、操作矩陣、學習證據與隱私揭露。"
+
+policy:
+  allow_implicit_invocation: true

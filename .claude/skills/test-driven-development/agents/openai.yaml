@@ -1,0 +1,7 @@
+interface:
+  display_name: "測試驅動開發（TDD）"
+  short_description: "先建立失敗測試，再以最小修改通過測試並完成重構驗證"
+  default_prompt: "使用 $test-driven-development 以測試先行方式實作這項修改。"
+
+policy:
+  allow_implicit_invocation: true

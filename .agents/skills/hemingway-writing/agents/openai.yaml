@@ -1,0 +1,7 @@
+interface:
+  display_name: "海明威寫作法"
+  short_description: "禁止副詞與抽象形容詞，用具體畫面取代結論式描述的寫作約束"
+  default_prompt: "使用 $hemingway-writing 改寫這段文字：刪除所有副詞與抽象形容詞，把情緒與評價翻譯成可觀察的動作、物件、聲音或數字，技術性精確限定詞除外。"
+
+policy:
+  allow_implicit_invocation: true

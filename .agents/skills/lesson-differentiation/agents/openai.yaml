@@ -1,0 +1,7 @@
+interface:
+  display_name: "教案差異化教學"
+  short_description: "在既有教案上設計分層支援、補救與延伸"
+  default_prompt: "使用 $lesson-differentiation 針對既有教案做差異化；先確認來源 lesson、科目、核心目標、評量與學習者差異，再分析學科迷思概念、易錯概念與鷹架理論。沒有來源或證據就停止並列出缺件，不呼叫美國 Knowledge Graph／MCP。"
+
+policy:
+  allow_implicit_invocation: true

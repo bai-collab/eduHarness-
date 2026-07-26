@@ -1,0 +1,403 @@
+{
+  "schema_version": 1,
+  "workspace": "F:\\eduHarness",
+  "status": "projected",
+  "policy": {
+    "canonical_root": "brain/skills",
+    "projection_mode": "generated-mirror",
+    "auto_install_allowed": false,
+    "auto_import_allowed": false,
+    "generated_projection_edit_allowed": false,
+    "plugin_skill_copy_allowed": false,
+    "unknown_skill_action": "stop",
+    "hash_algorithm": "sha256-tree-v1",
+    "secrets_allowed": false,
+    "visible_title_locale": "zh-TW",
+    "openai_display_name_required": true
+  },
+  "projection_roots": {
+    "claude": ".claude/skills",
+    "codex": ".agents/skills"
+  },
+  "skills": [
+    {
+      "canonical_id": "lesson-plan-authoring",
+      "canonical_path": "brain/skills/lesson-plan-authoring",
+      "source": "workspace-brain",
+      "version": 1,
+      "kind": "workflow",
+      "canonical_sha256": "31E7A2696873B0CF7EAB952912172CE27584D29F7F2A2912C0AD8A58D4FBDA7C",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/lesson-plan-authoring",
+          "sha256": "31E7A2696873B0CF7EAB952912172CE27584D29F7F2A2912C0AD8A58D4FBDA7C",
+          "status": "projected"
+        },
+        "codex": {
+          "path": ".agents/skills/lesson-plan-authoring",
+          "sha256": "31E7A2696873B0CF7EAB952912172CE27584D29F7F2A2912C0AD8A58D4FBDA7C",
+          "status": "projected"
+        }
+      },
+      "display_title_zh_tw": "教案撰寫",
+      "aliases": [
+        "教案撰寫",
+        "lesson plan",
+        "lesson-plan-authoring"
+      ]
+    },
+    {
+      "canonical_id": "lesson-differentiation",
+      "canonical_path": "brain/skills/lesson-differentiation",
+      "source": "workspace-brain",
+      "version": 1,
+      "kind": "workflow",
+      "canonical_sha256": "5CA78FA8A2B26FACA7D2B5CF8B567B4C107B11D0FB795C44B868B48F76C4D645",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/lesson-differentiation",
+          "sha256": "5CA78FA8A2B26FACA7D2B5CF8B567B4C107B11D0FB795C44B868B48F76C4D645",
+          "status": "projected"
+        },
+        "codex": {
+          "path": ".agents/skills/lesson-differentiation",
+          "sha256": "5CA78FA8A2B26FACA7D2B5CF8B567B4C107B11D0FB795C44B868B48F76C4D645",
+          "status": "projected"
+        }
+      },
+      "display_title_zh_tw": "教案差異化教學",
+      "aliases": [
+        "教案差異化",
+        "教案差異化教學",
+        "lesson-differentiation"
+      ]
+    },
+    {
+      "canonical_id": "digital-learning-lesson-plan",
+      "canonical_path": "brain/skills/digital-learning-lesson-plan",
+      "source": "workspace-brain",
+      "version": 1,
+      "kind": "workflow",
+      "canonical_sha256": "97D96EE7F8E2B2250FBC7B146F5652169F268FAFE447C3D9F954D956B44965E2",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/digital-learning-lesson-plan",
+          "sha256": "97D96EE7F8E2B2250FBC7B146F5652169F268FAFE447C3D9F954D956B44965E2",
+          "status": "projected"
+        },
+        "codex": {
+          "path": ".agents/skills/digital-learning-lesson-plan",
+          "sha256": "97D96EE7F8E2B2250FBC7B146F5652169F268FAFE447C3D9F954D956B44965E2",
+          "status": "projected"
+        }
+      },
+      "display_title_zh_tw": "數位學習精進教案",
+      "aliases": [
+        "數位學習精進教案",
+        "digital learning lesson plan",
+        "digital-learning-lesson-plan"
+      ]
+    },
+    {
+      "canonical_id": "item-authoring",
+      "canonical_path": "brain/skills/item-authoring",
+      "source": "workspace-brain",
+      "version": 1,
+      "kind": "workflow",
+      "canonical_sha256": "64D0E59E5A248924E05A5CDE7FC6D451026C12EB67EFF9D315E77B87D5901EF6",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/item-authoring",
+          "sha256": "64D0E59E5A248924E05A5CDE7FC6D451026C12EB67EFF9D315E77B87D5901EF6",
+          "status": "projected"
+        },
+        "codex": {
+          "path": ".agents/skills/item-authoring",
+          "sha256": "64D0E59E5A248924E05A5CDE7FC6D451026C12EB67EFF9D315E77B87D5901EF6",
+          "status": "projected"
+        }
+      },
+      "display_title_zh_tw": "試題命題",
+      "aliases": [
+        "item-authoring",
+        "試題命題",
+        "命題"
+      ]
+    },
+    {
+      "canonical_id": "material-to-quest-game",
+      "canonical_path": "brain/skills/material-to-quest-game",
+      "source": "workspace-brain",
+      "version": 1,
+      "kind": "workflow",
+      "canonical_sha256": "B7700EE872F1A4582B5927C02A9A4A86C679BCCAB1296130D7E67C9B87F84596",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/material-to-quest-game",
+          "sha256": "B7700EE872F1A4582B5927C02A9A4A86C679BCCAB1296130D7E67C9B87F84596",
+          "status": "projected"
+        },
+        "codex": {
+          "path": ".agents/skills/material-to-quest-game",
+          "sha256": "B7700EE872F1A4582B5927C02A9A4A86C679BCCAB1296130D7E67C9B87F84596",
+          "status": "projected"
+        }
+      },
+      "display_title_zh_tw": "教材轉闖關遊戲",
+      "aliases": [
+        "教材轉闖關遊戲",
+        "material to quest game",
+        "material-to-quest-game"
+      ]
+    },
+    {
+      "canonical_id": "document-to-markdown-ingestion",
+      "canonical_path": "brain/skills/document-to-markdown-ingestion",
+      "source": "workspace-brain",
+      "version": null,
+      "canonical_sha256": "EAFF38787E68429323EF6B7DC22D52DA605993F148ACB12A13CB7E7A6F9AD6D5",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/document-to-markdown-ingestion",
+          "sha256": "EAFF38787E68429323EF6B7DC22D52DA605993F148ACB12A13CB7E7A6F9AD6D5",
+          "status": "projected"
+        },
+        "codex": {
+          "path": ".agents/skills/document-to-markdown-ingestion",
+          "sha256": "EAFF38787E68429323EF6B7DC22D52DA605993F148ACB12A13CB7E7A6F9AD6D5",
+          "status": "projected"
+        }
+      },
+      "display_title_zh_tw": "AI 文件 Markdown 轉換"
+    },
+    {
+      "canonical_id": "hemingway-writing",
+      "canonical_path": "brain/skills/hemingway-writing",
+      "source": "workspace-brain",
+      "version": 1,
+      "kind": "workflow",
+      "canonical_sha256": "47527243583A0C23D2FF15391DA421D22340AA2D159662E22418C65DCF9A59DA",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/hemingway-writing",
+          "sha256": "47527243583A0C23D2FF15391DA421D22340AA2D159662E22418C65DCF9A59DA",
+          "status": "projected"
+        },
+        "codex": {
+          "path": ".agents/skills/hemingway-writing",
+          "sha256": "47527243583A0C23D2FF15391DA421D22340AA2D159662E22418C65DCF9A59DA",
+          "status": "projected"
+        }
+      },
+      "display_title_zh_tw": "海明威寫作法"
+    },
+    {
+      "canonical_id": "i-have-adhd",
+      "canonical_path": "brain/skills/i-have-adhd",
+      "source": "workspace-brain",
+      "version": 1,
+      "kind": "workflow",
+      "canonical_sha256": "57B7C2A7AE642FBEC554739D631CEB98FDA58D3B224E33470D6AD113B4C76CED",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/i-have-adhd",
+          "sha256": "57B7C2A7AE642FBEC554739D631CEB98FDA58D3B224E33470D6AD113B4C76CED",
+          "status": "projected"
+        },
+        "codex": {
+          "path": ".agents/skills/i-have-adhd",
+          "sha256": "57B7C2A7AE642FBEC554739D631CEB98FDA58D3B224E33470D6AD113B4C76CED",
+          "status": "projected"
+        }
+      },
+      "display_title_zh_tw": "行動優先輸出"
+    },
+    {
+      "canonical_id": "image-to-3d-scene",
+      "canonical_path": "brain/skills/image-to-3d-scene",
+      "source": "workspace-brain",
+      "version": 1,
+      "kind": "workflow",
+      "canonical_sha256": "F2BD6AE48111E6BED4907EFA032EFC3DD6B43135C2BF4686994AAF775F629663",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/image-to-3d-scene",
+          "sha256": "F2BD6AE48111E6BED4907EFA032EFC3DD6B43135C2BF4686994AAF775F629663",
+          "status": "projected"
+        },
+        "codex": {
+          "path": ".agents/skills/image-to-3d-scene",
+          "sha256": "F2BD6AE48111E6BED4907EFA032EFC3DD6B43135C2BF4686994AAF775F629663",
+          "status": "projected"
+        }
+      },
+      "display_title_zh_tw": "圖片轉3D",
+      "aliases": [
+        "圖片轉3D",
+        "image to 3d",
+        "image-to-3d-scene"
+      ]
+    },
+    {
+      "canonical_id": "pixel-ai-secretary",
+      "canonical_path": "brain/skills/pixel-ai-secretary",
+      "source": "workspace-brain",
+      "version": null,
+      "canonical_sha256": "A8D1CC7D6337CD815FC28DEF86B4EC35C3CE1A636B7A0E42294EEAC3D2D9203B",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/pixel-ai-secretary",
+          "sha256": "A8D1CC7D6337CD815FC28DEF86B4EC35C3CE1A636B7A0E42294EEAC3D2D9203B",
+          "status": "projected"
+        },
+        "codex": {
+          "path": ".agents/skills/pixel-ai-secretary",
+          "sha256": "A8D1CC7D6337CD815FC28DEF86B4EC35C3CE1A636B7A0E42294EEAC3D2D9203B",
+          "status": "projected"
+        }
+      },
+      "display_title_zh_tw": "Pixel AI 美術提示詞祕書"
+    },
+    {
+      "canonical_id": "api-design",
+      "canonical_path": "brain/skills/engineering/api-design",
+      "source": "workspace-brain",
+      "version": null,
+      "canonical_sha256": "1693E31D9D16C891AEC6015626F58D9112322AB8A7F2EE65B8F91C276EC135F9",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/api-design",
+          "sha256": "1693E31D9D16C891AEC6015626F58D9112322AB8A7F2EE65B8F91C276EC135F9",
+          "status": "projected"
+        },
+        "codex": {
+          "path": ".agents/skills/api-design",
+          "sha256": "1693E31D9D16C891AEC6015626F58D9112322AB8A7F2EE65B8F91C276EC135F9",
+          "status": "projected"
+        }
+      },
+      "display_title_zh_tw": "API 與介面設計"
+    },
+    {
+      "canonical_id": "security-and-hardening",
+      "canonical_path": "brain/skills/engineering/security",
+      "source": "workspace-brain",
+      "version": null,
+      "canonical_sha256": "6074014CD02C96DD3A43871556E7BE854DAA91B8B8873C7901D0190B2E929DDC",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/security-and-hardening",
+          "sha256": "6074014CD02C96DD3A43871556E7BE854DAA91B8B8873C7901D0190B2E929DDC",
+          "status": "projected"
+        },
+        "codex": {
+          "path": ".agents/skills/security-and-hardening",
+          "sha256": "6074014CD02C96DD3A43871556E7BE854DAA91B8B8873C7901D0190B2E929DDC",
+          "status": "projected"
+        }
+      },
+      "display_title_zh_tw": "安全與強化"
+    },
+    {
+      "canonical_id": "spec-driven-development",
+      "canonical_path": "brain/skills/engineering/spec-driven",
+      "source": "workspace-brain",
+      "version": null,
+      "canonical_sha256": "2910C394F569DB0389B89DB1EB172909977277A5FE2DA117EA11D7344F77896B",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/spec-driven-development",
+          "sha256": "2910C394F569DB0389B89DB1EB172909977277A5FE2DA117EA11D7344F77896B",
+          "status": "projected"
+        },
+        "codex": {
+          "path": ".agents/skills/spec-driven-development",
+          "sha256": "2910C394F569DB0389B89DB1EB172909977277A5FE2DA117EA11D7344F77896B",
+          "status": "projected"
+        }
+      },
+      "display_title_zh_tw": "規格驅動開發"
+    },
+    {
+      "canonical_id": "test-driven-development",
+      "canonical_path": "brain/skills/engineering/tdd",
+      "source": "workspace-brain",
+      "version": null,
+      "canonical_sha256": "6AA2D71E92680FC52198CBE9674065EBB20DEE0AB952CB099DD627D7D5345E3E",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/test-driven-development",
+          "sha256": "6AA2D71E92680FC52198CBE9674065EBB20DEE0AB952CB099DD627D7D5345E3E",
+          "status": "projected"
+        },
+        "codex": {
+          "path": ".agents/skills/test-driven-development",
+          "sha256": "6AA2D71E92680FC52198CBE9674065EBB20DEE0AB952CB099DD627D7D5345E3E",
+          "status": "projected"
+        }
+      },
+      "display_title_zh_tw": "測試驅動開發（TDD）"
+    },
+    {
+      "canonical_id": "debugging-and-error-recovery",
+      "canonical_path": "brain/skills/engineering/debugging",
+      "source": "workspace-brain",
+      "version": null,
+      "canonical_sha256": "5C0D0D34F914EED37FA4254E4780715C82B7BDB5D3D779436C863400CADF090A",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/debugging-and-error-recovery",
+          "sha256": "5C0D0D34F914EED37FA4254E4780715C82B7BDB5D3D779436C863400CADF090A",
+          "status": "projected"
+        },
+        "codex": {
+          "path": ".agents/skills/debugging-and-error-recovery",
+          "sha256": "5C0D0D34F914EED37FA4254E4780715C82B7BDB5D3D779436C863400CADF090A",
+          "status": "projected"
+        }
+      },
+      "display_title_zh_tw": "除錯與錯誤恢復"
+    },
+    {
+      "canonical_id": "planning-and-task-breakdown",
+      "canonical_path": "brain/skills/engineering/planning",
+      "source": "workspace-brain",
+      "version": null,
+      "canonical_sha256": "628D95FEA951630CAD8DE2978210E0395BC95B127B3FEF97300513DD0F0E5BF1",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/planning-and-task-breakdown",
+          "sha256": "628D95FEA951630CAD8DE2978210E0395BC95B127B3FEF97300513DD0F0E5BF1",
+          "status": "projected"
+        },
+        "codex": {
+          "path": ".agents/skills/planning-and-task-breakdown",
+          "sha256": "628D95FEA951630CAD8DE2978210E0395BC95B127B3FEF97300513DD0F0E5BF1",
+          "status": "projected"
+        }
+      },
+      "display_title_zh_tw": "任務規劃與分解"
+    },
+    {
+      "canonical_id": "prompt-optimization",
+      "canonical_path": "brain/skills/prompt-optimization",
+      "source": "workspace-brain",
+      "version": null,
+      "canonical_sha256": "74BDBB681EDC5EB8363F6E8EA0B434265F7C1142FD6567FA764D13E0E25A1E23",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/prompt-optimization",
+          "sha256": "74BDBB681EDC5EB8363F6E8EA0B434265F7C1142FD6567FA764D13E0E25A1E23",
+          "status": "projected"
+        },
+        "codex": {
+          "path": ".agents/skills/prompt-optimization",
+          "sha256": "74BDBB681EDC5EB8363F6E8EA0B434265F7C1142FD6567FA764D13E0E25A1E23",
+          "status": "projected"
+        }
+      },
+      "display_title_zh_tw": "提示詞優化"
+    }
+  ],
+  "provider_owned_skills": []
+}

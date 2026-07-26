@@ -1,0 +1,7 @@
+interface:
+  display_name: "安全與強化"
+  short_description: "分析輸入、權限、秘密、外部整合與部署面的安全風險及防護"
+  default_prompt: "使用 $security-and-hardening 審查這個整合的安全風險與防護。"
+
+policy:
+  allow_implicit_invocation: true

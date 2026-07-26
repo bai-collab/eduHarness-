@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pixel AI 美術提示詞祕書"
+  short_description: "產生可交接的 Pixel Art 角色、動作、場景與素材提示詞套件"
+  default_prompt: "使用 $pixel-ai-secretary 建立這個教育遊戲角色的美術提示詞套件。"
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,7 @@
+interface:
+  display_name: "規格驅動開發"
+  short_description: "把需求轉成可追溯規格、驗收條件、風險、限制與實作邊界"
+  default_prompt: "使用 $spec-driven-development 為這項需求建立可驗證規格。"
+
+policy:
+  allow_implicit_invocation: true

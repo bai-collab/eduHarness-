@@ -1,0 +1,7 @@
+interface:
+  display_name: "除錯與錯誤恢復"
+  short_description: "以證據重現問題、定位根因、驗證修復並保留可重用錯誤記憶"
+  default_prompt: "使用 $debugging-and-error-recovery 重現並定位這個錯誤的根因。"
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,7 @@
+interface:
+  display_name: "提示詞優化"
+  short_description: "診斷不明確或衝突指令，產生結果先行且可驗證的提示詞契約"
+  default_prompt: "使用 $prompt-optimization 檢查這個指令是否缺少目標、成功標準、限制、證據、工具、輸出或停止條件；只做最小幅度優化，保留使用者意圖。"
+
+policy:
+  allow_implicit_invocation: true

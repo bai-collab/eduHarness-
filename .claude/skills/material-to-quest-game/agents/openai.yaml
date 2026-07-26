@@ -1,0 +1,7 @@
+interface:
+  display_name: "教材轉闖關遊戲"
+  short_description: "將教材轉成實體／Web 闖關遊戲規格與試玩契約"
+  default_prompt: "使用 $material-to-quest-game 把教材轉成闖關遊戲規格；先確認學習目標、年齡與 physical／web／both 分支，缺件不要猜。"
+
+policy:
+  allow_implicit_invocation: true
