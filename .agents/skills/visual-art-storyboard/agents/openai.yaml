@@ -1,0 +1,4 @@
+interface:
+  display_name: "美工與分鏡設計"
+  short_description: "規劃美術風格、角色、場景、素材提示與可選的八格連續分鏡"
+  default_prompt: "使用 $visual-art-storyboard 規劃角色與場景美術；需要分鏡時再啟用 /gb 八格設計。"

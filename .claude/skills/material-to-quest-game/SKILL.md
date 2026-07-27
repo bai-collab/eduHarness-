@@ -1,6 +1,6 @@
 ---
 name: material-to-quest-game
-description: Convert supplied educational material into physical, web, or dual-branch quest-game specifications with learning mechanics, levels, feedback, assets, accessibility, safety, and playtest contracts. Use for 教材轉闖關遊戲, educational quest game, physical game, or web learning game requests. Do not use when the branch or learning source is unspecified.
+description: Convert supplied educational material into physical, web, or dual-branch quest-game specifications with learning mechanics, levels, feedback, assets, accessibility, safety, and playtest contracts. Use for 教材轉闖關遊戲, educational quest game, physical game, or web learning game requests. When named characters, recurring scenes, continuous action, or camera-led events need visual planning, optionally offer the visual-art-storyboard skill without enabling storyboards by default. Do not use when the branch or learning source is unspecified.
 ---
 # 教材轉闖關遊戲
 
@@ -25,6 +25,15 @@ description: Convert supplied educational material into physical, web, or dual-b
 3. `physical` 分支加入材料、印製、教室配置、年齡安全與備援玩法。
 4. `web` 分支加入 DOM／Canvas 分工、可及性、資料狀態、斷網與低效能 fallback。
 5. 建立 asset spec 與 playtest plan；PixiJS、Sprite Forge 只作候選參考，不安裝或執行。
+
+## 可選的美工與分鏡提醒
+
+- 分鏡預設不啟用，不因為設計闖關遊戲就自動增加分鏡工作。
+- 若關卡包含具名角色、重複場景、連續動作、Boss／事件演出或鏡頭轉場，詢問一次：
+  `角色或場景需要繪製分鏡或連續動作嗎？如果需要，可以使用「美工與分鏡設計」產生八格連續分鏡。`
+- 使用者拒絕、略過或沒有回答時，繼續完成遊戲與資產規格，不阻塞主要流程。
+- 若使用者同意或直接輸入 `/gb`，把 `asset-spec.md`、`level-map.md` 與相關事件交給 `visual-art-storyboard`。
+- 只有靜態圖示、單張背景、UI 裝飾或簡單資產清單時，不詢問分鏡。
 
 ## 輸出契約
 

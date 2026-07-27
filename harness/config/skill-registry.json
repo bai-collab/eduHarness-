@@ -128,18 +128,18 @@
       "canonical_id": "material-to-quest-game",
       "canonical_path": "brain/skills/material-to-quest-game",
       "source": "workspace-brain",
-      "version": 1,
+      "version": 2,
       "kind": "workflow",
-      "canonical_sha256": "B7700EE872F1A4582B5927C02A9A4A86C679BCCAB1296130D7E67C9B87F84596",
+      "canonical_sha256": "D34E208A22A8BEE938CE00E0EBE6E1BDF2EF3084EB9C171DFE38E6EBBD46DD12",
       "projections": {
         "claude": {
           "path": ".claude/skills/material-to-quest-game",
-          "sha256": "B7700EE872F1A4582B5927C02A9A4A86C679BCCAB1296130D7E67C9B87F84596",
+          "sha256": "D34E208A22A8BEE938CE00E0EBE6E1BDF2EF3084EB9C171DFE38E6EBBD46DD12",
           "status": "projected"
         },
         "codex": {
           "path": ".agents/skills/material-to-quest-game",
-          "sha256": "B7700EE872F1A4582B5927C02A9A4A86C679BCCAB1296130D7E67C9B87F84596",
+          "sha256": "D34E208A22A8BEE938CE00E0EBE6E1BDF2EF3084EB9C171DFE38E6EBBD46DD12",
           "status": "projected"
         }
       },
@@ -148,6 +148,36 @@
         "教材轉闖關遊戲",
         "material to quest game",
         "material-to-quest-game"
+      ]
+    },
+    {
+      "canonical_id": "visual-art-storyboard",
+      "canonical_path": "brain/skills/visual-art-storyboard",
+      "source": "workspace-brain",
+      "version": 1,
+      "kind": "workflow",
+      "canonical_sha256": "F30A07F3349458D2CC552A1F6C1489C28EFECCE55D643585D9F9EF24BD2F8697",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/visual-art-storyboard",
+          "sha256": "F30A07F3349458D2CC552A1F6C1489C28EFECCE55D643585D9F9EF24BD2F8697",
+          "status": "projected"
+        },
+        "codex": {
+          "path": ".agents/skills/visual-art-storyboard",
+          "sha256": "F30A07F3349458D2CC552A1F6C1489C28EFECCE55D643585D9F9EF24BD2F8697",
+          "status": "projected"
+        }
+      },
+      "display_title_zh_tw": "美工與分鏡設計",
+      "aliases": [
+        "美工與分鏡設計",
+        "美工",
+        "分鏡",
+        "/gb",
+        "運鏡八格",
+        "visual art storyboard",
+        "visual-art-storyboard"
       ]
     },
     {
