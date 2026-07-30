@@ -17,6 +17,17 @@
    （放其他路徑也可以，路徑不影響使用。）
 3. 用 Claude Code 開啟該資料夾，直接對它說你要做的事（例：「幫我把這份課綱命 20 題選擇題」），對應技能會自動載入。
 
+## 使用手冊
+
+完整說明在 [`docs/`](docs/index.md)，分四類：
+
+- **教學**：[15 分鐘做出你的第一份題庫](docs/tutorial/first-item-bank.md)——第一次用先走這篇。
+- **操作指南**：備課、出題、分層、做遊戲等每件事的步驟與可貼提示詞。
+- **參考**：[技能一覽](docs/reference/skills.md)、[指令參考](docs/reference/commands.md)、[資料夾結構](docs/reference/folders.md)。
+- **概念**：想懂它為什麼那樣運作，例如[為什麼同一個技能有三份](docs/explanation/why-three-copies.md)。
+
+也有一張[互動架構地圖](docs/architecture.html)（HTML，需下載後用瀏覽器開，或由維護者啟用 GitHub Pages）。
+
 ## 技能清單
 
 ### 教育類
@@ -28,19 +39,23 @@
 | 數位學習精進教案 | 台灣數位學習精進方案格式的教案 |
 | 試題命題 | 把課綱／教材轉成可審查的題庫草稿 |
 | 教材轉闖關遊戲 | 教材轉實體或網頁闖關遊戲規格 |
+| 美工與分鏡設計 | 規劃美術方向、角色、場景、素材提示詞與八格連續分鏡 |
 | AI 文件 Markdown 轉換 | AI 讀文件前的安全轉換流程 |
 | 海明威寫作法 | 具體、有畫面感的寫作約束 |
 | 行動優先輸出 | 讓 AI 回覆行動優先、步驟編號 |
-| 圖片轉 3D | 把場景圖片重建成可環繞的 3D 展示頁 |
-| Pixel AI 秘書提示套件 | 像素風虛擬助理角色的一致性提示包 |
+| 圖片轉3D | 把場景圖片重建成可環繞的 3D 展示頁 |
+| Pixel AI 美術提示詞祕書 | 像素風虛擬助理角色的一致性提示包 |
 
 ### 通用工程類
 
-API 契約設計、安全與強化、規格驅動開發、測試驅動開發、除錯與錯誤修復、規劃與任務拆解、提示詞優化。
+API 與介面設計、安全與強化、規格驅動開發、測試驅動開發（TDD）、除錯與錯誤恢復、任務規劃與分解、提示詞優化。
 
 ## 資料夾結構
 
 - `brain/skills/`：技能原始版本（唯一可編輯處）
+- `brain/SKILL.md`：讀取路由——AI 什麼情況該讀哪一層
+- `brain/instincts/`、`brain/knowledge-base/`、`brain/errorLog/`、`brain/experience/`：記憶層骨架，預設是空的，供你累積自己的規則與經驗；每層的 `README.md` 說明放什麼、什麼時候會被讀取
+- `brain/wiki-index.md`：Brain 索引
 - `.claude/skills/`、`.agents/skills/`：自動投影（請勿直接編輯）
 - `harness/scripts/`：投影與防重工具（改了技能後跑 `node harness/scripts/project-skills.mjs --apply` 重新投影）
 
