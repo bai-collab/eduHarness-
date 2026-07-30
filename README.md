@@ -26,7 +26,7 @@
 - **參考**：[技能一覽](docs/reference/skills.md)、[指令參考](docs/reference/commands.md)、[資料夾結構](docs/reference/folders.md)。
 - **概念**：想懂它為什麼那樣運作，例如[為什麼同一個技能有三份](docs/explanation/why-three-copies.md)。
 
-也有一張[互動架構地圖](docs/architecture.html)（HTML，需下載後用瀏覽器開，或由維護者啟用 GitHub Pages）。
+也有一張[互動架構地圖](https://bai-collab.github.io/eduHarness-docs/)。
 
 ## 技能清單
 
