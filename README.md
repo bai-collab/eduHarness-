@@ -8,7 +8,7 @@
 
 ## 安裝（約 5 分鐘）
 
-1. 安裝 [Claude Code](https://claude.com/claude-code)（或相容的 AI 編碼助理）。
+1. 安裝 [codex](https://openai.com/zh-Hant/codex/)（或相容的 AI 編碼助理）。
 2. 下載本專案：
    ```bash
    git clone https://github.com/bai-collab/eduHarness-.git eduHarness
