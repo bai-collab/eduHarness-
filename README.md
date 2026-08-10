@@ -8,14 +8,14 @@
 
 ## 安裝（約 5 分鐘）
 
-1. 安裝 [Claude Code](https://claude.com/claude-code)（或相容的 AI 編碼助理）。
+1. 安裝 [codex](https://openai.com/zh-Hant/codex/)（或相容的 AI 編碼助理）。
 2. 下載本專案：
    ```bash
    git clone https://github.com/bai-collab/eduHarness-.git eduHarness
    cd eduHarness
    ```
    （放其他路徑也可以，路徑不影響使用。）
-3. 用 Claude Code 開啟該資料夾，直接對它說你要做的事（例：「幫我把這份課綱命 20 題選擇題」），對應技能會自動載入。
+3. 用 codex 開啟該資料夾，直接對它說你要做的事（例：「幫我把這份課綱命 20 題選擇題」），對應技能會自動載入。
 
 ## 使用手冊
 
@@ -26,7 +26,7 @@
 - **參考**：[技能一覽](docs/reference/skills.md)、[指令參考](docs/reference/commands.md)、[資料夾結構](docs/reference/folders.md)。
 - **概念**：想懂它為什麼那樣運作，例如[為什麼同一個技能有三份](docs/explanation/why-three-copies.md)。
 
-也有一張[互動架構地圖](docs/architecture.html)（HTML，需下載後用瀏覽器開，或由維護者啟用 GitHub Pages）。
+也有一張[互動架構地圖](https://bai-collab.github.io/eduHarness-docs/)。
 
 ## 技能清單
 
