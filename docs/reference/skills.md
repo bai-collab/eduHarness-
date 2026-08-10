@@ -1,6 +1,6 @@
 # 技能一覽
 
-> 本頁於發佈時自動生成，生成日期 2026-07-30，共 18 個技能。
+> 本頁於發佈時自動生成，生成日期 2026-08-10，共 22 個技能。
 > 技能 ID、繁中標題與路徑的權威來源是 `harness/config/skill-registry.json`；用途一句話為人工維護。請勿手動編輯本頁，它會在下次發佈時重新生成。
 
 你不需要記這些名稱。用平常講話的方式描述你要做的事，AI 會自動挑對應技能；下表是給想確認「有哪些技能、正本在哪」的人查的。
@@ -25,6 +25,10 @@
 | 除錯與錯誤恢復 | `debugging-and-error-recovery` | 原因不明、重複失敗或工具出錯時的除錯流程。 | `brain/skills/engineering/debugging` |
 | 任務規劃與分解 | `planning-and-task-breakdown` | 把已核准規格拆成可測試、有相依的任務。 | `brain/skills/engineering/planning` |
 | 提示詞優化 | `prompt-optimization` | 把模糊或自相矛盾的指令改寫成結果導向的清楚提示。 | `brain/skills/prompt-optimization` |
+| 臆測五階段 | `conjecturing-five-stage` | 把教材單元改成臆測五階段教案，讓學生自己造出數學性質。 | `brain/skills/conjecturing-five-stage` |
+| 教育 Web 教學遊戲工作流 | `educational-web-game-workflow` | 把教材與學習目標編排成網頁教學遊戲，從規格到驗證。 | `brain/skills/educational-web-game-workflow` |
+| 闖關遊戲 Three.js 導入 | `quest-threejs-adoption` | 在網頁闖關遊戲漸進導入 Three.js，學習狀態與操作留在 DOM。 | `brain/skills/quest-threejs-adoption` |
+| 受眾成果校準 | `audience-outcome-lens` | 產出前先用受眾與成果框架校準，確認為誰、要改變什麼。 | `brain/skills/audience-outcome-lens` |
 
 ## 怎麼用
 
@@ -32,6 +36,6 @@
 
 ## 分類
 
-- **教育類**：教案撰寫、教案差異化教學、數位學習精進教案、試題命題、教材轉闖關遊戲、美工與分鏡設計、圖片轉3D、Pixel AI 美術提示詞祕書。
-- **寫作與互動**：AI 文件 Markdown 轉換、海明威寫作法、行動優先輸出、提示詞優化。
+- **教育類**：教案撰寫、教案差異化教學、數位學習精進教案、試題命題、臆測五階段、教材轉闖關遊戲、教育 Web 教學遊戲工作流、闖關遊戲 Three.js 導入、美工與分鏡設計、圖片轉3D、Pixel AI 美術提示詞祕書。
+- **寫作與互動**：AI 文件 Markdown 轉換、海明威寫作法、行動優先輸出、提示詞優化、受眾成果校準。
 - **通用工程**：API 與介面設計、安全與強化、規格驅動開發、測試驅動開發、除錯與錯誤恢復、任務規劃與分解。
