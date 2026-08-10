@@ -1,0 +1,4 @@
+interface:
+  display_name: "受眾成果校準"
+  short_description: "Align work to people, context, and outcomes"
+  default_prompt: "Use $audience-outcome-lens to complete the original task for the relevant people and intended outcome, surfacing only consequential assumptions or choices."

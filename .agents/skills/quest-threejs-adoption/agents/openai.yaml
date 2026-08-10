@@ -1,0 +1,7 @@
+interface:
+  display_name: "闖關遊戲 Three.js 導入"
+  short_description: "協助教師把適合空間理解的闖關內容漸進導入 Three.js"
+  default_prompt: "使用 $quest-threejs-adoption 規劃這份教材的 DOM baseline 與單一 3D 教學物件 Pilot；缺少教材時先輸出教師 intake，不安裝套件。"
+
+policy:
+  allow_implicit_invocation: true

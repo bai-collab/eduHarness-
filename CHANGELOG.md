@@ -1,5 +1,21 @@
 # 更新紀錄
 
+## v2026.08.0（2026-08-10）
+
+### 新增技能
+
+- 臆測五階段（`conjecturing-five-stage`）
+- 教育 Web 教學遊戲工作流（`educational-web-game-workflow`）
+- 闖關遊戲 Three.js 導入（`quest-threejs-adoption`）
+- 受眾成果校準（`audience-outcome-lens`）
+
+### 新增能力與文件
+
+- 型別化技能輸入契約（NOOA-1）：技能缺必要輸入時，執行前即明確阻擋
+- NOOA 能力矩陣（`docs/reference/nooa-capability-matrix.md`）
+- Brain 寫入治理說明（`docs/explanation/brain-write-governance.md`）：學生個資與機密永不進知識庫
+
+
 ## v2026.07.4（2026-07-30）
 
 本版新增兩樣東西：一份完整的使用手冊，以及 Brain 記憶層架構。

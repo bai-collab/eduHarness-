@@ -27,7 +27,7 @@
   body{margin:0;background:var(--bg);color:var(--ink);
        font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
        line-height:1.7;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:980px;margin:0 auto;padding:32px 20px 80px}
+  .wrap{max-width:1180px;margin:0 auto;padding:32px 20px 80px}
   header h1{font-size:1.6rem;margin:0 0 6px;letter-spacing:-.01em}
   header p{margin:0;color:var(--ink-dim);font-size:.95rem}
 
@@ -71,8 +71,28 @@
   .sub rect{fill:none;stroke:var(--node-lock-line);stroke-width:1.2;rx:8}
   .divider{stroke:var(--line);stroke-width:1;stroke-dasharray:3 5}
 
-  .panel{margin-top:22px;border:1px solid var(--line);border-radius:14px;
-         background:var(--surface);padding:22px 24px;min-height:210px}
+  .stage{display:flex;gap:16px;align-items:flex-start;margin-top:14px}
+  .stage .mapbox{flex:1 1 auto;min-width:0}
+  .panel{flex:0 0 360px;position:sticky;top:14px;max-height:calc(100vh - 28px);
+         overflow-y:auto;border:1px solid var(--line);border-radius:14px;
+         background:var(--surface);padding:20px 22px;min-height:210px}
+  .panel-close{display:none}
+  .backdrop{display:none}
+  @media (max-width:860px){
+    .stage{display:block}
+    .backdrop{display:block;position:fixed;inset:0;background:rgba(0,0,0,.45);
+              opacity:0;pointer-events:none;transition:opacity .2s;z-index:55}
+    .backdrop.show{opacity:1;pointer-events:auto}
+    .panel{position:fixed;left:0;right:0;bottom:0;top:auto;flex:none;margin:0;
+           max-height:80vh;border-radius:16px 16px 0 0;
+           box-shadow:0 -10px 40px rgba(0,0,0,.3);visibility:hidden;
+           transform:translateY(102%);transition:transform .22s ease;z-index:60}
+    .panel.open{transform:translateY(0);visibility:visible}
+    .panel-close{display:block;position:absolute;top:8px;right:12px;
+                 border:none;background:none;font-size:1.7rem;line-height:1;
+                 color:var(--ink-dim);cursor:pointer;padding:2px 8px}
+    #panelBody{padding-top:4px}
+  }
   .panel h2{margin:0 0 4px;font-size:1.18rem}
   .tag{display:inline-block;font-size:.72rem;padding:2px 9px;border-radius:20px;
        border:1px solid var(--line);color:var(--ink-dim);margin:0 0 14px}
@@ -117,6 +137,7 @@
 </div>
 <div class="aud" id="scope"></div>
 
+<div class="stage">
 <div class="mapbox">
 
 <svg width="0" height="0" aria-hidden="true" style="position:absolute">
@@ -260,7 +281,12 @@
 
 </div>
 
-<div class="panel" id="panel" aria-live="polite"></div>
+  <div class="panel" id="panel">
+    <button class="panel-close" id="panelClose" aria-label="關閉明細">×</button>
+    <div id="panelBody" aria-live="polite"></div>
+  </div>
+</div>
+<div class="backdrop" id="backdrop"></div>
 
 <footer>手冊首頁見 <code>docs/index.md</code>。這張圖的文字版說明在 <code>docs/explanation/</code> 與 <code>docs/reference/folders.md</code>。</footer>
 
@@ -347,6 +373,10 @@ proj:{title:"④ 投影層 — AI 實際讀的地方",tag:"自動生成 · 禁�
 brain:{title:"⑤ brain/skills — 正本",tag:"唯一可編輯處",tagClass:"edit",html:'\
   <p>18 個技能都住在這裡。一個技能 = 一個資料夾，核心是 <code>SKILL.md</code>，\
      固定六段：定位、觸發與反觸發、必要輸入、執行流程、輸出契約、停止規則。</p>\
+  <p class="q">在找知識庫或記憶層？在另一頁</p>\
+  <p><code>brain/</code> 底下除了技能，還有記憶層——<code>knowledge-base</code>（知識庫）、\
+     <code>instincts</code>、<code>errorLog</code>、<code>experience</code>。它們在上方\
+     <b>「Brain — 你的記憶層」</b>分頁，不在這一頁。</p>\
   <div class="grp">教育類</div>\
   <div class="chips">\
     <span class="chip">教案撰寫</span><span class="chip">教案差異化教學</span>\
@@ -424,19 +454,29 @@ wiki:{title:"brain/wiki-index.md — 索引",html:'\
   <p>技能清單以 <code>harness/config/skill-registry.json</code> 為準，不在索引裡重複列。</p>'}
 };
 
-var panel = document.getElementById('panel');
+var panelEl = document.getElementById('panel');
+var panelBody = document.getElementById('panelBody');
+var backdrop = document.getElementById('backdrop');
 var scopeEl = document.getElementById('scope');
+var mql = window.matchMedia('(max-width:860px)');
 
 function render(k){
   var d = DATA[k] || DATA.intro;
-  panel.innerHTML = '<h2>' + d.title + '</h2>' +
+  panelBody.innerHTML = '<h2>' + d.title + '</h2>' +
     (d.tag ? '<span class="tag ' + (d.tagClass||'') + '">' + d.tag + '</span>' : '') + d.html;
+  panelEl.scrollTop = 0;
 }
+function openPanel(){ if(mql.matches){ panelEl.classList.add('open'); backdrop.classList.add('show'); } }
+function closePanel(){ panelEl.classList.remove('open'); backdrop.classList.remove('show'); }
+document.getElementById('panelClose').addEventListener('click', closePanel);
+backdrop.addEventListener('click', closePanel);
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closePanel(); });
 document.querySelectorAll('.node').forEach(function(n){
   function pick(){
     document.querySelectorAll('.node').forEach(function(x){ x.classList.remove('active'); });
     n.classList.add('active');
     render(n.dataset.k);
+    openPanel();
   }
   n.addEventListener('click', pick);
   n.addEventListener('keydown', function(e){
@@ -451,6 +491,7 @@ document.querySelectorAll('.tab').forEach(function(t){
     document.querySelectorAll('.node').forEach(function(x){ x.classList.remove('active'); });
     renderAud(t.dataset.view);
     render('intro');
+    closePanel();
   });
 });
 renderAud('v1');

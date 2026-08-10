@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "1.0",
+  "assetId": "",
+  "format": "glb",
+  "source": {
+    "kind": "",
+    "url": "",
+    "author": "",
+    "license": "",
+    "inputImageLicense": ""
+  },
+  "version": "",
+  "sha256": "",
+  "units": "meter",
+  "upAxis": "Y",
+  "boundingBox": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "components": [],
+  "animations": [],
+  "textures": [],
+  "budgets": {
+    "triangles": 0,
+    "drawCalls": 0,
+    "downloadBytes": 0
+  },
+  "fallback": {
+    "placeholder": "",
+    "domEquivalent": "",
+    "timeoutMs": 0
+  }
+}

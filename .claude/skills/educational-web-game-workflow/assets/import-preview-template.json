@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1.0",
+  "previewId": "",
+  "projectRoot": "",
+  "sourceArtifacts": [],
+  "destinationPaths": [],
+  "allowedPaths": [],
+  "dependencies": [],
+  "expectedChanges": [],
+  "assetHashes": [],
+  "rollback": {
+    "lastKnownGoodManifest": "",
+    "placeholder": "",
+    "domOnly": "",
+    "actions": []
+  },
+  "approval": {
+    "status": "pending",
+    "approvedBy": "",
+    "approvedAt": ""
+  },
+  "driftRecheck": {
+    "status": "not-run",
+    "checkedAt": "",
+    "paths": []
+  }
+}

@@ -427,6 +427,116 @@
         }
       },
       "display_title_zh_tw": "提示詞優化"
+    },
+    {
+      "canonical_id": "conjecturing-five-stage",
+      "canonical_path": "brain/skills/conjecturing-five-stage",
+      "source": "workspace-brain",
+      "version": null,
+      "canonical_sha256": "2730DA690A1C306B892F1658051C5E5ECD7E9B1B49EBBB5FBDB6F128824C8BF5",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/conjecturing-five-stage",
+          "sha256": "2730DA690A1C306B892F1658051C5E5ECD7E9B1B49EBBB5FBDB6F128824C8BF5",
+          "status": "projected"
+        },
+        "codex": {
+          "path": ".agents/skills/conjecturing-five-stage",
+          "sha256": "2730DA690A1C306B892F1658051C5E5ECD7E9B1B49EBBB5FBDB6F128824C8BF5",
+          "status": "projected"
+        }
+      },
+      "display_title_zh_tw": "臆測五階段"
+    },
+    {
+      "canonical_id": "educational-web-game-workflow",
+      "canonical_path": "brain/skills/educational-web-game-workflow",
+      "source": "workspace-brain",
+      "version": 1,
+      "kind": "workflow",
+      "canonical_sha256": "07D346E34A79DA6226C77F192B44678A8B50F874BE9E0E0CBF43BEA8C54A078A",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/educational-web-game-workflow",
+          "sha256": "07D346E34A79DA6226C77F192B44678A8B50F874BE9E0E0CBF43BEA8C54A078A",
+          "status": "projected"
+        },
+        "codex": {
+          "path": ".agents/skills/educational-web-game-workflow",
+          "sha256": "07D346E34A79DA6226C77F192B44678A8B50F874BE9E0E0CBF43BEA8C54A078A",
+          "status": "projected"
+        }
+      },
+      "display_title_zh_tw": "教育 Web 教學遊戲工作流",
+      "aliases": [
+        "教育 Web 教學遊戲工作流",
+        "教育 Web 遊戲",
+        "教育教學遊戲",
+        "educational web game workflow",
+        "educational-web-game-workflow"
+      ]
+    },
+    {
+      "canonical_id": "quest-threejs-adoption",
+      "canonical_path": "brain/skills/quest-threejs-adoption",
+      "source": "workspace-brain",
+      "version": 1,
+      "kind": "workflow",
+      "canonical_sha256": "1A4A22E33BCF31079F31867E0A0A5609F085EA5DD2DA08719724DCC4F2C4933C",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/quest-threejs-adoption",
+          "sha256": "1A4A22E33BCF31079F31867E0A0A5609F085EA5DD2DA08719724DCC4F2C4933C",
+          "status": "projected"
+        },
+        "codex": {
+          "path": ".agents/skills/quest-threejs-adoption",
+          "sha256": "1A4A22E33BCF31079F31867E0A0A5609F085EA5DD2DA08719724DCC4F2C4933C",
+          "status": "projected"
+        }
+      },
+      "display_title_zh_tw": "闖關遊戲 Three.js 導入",
+      "aliases": [
+        "闖關遊戲 Three.js 導入",
+        "教師 3D 闖關",
+        "quest-threejs-adoption"
+      ]
+    },
+    {
+      "canonical_id": "audience-outcome-lens",
+      "canonical_path": "brain/skills/audience-outcome-lens",
+      "source": "workspace-brain",
+      "version": "0.1.0",
+      "upstream": {
+        "repo": "cablate/audience-outcome-lens",
+        "ref": "v0.1.0",
+        "commit": "e92eda9279b6db8910c11740351f1b1e5e6fa63b",
+        "license": "MIT",
+        "localized": [
+          "SKILL.md:H1",
+          "agents/openai.yaml:display_name"
+        ]
+      },
+      "source_manifest": "scratch/cablate-skills-r2/source-manifest.json",
+      "canonical_sha256": "77821C9F818442C6C1D38AD4EDDF3698D7F1C5C8319A6444F9526F3CFD905FA2",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/audience-outcome-lens",
+          "sha256": "77821C9F818442C6C1D38AD4EDDF3698D7F1C5C8319A6444F9526F3CFD905FA2",
+          "status": "projected"
+        },
+        "codex": {
+          "path": ".agents/skills/audience-outcome-lens",
+          "sha256": "77821C9F818442C6C1D38AD4EDDF3698D7F1C5C8319A6444F9526F3CFD905FA2",
+          "status": "projected"
+        }
+      },
+      "display_title_zh_tw": "受眾成果校準",
+      "aliases": [
+        "Audience Outcome Lens",
+        "audience-outcome-lens",
+        "受眾成果校準"
+      ]
     }
   ],
   "provider_owned_skills": []
