@@ -1,7 +1,7 @@
 interface:
   display_name: "行動優先輸出"
-  short_description: "Action-first output: next action first, numbered steps, no preamble, visible progress"
-  default_prompt: "Use $i-have-adhd to make this response action-first: lead with the next action, number multi-step work, drop preamble and closers, restate state, make wins visible."
+  short_description: "先給下一個行動、編號步驟、去除前言並讓進度清楚可見"
+  default_prompt: "使用 $i-have-adhd 讓輸出以行動為先：先給下一步，多步驟時編號，刪除前言與客套結尾，重述目前狀態並顯示完成成果。"
 
 policy:
   allow_implicit_invocation: false

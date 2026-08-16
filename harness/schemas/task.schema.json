@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Local Harness Task",
+  "type": "object",
+  "required": ["goal"],
+  "properties": {
+    "task_id": { "type": "string" },
+    "goal": { "type": "string", "minLength": 1 },
+    "profile": { "enum": ["adaptive", "simple", "standard", "complex"] },
+    "risk": { "type": "string" },
+    "ambiguity": { "type": "boolean" },
+    "source_conflict": { "type": "boolean" },
+    "irreversible": { "type": "boolean" },
+    "steps": { "type": "integer", "minimum": 0 },
+    "reasoning_needed": { "type": "boolean" },
+    "reasoning": { "type": "object" },
+    "route": {
+      "type": "object",
+      "properties": {
+        "primary_agent": { "type": "string" },
+        "fallback_policy": { "type": "string" },
+        "optimization": { "type": "array", "items": { "type": "string" } },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              { "type": "string" },
+              {
+                "type": "object",
+                "required": ["id"],
+                "properties": {
+                  "id": { "type": "string", "minLength": 1 },
+                  "objective": { "type": "string" },
+                  "depends_on": { "type": "array", "items": { "type": "string" } },
+                  "platform": { "type": "string" },
+                  "agent": { "type": "string" },
+                  "role": { "type": "string" },
+                  "capability": { "type": "string" },
+                  "fallback": { "type": "string" },
+                  "risk": { "type": "string" },
+                  "verification": {
+                    "type": "object",
+                    "properties": {
+                      "mode": { "enum": ["none", "final", "node", "escalate"] },
+                      "required": { "type": "boolean" },
+                      "platform": { "type": "string" },
+                      "agent": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "user_decision": { "type": "string" },
+    "user_directives": { "type": "object" },
+    "execution": { "type": "object" }
+  },
+  "additionalProperties": true
+}

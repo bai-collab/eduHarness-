@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "kind": "hybrid-skill-migration-catalog",
+  "status": "portable",
+  "purpose": "描述本副本實際存在的 Skill 分組、相依與驗證方式，不保存來源工作區 provenance。",
+  "inventory": {
+    "registered_skill_count": 18,
+    "registered_skill_ids": [
+      "lesson-plan-authoring",
+      "reasoning-kernel",
+      "document-to-markdown-ingestion",
+      "digital-learning-lesson-plan",
+      "lesson-differentiation",
+      "item-authoring",
+      "tainan-item-authoring",
+      "conjecturing-five-stage",
+      "material-to-quest-game",
+      "visual-art-storyboard",
+      "educational-web-game-workflow",
+      "quest-threejs-adoption",
+      "image-to-3d-scene",
+      "pixel-ai-secretary",
+      "procedural-world-field-metrics-workflow",
+      "hemingway-writing",
+      "i-have-adhd",
+      "web-layout-topology-analysis"
+    ],
+    "registry_gaps": []
+  },
+  "display_names_zh_tw": {
+    "lesson-plan-authoring": "教案撰寫",
+    "reasoning-kernel": "證據式推理核心",
+    "document-to-markdown-ingestion": "AI 文件 Markdown 轉換",
+    "digital-learning-lesson-plan": "數位學習精進教案",
+    "lesson-differentiation": "教案差異化教學",
+    "item-authoring": "試題命題",
+    "tainan-item-authoring": "臺南數位教學命題",
+    "conjecturing-five-stage": "臆測五階段",
+    "material-to-quest-game": "教材轉闖關遊戲",
+    "visual-art-storyboard": "美工與分鏡設計",
+    "educational-web-game-workflow": "教育 Web 教學遊戲工作流",
+    "quest-threejs-adoption": "闖關遊戲 Three.js 導入",
+    "image-to-3d-scene": "圖片轉 3D 場景",
+    "pixel-ai-secretary": "Pixel AI 美術提示詞祕書",
+    "procedural-world-field-metrics-workflow": "程序化場景共用世界與量測迭代工作流",
+    "hemingway-writing": "海明威寫作法",
+    "i-have-adhd": "行動優先輸出",
+    "web-layout-topology-analysis": "網頁版面拓樸分析"
+  },
+  "merge_policy": {
+    "port_mode": "functional-adaptation",
+    "blind_mirror_allowed": false,
+    "preserve_subresources": true,
+    "rewrite_absolute_paths": true,
+    "auto_install_or_overwrite": false,
+    "unknown_skill_action": "ask_user_or_defer",
+    "verifier_policy": "route-profile-dependent"
+  },
+  "sets": {
+    "common": [
+      "lesson-plan-authoring",
+      "lesson-differentiation",
+      "digital-learning-lesson-plan",
+      "item-authoring",
+      "material-to-quest-game",
+      "visual-art-storyboard",
+      "image-to-3d-scene",
+      "pixel-ai-secretary",
+      "conjecturing-five-stage",
+      "quest-threejs-adoption",
+      "educational-web-game-workflow"
+    ],
+    "education_only": ["reasoning-kernel"],
+    "portable_only": [
+      "document-to-markdown-ingestion",
+      "tainan-item-authoring",
+      "procedural-world-field-metrics-workflow",
+      "hemingway-writing",
+      "i-have-adhd",
+      "web-layout-topology-analysis"
+    ]
+  },
+  "categories": {
+    "supporting_and_output": [
+      "reasoning-kernel",
+      "document-to-markdown-ingestion",
+      "hemingway-writing",
+      "i-have-adhd"
+    ],
+    "education_authoring": [
+      "lesson-plan-authoring",
+      "lesson-differentiation",
+      "digital-learning-lesson-plan",
+      "item-authoring",
+      "tainan-item-authoring",
+      "conjecturing-five-stage"
+    ],
+    "game_visual_and_3d": [
+      "material-to-quest-game",
+      "educational-web-game-workflow",
+      "quest-threejs-adoption",
+      "image-to-3d-scene",
+      "visual-art-storyboard",
+      "pixel-ai-secretary",
+      "procedural-world-field-metrics-workflow"
+    ],
+    "layout_and_interface": ["web-layout-topology-analysis"]
+  },
+  "batches": [
+    {
+      "id": "batch-0-core",
+      "status": "completed",
+      "goal": "建立教案、文件讀取與證據式推理的核心路徑",
+      "skills": ["lesson-plan-authoring", "reasoning-kernel", "document-to-markdown-ingestion"]
+    },
+    {
+      "id": "batch-1-education-authoring",
+      "status": "completed",
+      "goal": "建立教案、差異化教學與命題流程",
+      "skills": ["digital-learning-lesson-plan", "lesson-differentiation", "item-authoring", "tainan-item-authoring", "conjecturing-five-stage"]
+    },
+    {
+      "id": "batch-2-game-visual",
+      "status": "completed",
+      "goal": "建立教材、遊戲、視覺與 3D 的可插拔分支",
+      "skills": ["material-to-quest-game", "educational-web-game-workflow", "quest-threejs-adoption", "image-to-3d-scene", "visual-art-storyboard", "pixel-ai-secretary", "procedural-world-field-metrics-workflow"]
+    },
+    {
+      "id": "batch-3-output-layout",
+      "status": "completed",
+      "goal": "提供文字輸出與版面拓樸的支援路徑",
+      "skills": ["hemingway-writing", "i-have-adhd", "web-layout-topology-analysis"]
+    }
+  ],
+  "known_conflicts": [
+    {
+      "id": "optional-dependency-decisions",
+      "description": "條件式 Skill 依賴需要使用者明確決定，不能由 Skill 自動改變 Route Plan。",
+      "resolution": "保留 user-authority gate，未決時標為 awaiting_user。"
+    },
+    {
+      "id": "visual-verifier-conditional",
+      "description": "只有實際產生視覺 artifact 的路徑才啟用視覺驗證。",
+      "resolution": "依 route profile 與輸出型態安排 verifier。"
+    },
+    {
+      "id": "portable-paths",
+      "description": "Skill 與設定只能使用 repository-relative path。",
+      "resolution": "載入前檢查路徑，發現絕對路徑或 traversal 就停止。"
+    }
+  ]
+}

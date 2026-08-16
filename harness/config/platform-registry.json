@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "kind": "platform-registry",
+  "status": "active",
+  "primary_agent": "primary-agent",
+  "platforms": [
+    {
+      "id": "primary-agent",
+      "display_name": "主 Agent",
+      "kind": "orchestrator",
+      "adapter": "builtin:primary",
+      "enabled": true,
+      "local": true,
+      "capabilities": ["planning", "architecture", "execution", "verification"]
+    },
+    {
+      "id": "rule-tool",
+      "display_name": "本機規則工具",
+      "kind": "local-adapter",
+      "adapter": "harness/runtime/adapters/rule-tool.mjs",
+      "enabled": true,
+      "local": true,
+      "capabilities": ["execution", "verification"]
+    },
+    {
+      "id": "codex",
+      "display_name": "Codex",
+      "kind": "optional-local-platform",
+      "adapter": "harness/runtime/adapters/codex.mjs",
+      "enabled": false,
+      "local": true,
+      "capabilities": ["architecture", "coding", "review", "verification"]
+    },
+    {
+      "id": "claude",
+      "display_name": "Claude",
+      "kind": "optional-local-platform",
+      "adapter": "harness/runtime/adapters/claude.mjs",
+      "enabled": false,
+      "local": true,
+      "capabilities": ["architecture", "coding", "review", "verification"]
+    },
+    {
+      "id": "antigravity",
+      "display_name": "Antigravity",
+      "kind": "optional-local-platform",
+      "adapter": "harness/runtime/adapters/antigravity.mjs",
+      "enabled": false,
+      "local": true,
+      "capabilities": ["coding", "review", "verification"]
+    }
+  ]
+}

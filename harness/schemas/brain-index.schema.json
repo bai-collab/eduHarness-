@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "local-harness.brain-index.v2",
+  "type": "object",
+  "required": ["schema_version", "kind", "portable", "load_policy", "paths", "collections"],
+  "properties": {
+    "schema_version": { "const": 2 },
+    "kind": { "const": "local-brain-index" },
+    "portable": { "const": true },
+    "load_policy": { "const": "on-demand" },
+    "paths": { "type": "object", "additionalProperties": { "type": "string", "pattern": "^(?![A-Za-z]:[\\\\/])(?!/)(?!.*(?:^|[/\\\\])\\.\\.(?:[/\\\\]|$)).+$" } },
+    "collections": { "type": "array", "minItems": 1, "items": { "type": "object", "required": ["id", "path_key", "kind", "load"], "properties": { "id": { "type": "string" }, "path_key": { "type": "string" }, "kind": { "type": "string" }, "load": { "type": "string" } }, "additionalProperties": true } }
+  },
+  "additionalProperties": true
+}

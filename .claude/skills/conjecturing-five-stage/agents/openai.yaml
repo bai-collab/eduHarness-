@@ -1,7 +1,0 @@
-interface:
-  display_name: "臆測五階段"
-  short_description: "把數學單元改寫成造例→提出猜想→效化→一般化→證實的臆測教案"
-  default_prompt: "使用 $conjecturing-five-stage 把指定數學單元改寫成臆測五階段教案；先確認年級、單元範圍、課本節數、班級組數與可用教具，教材事實一律回原檔視覺核對後建 ledger，再逐小節設計臆測任務（含異質造例材料、含錯誤猜想的猜想池、經數學驗算的反例題組），最後交 fresh-context verifier 驗證；缺件先回報。"
-
-policy:
-  allow_implicit_invocation: true

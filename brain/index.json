@@ -1,0 +1,35 @@
+{
+  "schema_version": 2,
+  "kind": "local-brain-index",
+  "portable": true,
+  "load_policy": "on-demand",
+  "paths": {
+    "skills": "brain/skills",
+    "knowledge": "brain/knowledge",
+    "templates": "brain/templates",
+    "wiki_index": "brain/wiki-index.md"
+  },
+  "collections": [
+    {
+      "id": "skills",
+      "path_key": "skills",
+      "kind": "skill-packages",
+      "load": "task-triggered",
+      "authority": "executable-contract"
+    },
+    {
+      "id": "knowledge",
+      "path_key": "knowledge",
+      "kind": "reviewed-markdown",
+      "load": "on-demand",
+      "authority": "reviewed-reference"
+    },
+    {
+      "id": "templates",
+      "path_key": "templates",
+      "kind": "reusable-templates",
+      "load": "on-demand",
+      "authority": "reusable-template"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+interface:
+  display_name: "<繁體中文可見名稱>"
+  short_description: "<繁體中文短說明>"
+  default_prompt: "使用 $<lowercase-hyphen-id> <繁體中文使用提示>。"
+
+policy:
+  allow_implicit_invocation: true

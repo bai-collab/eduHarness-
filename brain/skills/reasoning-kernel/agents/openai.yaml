@@ -1,0 +1,7 @@
+interface:
+  display_name: "證據式推理核心"
+  short_description: "在需要時整理假設、證據、查證與不確定性"
+  default_prompt: "只在任務有多個合理方案、證據衝突、診斷或需要查證時載入 $reasoning-kernel；輸出可稽核的 reasoning record，不輸出私有 chain-of-thought。"
+
+policy:
+  allow_implicit_invocation: false

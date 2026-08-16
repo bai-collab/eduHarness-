@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "local-harness.brain-migration-manifest.v1",
+  "type": "object",
+  "required": ["schema_version", "kind", "portable", "source", "destination", "mapping", "items"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "kind": { "const": "portable-brain-migration-manifest" },
+    "portable": { "const": true },
+    "source": { "type": "object", "required": ["workspace_label", "root_policy"] },
+    "destination": { "type": "object", "required": ["root", "workspace_relative"] },
+    "mapping": { "type": "object" },
+    "items": { "type": "array", "items": { "type": "object", "required": ["group", "source_path", "destination_path", "source_sha256", "destination_sha256"], "properties": { "group": { "type": "string" }, "source_path": { "type": "string" }, "destination_path": { "type": "string" }, "source_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }, "destination_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" } }, "additionalProperties": true } }
+  },
+  "additionalProperties": true
+}

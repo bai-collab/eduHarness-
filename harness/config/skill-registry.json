@@ -1,19 +1,25 @@
 {
-  "schema_version": 2,
-  "workspace_mode": "repository-root",
-  "status": "projected",
+  "schema_version": 1,
+  "kind": "local-skill-registry",
+  "status": "active",
+  "namespace": "local",
+  "canonical_root": "brain/skills",
   "policy": {
-    "canonical_root": "brain/skills",
-    "projection_mode": "generated-mirror",
+    "unknown_skill_action": "ask_user_or_defer",
+    "preload_all_skills": false,
+    "read_skill_full_text_before_execute": true,
+    "dependency_source": "registry-only",
     "auto_install_allowed": false,
     "auto_import_allowed": false,
     "generated_projection_edit_allowed": false,
-    "plugin_skill_copy_allowed": false,
-    "unknown_skill_action": "stop",
+    "projection_mode": "generated-mirror",
     "hash_algorithm": "sha256-tree-v1",
     "secrets_allowed": false,
     "visible_title_locale": "zh-TW",
-    "openai_display_name_required": true
+    "display_name_required": true,
+    "traditional_chinese_display_name_required": true,
+    "agents_display_name_required": true,
+    "registration_required": true
   },
   "projection_roots": {
     "claude": ".claude/skills",
@@ -21,523 +27,979 @@
   },
   "skills": [
     {
-      "canonical_id": "lesson-plan-authoring",
-      "canonical_path": "brain/skills/lesson-plan-authoring",
-      "source": "workspace-brain",
-      "version": 1,
-      "kind": "workflow",
-      "canonical_sha256": "31E7A2696873B0CF7EAB952912172CE27584D29F7F2A2912C0AD8A58D4FBDA7C",
+      "id": "lesson-plan-authoring",
+      "display_name_zh_tw": "教案撰寫",
+      "aliases_zh_tw": [
+        "教案撰寫",
+        "教案"
+      ],
+      "kind": "primary",
+      "path": "brain/skills/lesson-plan-authoring",
+      "version": "0.1.0",
+      "triggers": [
+        "教案撰寫",
+        "lesson plan",
+        "教學活動設計",
+        "教案草稿"
+      ],
+      "anti_triggers": [
+        "lesson-differentiation",
+        "item-authoring",
+        "教材轉遊戲"
+      ],
+      "dependencies": [
+        {
+          "id": "document-to-markdown-ingestion",
+          "required": false,
+          "when": "content-input"
+        }
+      ],
+      "capabilities": [
+        "education",
+        "lesson-authoring",
+        "alignment"
+      ],
+      "preferred_platforms": [
+        "primary-agent"
+      ],
+      "verifier_policy": "final",
+      "required_files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "VERSION"
+      ],
+      "canonical_sha256": "D9B943984BFE70B3662D2E193245B8223048E0E381EEF2BCBDE732197D705051",
       "projections": {
         "claude": {
           "path": ".claude/skills/lesson-plan-authoring",
-          "sha256": "31E7A2696873B0CF7EAB952912172CE27584D29F7F2A2912C0AD8A58D4FBDA7C",
-          "status": "projected"
+          "status": "planned"
         },
         "codex": {
           "path": ".agents/skills/lesson-plan-authoring",
-          "sha256": "31E7A2696873B0CF7EAB952912172CE27584D29F7F2A2912C0AD8A58D4FBDA7C",
-          "status": "projected"
+          "status": "planned"
         }
-      },
-      "display_title_zh_tw": "教案撰寫",
-      "aliases": [
-        "教案撰寫",
-        "lesson plan",
-        "lesson-plan-authoring"
-      ]
+      }
     },
     {
-      "canonical_id": "lesson-differentiation",
-      "canonical_path": "brain/skills/lesson-differentiation",
-      "source": "workspace-brain",
-      "version": 1,
-      "kind": "workflow",
-      "canonical_sha256": "5CA78FA8A2B26FACA7D2B5CF8B567B4C107B11D0FB795C44B868B48F76C4D645",
+      "id": "reasoning-kernel",
+      "display_name_zh_tw": "證據式推理核心",
+      "aliases_zh_tw": [
+        "證據式推理核心",
+        "推理核心",
+        "推理分析"
+      ],
+      "kind": "supporting",
+      "path": "brain/skills/reasoning-kernel",
+      "version": "0.1.0",
+      "triggers": [
+        "competing hypotheses",
+        "source conflict",
+        "diagnosis",
+        "uncertainty reduction",
+        "decision comparison"
+      ],
+      "anti_triggers": [
+        "simple transcription",
+        "simple translation",
+        "mechanical format conversion"
+      ],
+      "dependencies": [],
+      "capabilities": [
+        "auditable-reasoning",
+        "hypothesis-testing",
+        "uncertainty-management"
+      ],
+      "preferred_platforms": [
+        "primary-agent"
+      ],
+      "verifier_policy": "none",
+      "required_files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "VERSION"
+      ],
+      "canonical_sha256": "E69D9711DD3DC9543D7891AA5D0045870A75A8FAB8AEB3C576319BC871716FBA",
       "projections": {
         "claude": {
-          "path": ".claude/skills/lesson-differentiation",
-          "sha256": "5CA78FA8A2B26FACA7D2B5CF8B567B4C107B11D0FB795C44B868B48F76C4D645",
-          "status": "projected"
+          "path": ".claude/skills/reasoning-kernel",
+          "status": "planned"
         },
         "codex": {
-          "path": ".agents/skills/lesson-differentiation",
-          "sha256": "5CA78FA8A2B26FACA7D2B5CF8B567B4C107B11D0FB795C44B868B48F76C4D645",
-          "status": "projected"
+          "path": ".agents/skills/reasoning-kernel",
+          "status": "planned"
         }
-      },
-      "display_title_zh_tw": "教案差異化教學",
-      "aliases": [
-        "教案差異化",
-        "教案差異化教學",
-        "lesson-differentiation"
-      ]
+      }
     },
     {
-      "canonical_id": "digital-learning-lesson-plan",
-      "canonical_path": "brain/skills/digital-learning-lesson-plan",
-      "source": "workspace-brain",
-      "version": 1,
-      "kind": "workflow",
-      "canonical_sha256": "686A56CA7D68E3CA5F379A9DB305D545FF1E7B7B9AAC94B7D3A1845EACCDBA31",
-      "projections": {
-        "claude": {
-          "path": ".claude/skills/digital-learning-lesson-plan",
-          "sha256": "686A56CA7D68E3CA5F379A9DB305D545FF1E7B7B9AAC94B7D3A1845EACCDBA31",
-          "status": "projected"
-        },
-        "codex": {
-          "path": ".agents/skills/digital-learning-lesson-plan",
-          "sha256": "686A56CA7D68E3CA5F379A9DB305D545FF1E7B7B9AAC94B7D3A1845EACCDBA31",
-          "status": "projected"
-        }
-      },
-      "display_title_zh_tw": "數位學習精進教案",
-      "aliases": [
-        "數位學習精進教案",
-        "digital learning lesson plan",
-        "digital-learning-lesson-plan"
-      ]
-    },
-    {
-      "canonical_id": "item-authoring",
-      "canonical_path": "brain/skills/item-authoring",
-      "source": "workspace-brain",
-      "version": 1,
-      "kind": "workflow",
-      "canonical_sha256": "64D0E59E5A248924E05A5CDE7FC6D451026C12EB67EFF9D315E77B87D5901EF6",
-      "projections": {
-        "claude": {
-          "path": ".claude/skills/item-authoring",
-          "sha256": "64D0E59E5A248924E05A5CDE7FC6D451026C12EB67EFF9D315E77B87D5901EF6",
-          "status": "projected"
-        },
-        "codex": {
-          "path": ".agents/skills/item-authoring",
-          "sha256": "64D0E59E5A248924E05A5CDE7FC6D451026C12EB67EFF9D315E77B87D5901EF6",
-          "status": "projected"
-        }
-      },
-      "display_title_zh_tw": "試題命題",
-      "aliases": [
-        "item-authoring",
-        "試題命題",
-        "命題"
-      ]
-    },
-    {
-      "canonical_id": "material-to-quest-game",
-      "canonical_path": "brain/skills/material-to-quest-game",
-      "source": "workspace-brain",
-      "version": 2,
-      "kind": "workflow",
-      "canonical_sha256": "D34E208A22A8BEE938CE00E0EBE6E1BDF2EF3084EB9C171DFE38E6EBBD46DD12",
-      "projections": {
-        "claude": {
-          "path": ".claude/skills/material-to-quest-game",
-          "sha256": "D34E208A22A8BEE938CE00E0EBE6E1BDF2EF3084EB9C171DFE38E6EBBD46DD12",
-          "status": "projected"
-        },
-        "codex": {
-          "path": ".agents/skills/material-to-quest-game",
-          "sha256": "D34E208A22A8BEE938CE00E0EBE6E1BDF2EF3084EB9C171DFE38E6EBBD46DD12",
-          "status": "projected"
-        }
-      },
-      "display_title_zh_tw": "教材轉闖關遊戲",
-      "aliases": [
-        "教材轉闖關遊戲",
-        "material to quest game",
-        "material-to-quest-game"
-      ]
-    },
-    {
-      "canonical_id": "visual-art-storyboard",
-      "canonical_path": "brain/skills/visual-art-storyboard",
-      "source": "workspace-brain",
-      "version": 1,
-      "kind": "workflow",
-      "canonical_sha256": "F30A07F3349458D2CC552A1F6C1489C28EFECCE55D643585D9F9EF24BD2F8697",
-      "projections": {
-        "claude": {
-          "path": ".claude/skills/visual-art-storyboard",
-          "sha256": "F30A07F3349458D2CC552A1F6C1489C28EFECCE55D643585D9F9EF24BD2F8697",
-          "status": "projected"
-        },
-        "codex": {
-          "path": ".agents/skills/visual-art-storyboard",
-          "sha256": "F30A07F3349458D2CC552A1F6C1489C28EFECCE55D643585D9F9EF24BD2F8697",
-          "status": "projected"
-        }
-      },
-      "display_title_zh_tw": "美工與分鏡設計",
-      "aliases": [
-        "美工與分鏡設計",
-        "美工",
-        "分鏡",
-        "/gb",
-        "運鏡八格",
-        "visual art storyboard",
-        "visual-art-storyboard"
-      ]
-    },
-    {
-      "canonical_id": "document-to-markdown-ingestion",
-      "canonical_path": "brain/skills/document-to-markdown-ingestion",
-      "source": "workspace-brain",
-      "version": null,
-      "canonical_sha256": "EAFF38787E68429323EF6B7DC22D52DA605993F148ACB12A13CB7E7A6F9AD6D5",
+      "id": "document-to-markdown-ingestion",
+      "display_name_zh_tw": "AI 文件 Markdown 轉換",
+      "aliases_zh_tw": [
+        "AI 文件 Markdown 轉換",
+        "文件轉 Markdown",
+        "文件內容轉換"
+      ],
+      "kind": "supporting-tool",
+      "path": "brain/skills/document-to-markdown-ingestion",
+      "version": "0.1.0",
+      "triggers": [
+        "read document content",
+        "summarize document",
+        "extract document",
+        "compare document"
+      ],
+      "anti_triggers": [
+        "layout review",
+        "format review",
+        "visual rendering review"
+      ],
+      "dependencies": [],
+      "capabilities": [
+        "document-ingestion",
+        "path-safe-output",
+        "tool-preflight"
+      ],
+      "preferred_platforms": [
+        "primary-agent",
+        "rule-tool"
+      ],
+      "verifier_policy": "none",
+      "required_files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "VERSION",
+        "scripts/convert-document.ps1"
+      ],
+      "canonical_sha256": "CA8D986D755026E9C80EC1A985987F0A8CD92704B258C2E5B19DB889FACBC3D3",
       "projections": {
         "claude": {
           "path": ".claude/skills/document-to-markdown-ingestion",
-          "sha256": "EAFF38787E68429323EF6B7DC22D52DA605993F148ACB12A13CB7E7A6F9AD6D5",
-          "status": "projected"
+          "status": "planned"
         },
         "codex": {
           "path": ".agents/skills/document-to-markdown-ingestion",
-          "sha256": "EAFF38787E68429323EF6B7DC22D52DA605993F148ACB12A13CB7E7A6F9AD6D5",
-          "status": "projected"
+          "status": "planned"
         }
-      },
-      "display_title_zh_tw": "AI 文件 Markdown 轉換"
+      }
     },
     {
-      "canonical_id": "hemingway-writing",
-      "canonical_path": "brain/skills/hemingway-writing",
-      "source": "workspace-brain",
-      "version": 1,
-      "kind": "workflow",
-      "canonical_sha256": "47527243583A0C23D2FF15391DA421D22340AA2D159662E22418C65DCF9A59DA",
+      "id": "digital-learning-lesson-plan",
+      "display_name_zh_tw": "數位學習精進教案",
+      "aliases_zh_tw": [
+        "數位學習精進教案",
+        "數位教學精進教案",
+        "數位教案"
+      ],
+      "kind": "primary",
+      "path": "brain/skills/digital-learning-lesson-plan",
+      "version": "0.1.0",
+      "triggers": [
+        "數位學習精進教案",
+        "數位學習計畫",
+        "數位教學方案",
+        "digital learning lesson plan"
+      ],
+      "anti_triggers": [
+        "一般教案撰寫",
+        "既有教案差異化",
+        "教材轉闖關遊戲"
+      ],
+      "dependencies": [
+        {
+          "id": "lesson-plan-authoring",
+          "required": true,
+          "when": "always"
+        }
+      ],
+      "capabilities": [
+        "education",
+        "digital-learning",
+        "submission-profile",
+        "platform-evidence"
+      ],
+      "preferred_platforms": [
+        "primary-agent"
+      ],
+      "verifier_policy": "final",
+      "required_files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "VERSION",
+        "assets/moe-digital-teaching-plan-format.md"
+      ],
+      "canonical_sha256": "B8B013BA1324F48EAB63FF1D54AFAA06A56A2544F1161CAC792062DC5308DD7B",
       "projections": {
         "claude": {
-          "path": ".claude/skills/hemingway-writing",
-          "sha256": "47527243583A0C23D2FF15391DA421D22340AA2D159662E22418C65DCF9A59DA",
-          "status": "projected"
+          "path": ".claude/skills/digital-learning-lesson-plan",
+          "status": "planned"
         },
         "codex": {
-          "path": ".agents/skills/hemingway-writing",
-          "sha256": "47527243583A0C23D2FF15391DA421D22340AA2D159662E22418C65DCF9A59DA",
-          "status": "projected"
+          "path": ".agents/skills/digital-learning-lesson-plan",
+          "status": "planned"
         }
-      },
-      "display_title_zh_tw": "海明威寫作法"
+      }
     },
     {
-      "canonical_id": "i-have-adhd",
-      "canonical_path": "brain/skills/i-have-adhd",
-      "source": "workspace-brain",
-      "version": 1,
-      "kind": "workflow",
-      "canonical_sha256": "57B7C2A7AE642FBEC554739D631CEB98FDA58D3B224E33470D6AD113B4C76CED",
+      "id": "lesson-differentiation",
+      "display_name_zh_tw": "教案差異化教學",
+      "aliases_zh_tw": [
+        "教案差異化教學",
+        "教案差異化",
+        "分層教學"
+      ],
+      "kind": "primary",
+      "path": "brain/skills/lesson-differentiation",
+      "version": "0.1.0",
+      "triggers": [
+        "教案差異化",
+        "教案差異化教學",
+        "分層教學",
+        "補救教學",
+        "延伸活動"
+      ],
+      "anti_triggers": [
+        "新建教案",
+        "試題命題",
+        "教材轉闖關遊戲"
+      ],
+      "dependencies": [],
+      "capabilities": [
+        "education",
+        "differentiation",
+        "scaffolding",
+        "assessment-alignment"
+      ],
+      "preferred_platforms": [
+        "primary-agent"
+      ],
+      "verifier_policy": "final",
+      "required_files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "VERSION"
+      ],
+      "canonical_sha256": "2E451E061DF4F1BA412F5008C617AAEA67F180FDCF65CD58B799ED3D606281C7",
       "projections": {
         "claude": {
-          "path": ".claude/skills/i-have-adhd",
-          "sha256": "57B7C2A7AE642FBEC554739D631CEB98FDA58D3B224E33470D6AD113B4C76CED",
-          "status": "projected"
+          "path": ".claude/skills/lesson-differentiation",
+          "status": "planned"
         },
         "codex": {
-          "path": ".agents/skills/i-have-adhd",
-          "sha256": "57B7C2A7AE642FBEC554739D631CEB98FDA58D3B224E33470D6AD113B4C76CED",
-          "status": "projected"
+          "path": ".agents/skills/lesson-differentiation",
+          "status": "planned"
         }
-      },
-      "display_title_zh_tw": "行動優先輸出"
+      }
     },
     {
-      "canonical_id": "image-to-3d-scene",
-      "canonical_path": "brain/skills/image-to-3d-scene",
-      "source": "workspace-brain",
-      "version": 1,
-      "kind": "workflow",
-      "canonical_sha256": "F2BD6AE48111E6BED4907EFA032EFC3DD6B43135C2BF4686994AAF775F629663",
+      "id": "item-authoring",
+      "display_name_zh_tw": "試題命題",
+      "aliases_zh_tw": [
+        "試題命題",
+        "命題",
+        "題庫草稿"
+      ],
+      "kind": "primary",
+      "path": "brain/skills/item-authoring",
+      "version": "0.1.0",
+      "triggers": [
+        "試題命題",
+        "命題",
+        "題庫",
+        "item authoring"
+      ],
+      "anti_triggers": [
+        "一般教案撰寫",
+        "教材轉闖關遊戲",
+        "教案差異化"
+      ],
+      "dependencies": [],
+      "capabilities": [
+        "education",
+        "assessment",
+        "item-bank",
+        "human-review"
+      ],
+      "preferred_platforms": [
+        "primary-agent"
+      ],
+      "verifier_policy": "final",
+      "required_files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "VERSION"
+      ],
+      "canonical_sha256": "D4474B0F11AEF4FF023E37FD10F7023EA56367DDB782AFBA617A8BB4CE58D003",
       "projections": {
         "claude": {
-          "path": ".claude/skills/image-to-3d-scene",
-          "sha256": "F2BD6AE48111E6BED4907EFA032EFC3DD6B43135C2BF4686994AAF775F629663",
-          "status": "projected"
+          "path": ".claude/skills/item-authoring",
+          "status": "planned"
         },
         "codex": {
-          "path": ".agents/skills/image-to-3d-scene",
-          "sha256": "F2BD6AE48111E6BED4907EFA032EFC3DD6B43135C2BF4686994AAF775F629663",
-          "status": "projected"
+          "path": ".agents/skills/item-authoring",
+          "status": "planned"
         }
-      },
-      "display_title_zh_tw": "圖片轉3D",
-      "aliases": [
-        "圖片轉3D",
-        "image to 3d",
-        "image-to-3d-scene"
-      ]
+      }
     },
     {
-      "canonical_id": "pixel-ai-secretary",
-      "canonical_path": "brain/skills/pixel-ai-secretary",
-      "source": "workspace-brain",
-      "version": null,
-      "canonical_sha256": "A8D1CC7D6337CD815FC28DEF86B4EC35C3CE1A636B7A0E42294EEAC3D2D9203B",
+      "id": "tainan-item-authoring",
+      "display_name_zh_tw": "臺南數位教學命題",
+      "aliases_zh_tw": [
+        "臺南數位教學命題",
+        "臺南命題",
+        "台南命題"
+      ],
+      "kind": "primary",
+      "path": "brain/skills/tainan-item-authoring",
+      "version": "0.1.0",
+      "triggers": [
+        "臺南命題",
+        "台南命題",
+        "Tainan item authoring"
+      ],
+      "anti_triggers": [
+        "一般命題",
+        "一般教案撰寫",
+        "教材轉闖關遊戲"
+      ],
+      "dependencies": [
+        {
+          "id": "item-authoring",
+          "required": false,
+          "when": "user-confirmed",
+          "question": "這次臺南命題是否也要載入一般試題命題，使用共用題型與 coverage 檢查？",
+          "suggestion": "建議預設略過；臺南命題已包含主要命題流程，只有需要一般題庫共用檢查時才載入。"
+        }
+      ],
+      "capabilities": [
+        "education",
+        "taiwan-context",
+        "tainan-context",
+        "assessment"
+      ],
+      "preferred_platforms": [
+        "primary-agent"
+      ],
+      "verifier_policy": "final",
+      "required_files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "VERSION"
+      ],
+      "canonical_sha256": "C198FDC0767A253A9B96026916604FF83239EE4CE546E0E50E19947B9B98F8BE",
       "projections": {
         "claude": {
-          "path": ".claude/skills/pixel-ai-secretary",
-          "sha256": "A8D1CC7D6337CD815FC28DEF86B4EC35C3CE1A636B7A0E42294EEAC3D2D9203B",
-          "status": "projected"
+          "path": ".claude/skills/tainan-item-authoring",
+          "status": "planned"
         },
         "codex": {
-          "path": ".agents/skills/pixel-ai-secretary",
-          "sha256": "A8D1CC7D6337CD815FC28DEF86B4EC35C3CE1A636B7A0E42294EEAC3D2D9203B",
-          "status": "projected"
+          "path": ".agents/skills/tainan-item-authoring",
+          "status": "planned"
         }
-      },
-      "display_title_zh_tw": "Pixel AI 美術提示詞祕書"
+      }
     },
     {
-      "canonical_id": "api-design",
-      "canonical_path": "brain/skills/engineering/api-design",
-      "source": "workspace-brain",
-      "version": null,
-      "canonical_sha256": "1693E31D9D16C891AEC6015626F58D9112322AB8A7F2EE65B8F91C276EC135F9",
-      "projections": {
-        "claude": {
-          "path": ".claude/skills/api-design",
-          "sha256": "1693E31D9D16C891AEC6015626F58D9112322AB8A7F2EE65B8F91C276EC135F9",
-          "status": "projected"
-        },
-        "codex": {
-          "path": ".agents/skills/api-design",
-          "sha256": "1693E31D9D16C891AEC6015626F58D9112322AB8A7F2EE65B8F91C276EC135F9",
-          "status": "projected"
+      "id": "conjecturing-five-stage",
+      "display_name_zh_tw": "臆測五階段",
+      "aliases_zh_tw": [
+        "臆測五階段",
+        "臆測教學",
+        "臆測任務"
+      ],
+      "kind": "primary",
+      "path": "brain/skills/conjecturing-five-stage",
+      "version": "0.1.0",
+      "triggers": [
+        "臆測五階段",
+        "臆測教學",
+        "臆測任務",
+        "conjecturing teaching"
+      ],
+      "anti_triggers": [
+        "一般教案撰寫",
+        "既有教案差異化",
+        "試題命題"
+      ],
+      "dependencies": [
+        {
+          "id": "reasoning-kernel",
+          "required": false,
+          "when": "reasoning-needed"
         }
-      },
-      "display_title_zh_tw": "API 與介面設計"
-    },
-    {
-      "canonical_id": "security-and-hardening",
-      "canonical_path": "brain/skills/engineering/security",
-      "source": "workspace-brain",
-      "version": null,
-      "canonical_sha256": "6074014CD02C96DD3A43871556E7BE854DAA91B8B8873C7901D0190B2E929DDC",
-      "projections": {
-        "claude": {
-          "path": ".claude/skills/security-and-hardening",
-          "sha256": "6074014CD02C96DD3A43871556E7BE854DAA91B8B8873C7901D0190B2E929DDC",
-          "status": "projected"
-        },
-        "codex": {
-          "path": ".agents/skills/security-and-hardening",
-          "sha256": "6074014CD02C96DD3A43871556E7BE854DAA91B8B8873C7901D0190B2E929DDC",
-          "status": "projected"
-        }
-      },
-      "display_title_zh_tw": "安全與強化"
-    },
-    {
-      "canonical_id": "spec-driven-development",
-      "canonical_path": "brain/skills/engineering/spec-driven",
-      "source": "workspace-brain",
-      "version": null,
-      "canonical_sha256": "2910C394F569DB0389B89DB1EB172909977277A5FE2DA117EA11D7344F77896B",
-      "projections": {
-        "claude": {
-          "path": ".claude/skills/spec-driven-development",
-          "sha256": "2910C394F569DB0389B89DB1EB172909977277A5FE2DA117EA11D7344F77896B",
-          "status": "projected"
-        },
-        "codex": {
-          "path": ".agents/skills/spec-driven-development",
-          "sha256": "2910C394F569DB0389B89DB1EB172909977277A5FE2DA117EA11D7344F77896B",
-          "status": "projected"
-        }
-      },
-      "display_title_zh_tw": "規格驅動開發"
-    },
-    {
-      "canonical_id": "test-driven-development",
-      "canonical_path": "brain/skills/engineering/tdd",
-      "source": "workspace-brain",
-      "version": null,
-      "canonical_sha256": "6AA2D71E92680FC52198CBE9674065EBB20DEE0AB952CB099DD627D7D5345E3E",
-      "projections": {
-        "claude": {
-          "path": ".claude/skills/test-driven-development",
-          "sha256": "6AA2D71E92680FC52198CBE9674065EBB20DEE0AB952CB099DD627D7D5345E3E",
-          "status": "projected"
-        },
-        "codex": {
-          "path": ".agents/skills/test-driven-development",
-          "sha256": "6AA2D71E92680FC52198CBE9674065EBB20DEE0AB952CB099DD627D7D5345E3E",
-          "status": "projected"
-        }
-      },
-      "display_title_zh_tw": "測試驅動開發（TDD）"
-    },
-    {
-      "canonical_id": "debugging-and-error-recovery",
-      "canonical_path": "brain/skills/engineering/debugging",
-      "source": "workspace-brain",
-      "version": null,
-      "canonical_sha256": "5C0D0D34F914EED37FA4254E4780715C82B7BDB5D3D779436C863400CADF090A",
-      "projections": {
-        "claude": {
-          "path": ".claude/skills/debugging-and-error-recovery",
-          "sha256": "5C0D0D34F914EED37FA4254E4780715C82B7BDB5D3D779436C863400CADF090A",
-          "status": "projected"
-        },
-        "codex": {
-          "path": ".agents/skills/debugging-and-error-recovery",
-          "sha256": "5C0D0D34F914EED37FA4254E4780715C82B7BDB5D3D779436C863400CADF090A",
-          "status": "projected"
-        }
-      },
-      "display_title_zh_tw": "除錯與錯誤恢復"
-    },
-    {
-      "canonical_id": "planning-and-task-breakdown",
-      "canonical_path": "brain/skills/engineering/planning",
-      "source": "workspace-brain",
-      "version": null,
-      "canonical_sha256": "628D95FEA951630CAD8DE2978210E0395BC95B127B3FEF97300513DD0F0E5BF1",
-      "projections": {
-        "claude": {
-          "path": ".claude/skills/planning-and-task-breakdown",
-          "sha256": "628D95FEA951630CAD8DE2978210E0395BC95B127B3FEF97300513DD0F0E5BF1",
-          "status": "projected"
-        },
-        "codex": {
-          "path": ".agents/skills/planning-and-task-breakdown",
-          "sha256": "628D95FEA951630CAD8DE2978210E0395BC95B127B3FEF97300513DD0F0E5BF1",
-          "status": "projected"
-        }
-      },
-      "display_title_zh_tw": "任務規劃與分解"
-    },
-    {
-      "canonical_id": "prompt-optimization",
-      "canonical_path": "brain/skills/prompt-optimization",
-      "source": "workspace-brain",
-      "version": null,
-      "canonical_sha256": "74BDBB681EDC5EB8363F6E8EA0B434265F7C1142FD6567FA764D13E0E25A1E23",
-      "projections": {
-        "claude": {
-          "path": ".claude/skills/prompt-optimization",
-          "sha256": "74BDBB681EDC5EB8363F6E8EA0B434265F7C1142FD6567FA764D13E0E25A1E23",
-          "status": "projected"
-        },
-        "codex": {
-          "path": ".agents/skills/prompt-optimization",
-          "sha256": "74BDBB681EDC5EB8363F6E8EA0B434265F7C1142FD6567FA764D13E0E25A1E23",
-          "status": "projected"
-        }
-      },
-      "display_title_zh_tw": "提示詞優化"
-    },
-    {
-      "canonical_id": "conjecturing-five-stage",
-      "canonical_path": "brain/skills/conjecturing-five-stage",
-      "source": "workspace-brain",
-      "version": null,
-      "canonical_sha256": "2730DA690A1C306B892F1658051C5E5ECD7E9B1B49EBBB5FBDB6F128824C8BF5",
+      ],
+      "capabilities": [
+        "education",
+        "mathematics",
+        "conjecturing",
+        "counterexample-design"
+      ],
+      "preferred_platforms": [
+        "primary-agent"
+      ],
+      "verifier_policy": "final",
+      "required_files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "VERSION"
+      ],
+      "canonical_sha256": "9BCE644E278EE06E542E89B11B376D14DC42B9291F6A2BEC86293B813352902F",
       "projections": {
         "claude": {
           "path": ".claude/skills/conjecturing-five-stage",
-          "sha256": "2730DA690A1C306B892F1658051C5E5ECD7E9B1B49EBBB5FBDB6F128824C8BF5",
-          "status": "projected"
+          "status": "planned"
         },
         "codex": {
           "path": ".agents/skills/conjecturing-five-stage",
-          "sha256": "2730DA690A1C306B892F1658051C5E5ECD7E9B1B49EBBB5FBDB6F128824C8BF5",
-          "status": "projected"
+          "status": "planned"
         }
-      },
-      "display_title_zh_tw": "臆測五階段"
+      }
     },
     {
-      "canonical_id": "educational-web-game-workflow",
-      "canonical_path": "brain/skills/educational-web-game-workflow",
-      "source": "workspace-brain",
-      "version": 1,
-      "kind": "workflow",
-      "canonical_sha256": "07D346E34A79DA6226C77F192B44678A8B50F874BE9E0E0CBF43BEA8C54A078A",
+      "id": "material-to-quest-game",
+      "display_name_zh_tw": "教材轉闖關遊戲",
+      "aliases_zh_tw": [
+        "教材轉闖關遊戲",
+        "教材做成闖關",
+        "Web 學習遊戲"
+      ],
+      "kind": "primary",
+      "path": "brain/skills/material-to-quest-game",
+      "version": "0.1.0",
+      "triggers": [
+        "教材轉闖關遊戲",
+        "教材做成闖關",
+        "實體教具遊戲",
+        "Web 學習遊戲"
+      ],
+      "anti_triggers": [
+        "只有角色場景分鏡",
+        "只有圖片轉 3D",
+        "已有遊戲只導入 Three.js"
+      ],
+      "dependencies": [
+        {
+          "id": "document-to-markdown-ingestion",
+          "required": false,
+          "when": "content-input"
+        }
+      ],
+      "capabilities": [
+        "education",
+        "game-design",
+        "web-game",
+        "accessibility",
+        "playtest"
+      ],
+      "preferred_platforms": [
+        "primary-agent"
+      ],
+      "verifier_policy": "final",
+      "required_files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "VERSION"
+      ],
+      "canonical_sha256": "ECAF7E0E6A165CFEEA91ED337781BDC5C57117B4BBC38037015F9F2EC5021955",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/material-to-quest-game",
+          "status": "planned"
+        },
+        "codex": {
+          "path": ".agents/skills/material-to-quest-game",
+          "status": "planned"
+        }
+      }
+    },
+    {
+      "id": "visual-art-storyboard",
+      "display_name_zh_tw": "美工與分鏡設計",
+      "aliases_zh_tw": [
+        "美工與分鏡設計",
+        "美工",
+        "角色場景設計",
+        "八格分鏡"
+      ],
+      "kind": "primary",
+      "path": "brain/skills/visual-art-storyboard",
+      "version": "0.1.0",
+      "triggers": [
+        "美工",
+        "美術設計",
+        "角色設計",
+        "場景設計",
+        "分鏡",
+        "/gb",
+        "Pixel Art 分鏡"
+      ],
+      "anti_triggers": [
+        "影片生成",
+        "補幀",
+        "只有文字排版"
+      ],
+      "dependencies": [],
+      "capabilities": [
+        "visual-design",
+        "character-design",
+        "scene-design",
+        "storyboard"
+      ],
+      "preferred_platforms": [
+        "primary-agent"
+      ],
+      "verifier_policy": "none",
+      "required_files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "VERSION",
+        "references/storyboard-prompts.md"
+      ],
+      "canonical_sha256": "55615FF9FFC829B8649E9F21E84B0FFFE65F36F4E3F9CC35BE70A3937688E1DD",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/visual-art-storyboard",
+          "status": "planned"
+        },
+        "codex": {
+          "path": ".agents/skills/visual-art-storyboard",
+          "status": "planned"
+        }
+      }
+    },
+    {
+      "id": "educational-web-game-workflow",
+      "display_name_zh_tw": "教育 Web 教學遊戲工作流",
+      "aliases_zh_tw": [
+        "教育 Web 教學遊戲工作流",
+        "教育 Web 遊戲",
+        "教育教學遊戲"
+      ],
+      "kind": "primary",
+      "path": "brain/skills/educational-web-game-workflow",
+      "version": "0.1.0",
+      "triggers": [
+        "教育 Web 教學遊戲",
+        "教育 Web 遊戲",
+        "教材做成 Web 遊戲",
+        "educational web game"
+      ],
+      "anti_triggers": [
+        "只有教材轉遊戲規格",
+        "只有角色場景分鏡",
+        "只有圖片轉 3D 展示頁"
+      ],
+      "dependencies": [
+        {
+          "id": "material-to-quest-game",
+          "required": true,
+          "when": "always"
+        },
+        {
+          "id": "web-layout-topology-analysis",
+          "required": false,
+          "when": "user-confirmed",
+          "question": "是否先計算 Web 版面區塊、元件矩形與重疊／遮擋關係，再進入實作？",
+          "suggestion": "建議教育遊戲、固定單頁或多種 viewport 的 responsive 頁面載入；單純內容頁可以先略過。",
+          "recommended_decision": "approve"
+        }
+      ],
+      "capabilities": [
+        "education",
+        "web-production",
+        "dom-first",
+        "game-workflow",
+        "visual-verification"
+      ],
+      "preferred_platforms": [
+        "primary-agent"
+      ],
+      "verifier_policy": "conditional",
+      "required_files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "VERSION"
+      ],
+      "canonical_sha256": "378671153F24B0331AB8C643D0B147FFF7F83074B2F86CD553BF2AF805FBA937",
       "projections": {
         "claude": {
           "path": ".claude/skills/educational-web-game-workflow",
-          "sha256": "07D346E34A79DA6226C77F192B44678A8B50F874BE9E0E0CBF43BEA8C54A078A",
-          "status": "projected"
+          "status": "planned"
         },
         "codex": {
           "path": ".agents/skills/educational-web-game-workflow",
-          "sha256": "07D346E34A79DA6226C77F192B44678A8B50F874BE9E0E0CBF43BEA8C54A078A",
-          "status": "projected"
+          "status": "planned"
         }
-      },
-      "display_title_zh_tw": "教育 Web 教學遊戲工作流",
-      "aliases": [
-        "教育 Web 教學遊戲工作流",
-        "教育 Web 遊戲",
-        "教育教學遊戲",
-        "educational web game workflow",
-        "educational-web-game-workflow"
-      ]
+      }
     },
     {
-      "canonical_id": "quest-threejs-adoption",
-      "canonical_path": "brain/skills/quest-threejs-adoption",
-      "source": "workspace-brain",
-      "version": 1,
-      "kind": "workflow",
-      "canonical_sha256": "1A4A22E33BCF31079F31867E0A0A5609F085EA5DD2DA08719724DCC4F2C4933C",
+      "id": "quest-threejs-adoption",
+      "display_name_zh_tw": "闖關遊戲 Three.js 導入",
+      "aliases_zh_tw": [
+        "闖關遊戲 Three.js 導入",
+        "教師 3D 闖關",
+        "3D 教學物件 Pilot"
+      ],
+      "kind": "primary",
+      "path": "brain/skills/quest-threejs-adoption",
+      "version": "0.1.0",
+      "triggers": [
+        "闖關遊戲 Three.js 導入",
+        "教師 3D 闖關",
+        "3D 教學物件",
+        "DOM baseline"
+      ],
+      "anti_triggers": [
+        "單張圖片轉 3D",
+        "沒有教材或案例的完整實作",
+        "直接建立 3D 地圖"
+      ],
+      "dependencies": [
+        {
+          "id": "material-to-quest-game",
+          "required": false,
+          "when": "user-confirmed",
+          "question": "目前是否已有教材轉闖關遊戲規格？若尚未有，是否要先載入教材轉闖關遊戲來建立規格？",
+          "suggestion": "若已有 quest spec，建議略過；若只有教材與學習目標，建議載入。"
+        }
+      ],
+      "capabilities": [
+        "web-production",
+        "threejs",
+        "dom-accessibility",
+        "pilot-design",
+        "performance-budget"
+      ],
+      "preferred_platforms": [
+        "primary-agent"
+      ],
+      "verifier_policy": "conditional",
+      "required_files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "VERSION"
+      ],
+      "canonical_sha256": "0AA488CA308A3E54A07E082D58F6A0E4A7F3DFA9B89D2CE74711F74DFF2CB2BE",
       "projections": {
         "claude": {
           "path": ".claude/skills/quest-threejs-adoption",
-          "sha256": "1A4A22E33BCF31079F31867E0A0A5609F085EA5DD2DA08719724DCC4F2C4933C",
-          "status": "projected"
+          "status": "planned"
         },
         "codex": {
           "path": ".agents/skills/quest-threejs-adoption",
-          "sha256": "1A4A22E33BCF31079F31867E0A0A5609F085EA5DD2DA08719724DCC4F2C4933C",
-          "status": "projected"
+          "status": "planned"
         }
-      },
-      "display_title_zh_tw": "闖關遊戲 Three.js 導入",
-      "aliases": [
-        "闖關遊戲 Three.js 導入",
-        "教師 3D 闖關",
-        "quest-threejs-adoption"
-      ]
+      }
     },
     {
-      "canonical_id": "audience-outcome-lens",
-      "canonical_path": "brain/skills/audience-outcome-lens",
-      "source": "workspace-brain",
+      "id": "image-to-3d-scene",
+      "display_name_zh_tw": "圖片轉 3D 場景",
+      "aliases_zh_tw": [
+        "圖片轉 3D 場景",
+        "3D 展示頁",
+        "可環繞場景"
+      ],
+      "kind": "primary",
+      "path": "brain/skills/image-to-3d-scene",
       "version": "0.1.0",
-      "upstream": {
-        "repo": "cablate/audience-outcome-lens",
-        "ref": "v0.1.0",
-        "commit": "e92eda9279b6db8910c11740351f1b1e5e6fa63b",
-        "license": "MIT",
-        "localized": [
-          "SKILL.md:H1",
-          "agents/openai.yaml:display_name"
-        ]
-      },
-      "source_manifest": "scratch/cablate-skills-r2/source-manifest.json",
-      "canonical_sha256": "77821C9F818442C6C1D38AD4EDDF3698D7F1C5C8319A6444F9526F3CFD905FA2",
+      "triggers": [
+        "圖片轉 3D",
+        "3D 展示頁",
+        "可環繞場景",
+        "hero section",
+        "product showcase"
+      ],
+      "anti_triggers": [
+        "GLB 匯出",
+        "OBJ 匯出",
+        "FBX 匯出",
+        "photogrammetry"
+      ],
+      "dependencies": [],
+      "capabilities": [
+        "web-production",
+        "threejs",
+        "procedural-assets",
+        "browser-verification"
+      ],
+      "preferred_platforms": [
+        "primary-agent"
+      ],
+      "verifier_policy": "conditional",
+      "required_files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "VERSION",
+        "references/threejs-recipes.md"
+      ],
+      "canonical_sha256": "B9BB6F560A6DFA21DEDB4251E5F97989AF84DA88AF6500D85972465FE57CAE49",
       "projections": {
         "claude": {
-          "path": ".claude/skills/audience-outcome-lens",
-          "sha256": "77821C9F818442C6C1D38AD4EDDF3698D7F1C5C8319A6444F9526F3CFD905FA2",
-          "status": "projected"
+          "path": ".claude/skills/image-to-3d-scene",
+          "status": "planned"
         },
         "codex": {
-          "path": ".agents/skills/audience-outcome-lens",
-          "sha256": "77821C9F818442C6C1D38AD4EDDF3698D7F1C5C8319A6444F9526F3CFD905FA2",
-          "status": "projected"
+          "path": ".agents/skills/image-to-3d-scene",
+          "status": "planned"
         }
-      },
-      "display_title_zh_tw": "受眾成果校準",
-      "aliases": [
-        "Audience Outcome Lens",
-        "audience-outcome-lens",
-        "受眾成果校準"
-      ]
+      }
+    },
+    {
+      "id": "pixel-ai-secretary",
+      "display_name_zh_tw": "Pixel AI 美術提示詞祕書",
+      "aliases_zh_tw": [
+        "Pixel AI 美術提示詞祕書",
+        "Pixel 美術提示",
+        "角色一致性提示"
+      ],
+      "kind": "supporting",
+      "path": "brain/skills/pixel-ai-secretary",
+      "version": "0.1.0",
+      "triggers": [
+        "Pixel AI 美術",
+        "固定角色提示詞",
+        "角色一致性",
+        "四視角提示詞"
+      ],
+      "anti_triggers": [
+        "直接生成圖片",
+        "呼叫圖片 API",
+        "管理 API key"
+      ],
+      "dependencies": [],
+      "capabilities": [
+        "visual-design",
+        "pixel-art",
+        "prompt-package",
+        "safety-rewrite"
+      ],
+      "preferred_platforms": [
+        "primary-agent"
+      ],
+      "verifier_policy": "none",
+      "required_files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "VERSION",
+        "references/prompt-components.md",
+        "templates/prompt-package.md"
+      ],
+      "canonical_sha256": "F9D890CB43CC8FDF3DC77B40B3B2A84DD42915F408E79D4AAC1738FDB83EBA62",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/pixel-ai-secretary",
+          "status": "planned"
+        },
+        "codex": {
+          "path": ".agents/skills/pixel-ai-secretary",
+          "status": "planned"
+        }
+      }
+    },
+    {
+      "id": "procedural-world-field-metrics-workflow",
+      "display_name_zh_tw": "程序化場景共用世界與量測迭代工作流",
+      "aliases_zh_tw": [
+        "程序化場景量測",
+        "世界欄位量測",
+        "場景效能 baseline"
+      ],
+      "kind": "supporting-tool",
+      "path": "brain/skills/procedural-world-field-metrics-workflow",
+      "version": "0.1.0",
+      "triggers": [
+        "程序化場景量測",
+        "WorldField",
+        "baseline candidate",
+        "GPU parity",
+        "效能量測"
+      ],
+      "anti_triggers": [
+        "只做視覺風格提案",
+        "未核准的外部效能宣稱",
+        "直接複製第三方程式碼"
+      ],
+      "dependencies": [],
+      "capabilities": [
+        "procedural-world",
+        "metrics",
+        "performance-baseline",
+        "reproducibility"
+      ],
+      "preferred_platforms": [
+        "primary-agent",
+        "rule-tool"
+      ],
+      "verifier_policy": "conditional",
+      "required_files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "VERSION"
+      ],
+      "canonical_sha256": "A48C839B922857ABC1EC167EBE5F495FFE7C12574296764D09F38031905A6AD8",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/procedural-world-field-metrics-workflow",
+          "status": "planned"
+        },
+        "codex": {
+          "path": ".agents/skills/procedural-world-field-metrics-workflow",
+          "status": "planned"
+        }
+      }
+    },
+    {
+      "id": "hemingway-writing",
+      "display_name_zh_tw": "海明威寫作法",
+      "aliases_zh_tw": [
+        "海明威寫作法",
+        "畫面感寫作",
+        "具體化改寫"
+      ],
+      "kind": "supporting",
+      "path": "brain/skills/hemingway-writing",
+      "version": "0.1.0",
+      "triggers": [
+        "海明威寫作法",
+        "畫面感",
+        "show don't tell",
+        "散文改寫",
+        "文案改寫"
+      ],
+      "anti_triggers": [
+        "法律精確限定",
+        "技術規格文件",
+        "需要保留量化限定的學術文字"
+      ],
+      "dependencies": [],
+      "capabilities": [
+        "writing-style",
+        "concrete-language",
+        "prose-revision"
+      ],
+      "preferred_platforms": [
+        "primary-agent"
+      ],
+      "verifier_policy": "none",
+      "required_files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "VERSION"
+      ],
+      "canonical_sha256": "0E7DECE71364B6C1AE3480EBC710600BEC94C18010FBF837759D2CC596CD375C",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/hemingway-writing",
+          "status": "planned"
+        },
+        "codex": {
+          "path": ".agents/skills/hemingway-writing",
+          "status": "planned"
+        }
+      }
+    },
+    {
+      "id": "i-have-adhd",
+      "display_name_zh_tw": "行動優先輸出",
+      "aliases_zh_tw": [
+        "行動優先輸出",
+        "下一步優先",
+        "短步驟輸出"
+      ],
+      "kind": "supporting",
+      "path": "brain/skills/i-have-adhd",
+      "version": "0.1.0",
+      "triggers": [
+        "行動優先輸出",
+        "先給下一步",
+        "短步驟回覆",
+        "action-first"
+      ],
+      "anti_triggers": [
+        "使用者要求完整教學",
+        "需要完整解釋的高複雜度主題",
+        "破壞性操作確認"
+      ],
+      "dependencies": [],
+      "capabilities": [
+        "output-preference",
+        "action-first",
+        "progress-visibility",
+        "state-restatement"
+      ],
+      "preferred_platforms": [
+        "primary-agent"
+      ],
+      "verifier_policy": "none",
+      "activation": "explicit-only",
+      "required_files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "VERSION"
+      ],
+      "canonical_sha256": "2449EF591B661C081C81A14479C300C5CD4C08CA4C1805071EC1997939C6756A",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/i-have-adhd",
+          "status": "planned"
+        },
+        "codex": {
+          "path": ".agents/skills/i-have-adhd",
+          "status": "planned"
+        }
+      }
+    },
+    {
+      "id": "web-layout-topology-analysis",
+      "display_name_zh_tw": "網頁版面拓樸分析",
+      "aliases_zh_tw": [
+        "網頁版面拓樸分析",
+        "網頁區塊切割",
+        "元件重疊分析",
+        "版面關係分析"
+      ],
+      "kind": "supporting",
+      "path": "brain/skills/web-layout-topology-analysis",
+      "version": "0.1.0",
+      "triggers": [
+        "網頁版面拓樸分析",
+        "網頁區塊切割",
+        "元件重疊分析",
+        "responsive layout",
+        "layout topology"
+      ],
+      "anti_triggers": [
+        "只做內容文案",
+        "只做瀏覽器截圖驗證",
+        "實作 3D 物理引擎碰撞"
+      ],
+      "dependencies": [],
+      "capabilities": [
+        "web-production",
+        "layout-analysis",
+        "responsive-design",
+        "overlap-analysis",
+        "dom-verification"
+      ],
+      "preferred_platforms": [
+        "primary-agent"
+      ],
+      "verifier_policy": "conditional",
+      "required_files": [
+        "SKILL.md",
+        "agents/openai.yaml",
+        "VERSION",
+        "references/layout-plan-contract.md",
+        "assets/layout-plan-template.json"
+      ],
+      "canonical_sha256": "CEDB1BAC78983CA7BCC46A8688DC8C6174D4CF60C09EC1D48D1A5C1CD1E23F8B",
+      "projections": {
+        "claude": {
+          "path": ".claude/skills/web-layout-topology-analysis",
+          "status": "planned"
+        },
+        "codex": {
+          "path": ".agents/skills/web-layout-topology-analysis",
+          "status": "planned"
+        }
+      }
     }
-  ],
-  "provider_owned_skills": []
+  ]
 }

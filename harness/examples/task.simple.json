@@ -1,0 +1,10 @@
+{
+  "task_id": "example-simple",
+  "goal": "整理一份已經確認內容的 Markdown 標題層級。",
+  "profile": "simple",
+  "risk": "low",
+  "user_directives": {
+    "adapter": "rule-tool"
+  }
+}
+

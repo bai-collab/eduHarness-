@@ -35,8 +35,8 @@ Contents:
 </style>
 <script type="importmap">
 {"imports":{
-  "three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
-  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+  "three":"./vendor/three.module.js",
+  "three/addons/":"./vendor/three/addons/"
 }}
 </script>
 </head>
@@ -87,7 +87,7 @@ renderer.setAnimationLoop(() => {
 </html>
 ```
 
-Serve with any static server (`python -m http.server 8123`) — ES modules are blocked over `file://`.
+The import map above is a placeholder for an already-approved local vendor path. Resolve the actual path from the project manifest or Runtime Context before use; never fetch it automatically. Serve with a local static server (`python -m http.server 8123`) because ES modules are blocked over `file://`.
 
 ## 2. Camera constraints
 

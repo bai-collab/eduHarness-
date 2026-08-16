@@ -1,0 +1,21 @@
+{
+  "task_id": "example-document-simple",
+  "goal": "讀取文件內容並準備 Markdown",
+  "profile": "simple",
+  "risk": "low",
+  "input_path": "workspace/source.docx",
+  "route": {
+    "primary_skill": "document-to-markdown-ingestion",
+    "nodes": [
+      {
+        "id": "document-ingestion",
+        "objective": "先以 plan-only 檢查文件轉換路徑",
+        "platform": "rule-tool",
+        "agent": "rule-tool",
+        "role": "executor",
+        "capability": "execution",
+        "fallback": "primary-agent"
+      }
+    ]
+  }
+}

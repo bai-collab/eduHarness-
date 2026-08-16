@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "kind": "route-profiles",
+  "status": "active",
+  "default_profile": "adaptive",
+  "profiles": {
+    "simple": {
+      "default_verification": "none",
+      "max_node_verifiers": 0,
+      "final_verification": false,
+      "preflight_required": true
+    },
+    "standard": {
+      "default_verification": "final",
+      "max_node_verifiers": 0,
+      "final_verification": true,
+      "preflight_required": true
+    },
+    "complex": {
+      "default_verification": "node-or-final",
+      "max_node_verifiers": 1,
+      "final_verification": true,
+      "preflight_required": true,
+      "require_user_route_decision": true
+    }
+  }
+}

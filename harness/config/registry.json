@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "kind": "local-block-registry",
+  "status": "active",
+  "blocks": [
+    {
+      "id": "classify",
+      "module": "harness/blocks/classify.mjs",
+      "phase": "understand",
+      "optional": false,
+      "capability": "rule-tool"
+    },
+    {
+      "id": "context",
+      "module": "harness/blocks/context.mjs",
+      "phase": "context",
+      "optional": true,
+      "capability": "rule-tool"
+    },
+    {
+      "id": "reason",
+      "module": "harness/blocks/reason.mjs",
+      "phase": "plan",
+      "optional": true,
+      "capability": "reasoning-scaffold"
+    },
+    {
+      "id": "route-plan",
+      "module": "harness/blocks/route-plan.mjs",
+      "phase": "route-planning",
+      "optional": false,
+      "capability": "route-planning"
+    },
+    {
+      "id": "platform-preflight",
+      "module": "harness/blocks/platform-preflight.mjs",
+      "phase": "preflight",
+      "optional": false,
+      "capability": "platform-probe"
+    },
+    {
+      "id": "user-authority",
+      "module": "harness/blocks/user-authority.mjs",
+      "phase": "authority",
+      "optional": false,
+      "capability": "rule-tool"
+    },
+    {
+      "id": "dispatch",
+      "module": "harness/blocks/dispatch.mjs",
+      "phase": "dispatch",
+      "optional": false,
+      "capability": "local-adapter"
+    },
+    {
+      "id": "execute",
+      "module": "harness/blocks/execute.mjs",
+      "phase": "execution",
+      "optional": false,
+      "capability": "local-adapter"
+    },
+    {
+      "id": "verify",
+      "module": "harness/blocks/verify.mjs",
+      "phase": "verification",
+      "optional": false,
+      "capability": "rule-tool"
+    },
+    {
+      "id": "reconcile",
+      "module": "harness/blocks/reconcile.mjs",
+      "phase": "reconcile",
+      "optional": true,
+      "capability": "result-reconciliation"
+    },
+    {
+      "id": "replan",
+      "module": "harness/blocks/replan.mjs",
+      "phase": "replan",
+      "optional": true,
+      "capability": "reasoning-scaffold"
+    }
+  ]
+}

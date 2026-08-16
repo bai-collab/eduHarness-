@@ -1,0 +1,4 @@
+interface:
+  display_name: "網頁版面拓樸分析"
+  short_description: "先建立網頁區塊、座標與元件重疊關係，再進行實作驗證"
+  default_prompt: "使用 $web-layout-topology-analysis 先建立版面區塊、元件座標與重疊關係，再交給網頁製作流程。"

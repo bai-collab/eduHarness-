@@ -1,4 +1,0 @@
-interface:
-  display_name: "教育 Web 教學遊戲工作流"
-  short_description: "把教材、學習機制與 2D／3D 資產串成可驗證的 Web 教學遊戲流程"
-  default_prompt: "使用 $educational-web-game-workflow 把教材與學習目標轉成可及、可驗證的 Web 教學遊戲規格與實作流程。"
