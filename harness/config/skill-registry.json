@@ -340,63 +340,6 @@
       }
     },
     {
-      "id": "tainan-item-authoring",
-      "display_name_zh_tw": "臺南數位教學命題",
-      "aliases_zh_tw": [
-        "臺南數位教學命題",
-        "臺南命題",
-        "台南命題"
-      ],
-      "kind": "primary",
-      "path": "brain/skills/tainan-item-authoring",
-      "version": "0.1.0",
-      "triggers": [
-        "臺南命題",
-        "台南命題",
-        "Tainan item authoring"
-      ],
-      "anti_triggers": [
-        "一般命題",
-        "一般教案撰寫",
-        "教材轉闖關遊戲"
-      ],
-      "dependencies": [
-        {
-          "id": "item-authoring",
-          "required": false,
-          "when": "user-confirmed",
-          "question": "這次臺南命題是否也要載入一般試題命題，使用共用題型與 coverage 檢查？",
-          "suggestion": "建議預設略過；臺南命題已包含主要命題流程，只有需要一般題庫共用檢查時才載入。"
-        }
-      ],
-      "capabilities": [
-        "education",
-        "taiwan-context",
-        "tainan-context",
-        "assessment"
-      ],
-      "preferred_platforms": [
-        "primary-agent"
-      ],
-      "verifier_policy": "final",
-      "required_files": [
-        "SKILL.md",
-        "agents/openai.yaml",
-        "VERSION"
-      ],
-      "canonical_sha256": "C198FDC0767A253A9B96026916604FF83239EE4CE546E0E50E19947B9B98F8BE",
-      "projections": {
-        "claude": {
-          "path": ".claude/skills/tainan-item-authoring",
-          "status": "planned"
-        },
-        "codex": {
-          "path": ".agents/skills/tainan-item-authoring",
-          "status": "planned"
-        }
-      }
-    },
-    {
       "id": "conjecturing-five-stage",
       "display_name_zh_tw": "臆測五階段",
       "aliases_zh_tw": [
@@ -1003,3 +946,4 @@
     }
   ]
 }
+

@@ -4,7 +4,7 @@
   "status": "portable",
   "purpose": "描述本副本實際存在的 Skill 分組、相依與驗證方式，不保存來源工作區 provenance。",
   "inventory": {
-    "registered_skill_count": 18,
+    "registered_skill_count": 17,
     "registered_skill_ids": [
       "lesson-plan-authoring",
       "reasoning-kernel",
@@ -12,7 +12,6 @@
       "digital-learning-lesson-plan",
       "lesson-differentiation",
       "item-authoring",
-      "tainan-item-authoring",
       "conjecturing-five-stage",
       "material-to-quest-game",
       "visual-art-storyboard",
@@ -34,7 +33,6 @@
     "digital-learning-lesson-plan": "數位學習精進教案",
     "lesson-differentiation": "教案差異化教學",
     "item-authoring": "試題命題",
-    "tainan-item-authoring": "臺南數位教學命題",
     "conjecturing-five-stage": "臆測五階段",
     "material-to-quest-game": "教材轉闖關遊戲",
     "visual-art-storyboard": "美工與分鏡設計",
@@ -73,7 +71,6 @@
     "education_only": ["reasoning-kernel"],
     "portable_only": [
       "document-to-markdown-ingestion",
-      "tainan-item-authoring",
       "procedural-world-field-metrics-workflow",
       "hemingway-writing",
       "i-have-adhd",
@@ -92,7 +89,6 @@
       "lesson-differentiation",
       "digital-learning-lesson-plan",
       "item-authoring",
-      "tainan-item-authoring",
       "conjecturing-five-stage"
     ],
     "game_visual_and_3d": [
@@ -117,7 +113,7 @@
       "id": "batch-1-education-authoring",
       "status": "completed",
       "goal": "建立教案、差異化教學與命題流程",
-      "skills": ["digital-learning-lesson-plan", "lesson-differentiation", "item-authoring", "tainan-item-authoring", "conjecturing-five-stage"]
+      "skills": ["digital-learning-lesson-plan", "lesson-differentiation", "item-authoring", "conjecturing-five-stage"]
     },
     {
       "id": "batch-2-game-visual",
@@ -150,3 +146,4 @@
     }
   ]
 }
+
