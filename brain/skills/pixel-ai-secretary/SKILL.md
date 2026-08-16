@@ -47,7 +47,7 @@ Start every run by stating these limits in plain language:
 - `character_notes`: optional traits to preserve from the reference person.
 - `actions`: optional list of actions. Default to `遞文件`.
 - `output_path`: optional. Default, when saving is requested:
-  `F:\eduHarness\outputs\pixel-ai-secretary-prompt-package.md`.
+  `outputs/pixel-ai-secretary-prompt-package.md`.
 
 If no reference image is provided, use the default Character Bible below.
 
@@ -102,9 +102,10 @@ clean composition,
 game character reference sheet
 ```
 
-Load detailed reusable components from `references/prompt-components.md` when
-the request includes multiple actions, risk-prone actions, or asks for an output
-package that should be saved.
+Load detailed reusable components from `references/prompt-components.md` when the
+request includes multiple actions, risk-prone actions, or asks for an output
+package that should be saved. Use `templates/prompt-package.md` for the final
+package shape; both files are bundled in this Skill.
 
 ## Safety Rewrite Rules
 
@@ -138,8 +139,9 @@ scene professional and character-focused.
    - desk-height spatial perspective
 9. Output the negative prompt.
 10. Output the validation checklist.
-11. If saving is requested, write the package to the default F-drive path unless
-    the user provides another D-drive path.
+11. If saving is requested, write the package through Runtime Context under the
+    default repository-relative output path unless the user provides another
+    approved repository-relative path.
 
 Use `templates/prompt-package.md` for the final package shape.
 
@@ -172,5 +174,5 @@ Before finalizing, verify:
 - Risk-prone actions are rewritten before prompt generation.
 - The package does not ask the image model to produce text, logos, or watermarks.
 - The package stays prompt-only and does not call image generation tools.
-- Saved output, if any, stays under `F:\eduHarness` unless the user explicitly
-  requests another approved location.
+- Saved output, if any, stays inside the current workspace and uses a
+  repository-relative path.

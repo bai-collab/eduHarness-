@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "kind": "local-harness",
+  "mode": "local-only",
+  "description": "Portable local Harness with pluggable planning blocks.",
+  "local_override_file": "harness/config/env.local.json",
+  "files": {
+    "platform_registry": "harness/config/platform-registry.json",
+    "route_profiles": "harness/config/route-profiles.json",
+    "skill_registry": "harness/config/skill-registry.json",
+    "migration_catalog": "harness/config/skill-migration-catalog.json"
+  },
+  "paths": {
+    "registry": "harness/config/registry.json",
+    "brain_index": "brain/index.json",
+    "skills": "brain/skills",
+    "knowledge": "brain/knowledge",
+    "templates": "brain/templates",
+    "wiki_index": "brain/wiki-index.md",
+    "state": "harness/state",
+    "workspace": "workspace",
+    "outputs": "outputs",
+    "projects": "projects"
+  },
+  "authority": {
+    "user_decision": "final",
+    "model_suggestion": "advisory",
+    "unknown_action": "defer",
+    "complex_profiles_require_explicit_decision": true,
+    "user_can": [
+      "choose_profile",
+      "choose_blocks",
+      "skip_optional_block",
+      "choose_local_adapter",
+      "revise_plan",
+      "stop"
+    ]
+  },
+  "planner": {
+    "default_profile": "adaptive",
+    "profiles": {
+      "simple": {
+        "blocks": ["classify", "context", "route-plan", "platform-preflight", "user-authority", "dispatch", "execute", "verify"]
+      },
+      "standard": {
+        "blocks": ["classify", "context", "reason", "route-plan", "platform-preflight", "user-authority", "dispatch", "execute", "reconcile", "verify"]
+      },
+      "complex": {
+        "blocks": ["classify", "context", "reason", "route-plan", "platform-preflight", "user-authority", "dispatch", "execute", "reconcile", "verify", "replan"]
+      }
+    },
+    "optional_blocks": ["context", "reason", "reconcile", "replan"],
+    "non_bypassable_blocks": ["classify", "route-plan", "platform-preflight", "user-authority", "dispatch", "verify"],
+    "order": ["classify", "context", "reason", "route-plan", "platform-preflight", "user-authority", "dispatch", "execute", "reconcile", "verify", "replan"]
+  },
+  "runtime": {
+    "adapters": ["rule-tool"],
+    "default_adapter": "rule-tool",
+    "external_execution": false
+  },
+  "routing": {
+    "primary_agent": "primary-agent",
+    "fallback_policy": "primary-agent",
+    "preflight": "before-user-gate",
+    "unknown_platform": "fallback-or-defer"
+  }
+}

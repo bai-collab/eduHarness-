@@ -1,7 +1,6 @@
 ---
 name: i-have-adhd
 description: 'Shape output for a reader who wants action-first responses: lead with the next action, number multi-step work, restate state across turns, suppress tangents, give specific time estimates, make wins visible. Invoke with /i-have-adhd; stays on until "stop adhd mode".'
-disable-model-invocation: true
 ---
 
 # 行動優先輸出
@@ -123,4 +122,4 @@ If yes, send.
 ---
 
 <!-- Source: ayghri/i-have-adhd (MIT License, © Ayoub G.), https://github.com/ayghri/i-have-adhd
-     Adopted into F:\eduHarness Brain as a native skill; body preserved faithfully. Interacts with [[hemingway-writing]] (both are output-shaping). Honors the author's explicit-only activation design (disable-model-invocation: true). -->
+     Adapted into the local Harness Brain; body preserved faithfully. Interacts with [[hemingway-writing]] (both are output-shaping). Honors the author's explicit-only activation design (disable-model-invocation: true). -->

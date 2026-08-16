@@ -1,0 +1,23 @@
+{
+  "task_id": "example-lesson-plan-standard",
+  "goal": "撰寫一份可覆核的教案草稿",
+  "profile": "standard",
+  "risk": "medium",
+  "user_directives": {
+    "decision": "approve"
+  },
+  "route": {
+    "primary_skill": "lesson-plan-authoring",
+    "nodes": [
+      {
+        "id": "lesson-draft",
+        "objective": "建立目標、活動、差異化與評量對齊草稿",
+        "platform": "primary-agent",
+        "agent": "primary-agent",
+        "role": "executor",
+        "capability": "architecture",
+        "fallback": "primary-agent"
+      }
+    ]
+  }
+}

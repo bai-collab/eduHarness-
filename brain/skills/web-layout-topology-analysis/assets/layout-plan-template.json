@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "status": "draft",
+  "task": {
+    "goal": "",
+    "user_priority": [],
+    "source_paths": []
+  },
+  "viewport_profiles": [
+    {
+      "id": "primary",
+      "orientation": "landscape",
+      "coordinate_space": "normalized-0..1",
+      "safe_area": {"top": 0, "right": 0, "bottom": 0, "left": 0}
+    }
+  ],
+  "layers": ["dom", "svg", "canvas", "threejs", "overlay", "pointer"],
+  "layout_blocks": [],
+  "component_rects": [],
+  "relations": [],
+  "responsive_variants": [],
+  "warnings": [],
+  "assumptions": [],
+  "unresolved_questions": [],
+  "verification": {
+    "pre_implementation_gate": "PENDING",
+    "browser_checks": [],
+    "evidence": []
+  }
+}

@@ -35,7 +35,7 @@ State the style call to the user in one line while building; do not wait for per
 
 ### 2. Build the single-file page
 
-One HTML file. Import map pinned to `three@0.170.0` from CDN. Full skeleton and recipes: [references/threejs-recipes.md](references/threejs-recipes.md) — read it before writing the page. Non-negotiables:
+One HTML file. Use the repository's existing local Three.js dependency or approved local vendor files; do not fetch a CDN or install a package automatically. If a local runtime is unavailable, stop at implementation preview and mark the route deferred. Full skeleton and recipes: [references/threejs-recipes.md](references/threejs-recipes.md) — read it before writing the page. Non-negotiables:
 
 - `outputColorSpace = SRGBColorSpace` + ACES tone mapping (without these, colors will not match the image)
 - Default camera pose reproduces the original image's composition — this is the shot that gets compared
@@ -59,7 +59,7 @@ The default-camera screenshot must read as a recognizable sibling of the origina
 ### 4. Deliver
 
 - Report the file path, the serve command, verification rounds run, and what changed per round.
-- Publishing as a claude.ai Artifact requires inlining three.js (CSP blocks CDN) — procedure in the references file, "Offline / Artifact delivery".
+- Keep delivery local to the current workspace. If a standalone artifact needs a self-contained Three.js bundle, use only an already-approved local vendor file; do not download one automatically.
 
 ## User add-ons
 

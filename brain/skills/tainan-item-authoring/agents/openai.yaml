@@ -1,0 +1,7 @@
+interface:
+  display_name: "臺南數位教學命題"
+  short_description: "依指標與來源建立可覆核的臺南數位學習題目草稿"
+  default_prompt: "使用 $tainan-item-authoring 建立臺南數位教學命題；先檢查學段、科目、題數、指標與來源，缺件就停止並列出 intake gap。"
+
+policy:
+  allow_implicit_invocation: true

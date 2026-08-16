@@ -1,85 +1,93 @@
-# eduHarness — 教師用 AI 教學技能包
+# Local Pluggable Harness
 
-給教師的 Claude Code／Codex 技能（skill）集合：教案撰寫、教案差異化、試題命題、教材轉闖關遊戲、數位學習精進教案等，加上一組通用工程與寫作技能，開箱即用。
+這是一個只在本機執行的 Harness 基線。它把「治理規則」與「執行環境」分開，並以可插拔區塊推動模型或工具沿著可驗證路徑工作。
 
-## 這是什麼
+## 它如何推動思考
 
-每個「技能」是一份結構化的工作指引（Markdown），AI 助理（Claude Code、Codex 等）讀了之後，會依固定的輸入、流程、輸出與停止規則幫你完成該類任務——例如把課綱轉成題庫草稿、把現有教案做成三層差異化版本。
+Harness 不要求模型輸出私有 Chain-of-Thought，而是要求留下可檢查的決策紀錄：
 
-## 安裝（約 5 分鐘）
-
-1. 安裝 [codex](https://openai.com/zh-Hant/codex/)（或相容的 AI 編碼助理）。
-2. 下載本專案：
-   ```bash
-   git clone https://github.com/bai-collab/eduHarness-.git eduHarness
-   cd eduHarness
-   ```
-   （放其他路徑也可以，路徑不影響使用。）
-3. 用 codex 開啟該資料夾，直接對它說你要做的事（例：「幫我把這份課綱命 20 題選擇題」），對應技能會自動載入。
-
-## 使用手冊
-
-完整說明在 [`docs/`](docs/index.md)，分四類：
-
-- **教學**：[15 分鐘做出你的第一份題庫](docs/tutorial/first-item-bank.md)——第一次用先走這篇。
-- **操作指南**：備課、出題、分層、做遊戲等每件事的步驟與可貼提示詞。
-- **參考**：[技能一覽](docs/reference/skills.md)、[指令參考](docs/reference/commands.md)、[資料夾結構](docs/reference/folders.md)。
-- **概念**：想懂它為什麼那樣運作，例如[為什麼同一個技能有三份](docs/explanation/why-three-copies.md)。
-
-也有一張[互動架構地圖](https://bai-collab.github.io/eduHarness-docs/)。
-
-## 技能清單
-
-### 教育類
-
-| 技能 | 用途 |
-|---|---|
-| 教案撰寫 | 從課綱、學習者與時數限制產出完整教案 |
-| 教案差異化教學 | 把現有教案改寫成分層支持版本 |
-| 數位學習精進教案 | 台灣數位學習精進方案格式的教案 |
-| 試題命題 | 把課綱／教材轉成可審查的題庫草稿 |
-| 教材轉闖關遊戲 | 教材轉實體或網頁闖關遊戲規格 |
-| 美工與分鏡設計 | 規劃美術方向、角色、場景、素材提示詞與八格連續分鏡 |
-| AI 文件 Markdown 轉換 | AI 讀文件前的安全轉換流程 |
-| 海明威寫作法 | 具體、有畫面感的寫作約束 |
-| 行動優先輸出 | 讓 AI 回覆行動優先、步驟編號 |
-| 圖片轉3D | 把場景圖片重建成可環繞的 3D 展示頁 |
-| Pixel AI 美術提示詞祕書 | 像素風虛擬助理角色的一致性提示包 |
-
-### 通用工程類
-
-API 與介面設計、安全與強化、規格驅動開發、測試驅動開發（TDD）、除錯與錯誤恢復、任務規劃與分解、提示詞優化。
-
-## 資料夾結構
-
-- `brain/skills/`：技能原始版本（唯一可編輯處）
-- `brain/SKILL.md`：讀取路由——AI 什麼情況該讀哪一層
-- `brain/instincts/`、`brain/knowledge-base/`、`brain/errorLog/`、`brain/experience/`：記憶層骨架，預設是空的，供你累積自己的規則與經驗；每層的 `README.md` 說明放什麼、什麼時候會被讀取
-- `brain/wiki-index.md`：Brain 索引
-- `.claude/skills/`、`.agents/skills/`：自動投影（請勿直接編輯）
-- `harness/scripts/`：投影與防重工具（改了技能後跑 `node harness/scripts/project-skills.mjs --apply` 重新投影）
-
-## 可攜式 Registry 與復原
-
-分享版 registry 使用 `workspace_mode: repository-root`，不會保存建立 clone 的電腦絕對路徑。請在 repository root 執行：
-
-```bash
-node harness/scripts/check-skill-dedup.mjs --require-ready
-node harness/scripts/project-skills.mjs
+```text
+goal → assumptions → hypotheses/options → evidence → checks → result → uncertainty → next action
 ```
 
-若偵測到中斷的投影交易，必須先明確復原，再進行下一次 apply：
+只有遇到複雜、模糊、衝突或高風險任務時，才載入 reasoning 區塊；簡單任務可以直接進入本機執行準備與驗證。
 
-```bash
-node harness/scripts/project-skills.mjs --recover
+## 使用者權限
+
+使用者可以：
+
+- 指定或改變 profile
+- 指定區塊順序
+- 跳過 optional block
+- 指定本機 adapter
+- 修改方案、範圍與驗證方式
+- 隨時停止流程
+
+Harness 會把這些決定寫入 plan artifact。模型產生的建議只能標記為 advisory，不能覆蓋 user decision。
+
+## Route Plan 與多平台治理
+
+非瑣碎任務會先建立 Route Plan，再開始執行。每個節點會記錄：
+
+- objective、依賴與 allowed paths
+- requested platform／agent／role
+- platform preflight 結果
+- 不可用時的 primary-agent fallback
+- 該節點的 verifier mode
+
+平台預檢只做無副作用的 readiness probe。外部平台未啟用或 adapter 不存在時，會記錄原因並改由主 Agent 接手；若沒有安全 fallback，才標記 `deferred`。
+
+Verifier 採節流策略：Simple 預設不派獨立 verifier、Standard 最後統一驗證、Complex 只對關鍵節點安排 verifier，並受 route profile 的 verifier budget 限制。
+
+## 路徑
+
+portable config 使用 repository-relative path。實際根目錄由 marker discovery、`HARNESS_ROOT` 或 `--root` 決定，不依賴固定磁碟代號或本機絕對位置。
+
+## 快速開始
+
+```powershell
+npm test
+npm run harness:validate
+node harness/cli/harness.mjs plan harness/examples/task.simple.json
+node harness/cli/harness.mjs plan harness/examples/task.standard.approved.json
+node harness/cli/harness.mjs plan harness/examples/task.complex.pending.json
+node harness/cli/harness.mjs plan harness/examples/task.lesson-plan.standard.json
+node harness/cli/harness.mjs plan harness/examples/task.document.simple.json
 ```
 
-## 版本
+`task.complex.pending.json` 會停在 `awaiting_user`，因為 Complex 路徑需要使用者明確裁決；這是預期行為。
 
-版本採 CalVer（例：`v2026.07.0` ＝ 2026 年 7 月第 1 版）。每版變更見 [CHANGELOG.md](CHANGELOG.md) 與 `RELEASE-NOTES/`。
+`task.standard.approved.json` 展示 Standard 路徑：使用者已核准、先做 route preflight，最後只排一次 final verifier。
 
-**注意**：本專案是上游工作區的定期產出物。你在本地的修改不會被上游看到，且下次更新時會被覆蓋——想保留修改請 fork，想回報問題或建議請開 GitHub Issue。
+## Brain 遷移與按需知識
 
-## 授權
+Brain 使用 `brain/index.json` 管理 repository-relative path。知識、Skill 與範本先索引、後按需載入；不會因為建立任務就把全部文件全文放進上下文。
 
-雙授權：`harness/` 程式碼採 MIT；`brain/skills/` 技能內容採 CC BY-NC-SA 4.0（姓名標示—非商業性—相同方式分享）。詳見 [LICENSE.md](LICENSE.md)。
+```powershell
+npm run harness:brain -- inspect
+npm run harness:brain -- verify
+npm run harness:brain -- search "verifier 路徑錯誤"
+```
+
+遷移舊工作區前先預覽，再明確加上 `--apply`；目的檔案 hash 不一致時會停止而不覆寫。完整規則見 [`harness/docs/brain-migration.md`](harness/docs/brain-migration.md)。
+
+## Skill 與條件依賴
+
+目前已註冊 18 個混合版 Skill，涵蓋教育、命題、美工、網頁製作、版面拓樸、文書處理、海明威寫法與行動優先輸出等工作流。所有 Skill 都以繁體中文可見名稱呈現，完整清單與可攜分類請看 `harness/config/skill-registry.json` 與 `harness/config/skill-migration-catalog.json`。
+
+Skill 不是全域預載清單：Route Plan 先建立與 Skill 無關的節點拓樸，Skill 解析結果另放在 `skill_resolution`。`user-confirmed` optional dependency 沒有使用者決定時會停在 user-authority，先顯示問題、建議與「載入／先略過」選項；Skill 不得改變 Route Plan 節點、拓樸或 verifier 預算。
+
+查看 Skill Registry：
+
+```powershell
+node harness/cli/harness.mjs skills
+node harness/cli/harness.mjs catalog
+```
+
+Skill package 位於 `brain/skills`；Registry 位於 `harness/config/skill-registry.json`。不會預載全部 Skill，也不會自動安裝或覆寫平台 projection。
+
+新建或移植 Skill 請從 `harness/templates/skill-package` 開始：英文小寫連字號 `id` 只供內部穩定引用；使用者看到的 `display_name_zh_tw`、中文別名與 `agents/openai.yaml` 的 `interface.display_name` 必須使用繁體中文，而且三者要一致。完成後執行 `npm run harness:validate`；未註冊、缺中文名稱或名稱不一致都會被阻擋。
+
+Skill 的可攜分類與批次資訊在 `harness/config/skill-migration-catalog.json`；它只描述本副本實際存在的 Skill。
+
+目前內建的 `rule-tool` 只會建立安全的執行準備，不會任意執行 shell。若要接上其他本機模型或工具，請依照 `harness/runtime/README.md` 實作 adapter，再透過 registry 或 local override 啟用。

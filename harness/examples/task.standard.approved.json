@@ -1,0 +1,22 @@
+{
+  "task_id": "example-standard-approved",
+  "goal": "執行已核准的本機結構檢查。",
+  "profile": "standard",
+  "risk": "medium",
+  "user_directives": {
+    "decision": "approve"
+  },
+  "route": {
+    "nodes": [
+      {
+        "id": "local-check",
+        "objective": "準備本機結構檢查。",
+        "platform": "rule-tool",
+        "agent": "rule-tool",
+        "role": "executor",
+        "capability": "execution",
+        "fallback": "primary-agent"
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "task_id": "example-complex-pending",
+  "goal": "比較兩種本機 Harness 架構，提出可回滾的整合方案。",
+  "profile": "complex",
+  "risk": "high",
+  "ambiguity": true,
+  "source_conflict": true,
+  "reasoning": {
+    "hypotheses": ["保留現有 Packet 生命週期", "改用可拔插區塊重建規劃層"],
+    "alternatives": ["直接改舊架構", "建立平行基線後逐步遷移"],
+    "checks": ["相對路徑測試", "使用者停止流程測試", "optional block 缺失測試"]
+  },
+  "route": {
+    "optimization": ["user-authority", "success", "risk", "latency"],
+    "nodes": [
+      {
+        "id": "inspect-architecture",
+        "objective": "盤點兩份本機 Harness 的邊界與可重用元件。",
+        "platform": "claude",
+        "agent": "claude-architecture",
+        "role": "architecture",
+        "capability": "architecture",
+        "fallback": "primary-agent",
+        "risk": "medium",
+        "verification": { "mode": "final" }
+      },
+      {
+        "id": "design-integration",
+        "objective": "提出可回滾的整合路徑與節點責任。",
+        "platform": "codex",
+        "agent": "codex-architecture",
+        "role": "architecture",
+        "capability": "architecture",
+        "fallback": "primary-agent",
+        "risk": "high",
+        "verification": {
+          "mode": "node",
+          "platform": "primary-agent",
+          "agent": "primary-verifier"
+        }
+      }
+    ]
+  }
+}

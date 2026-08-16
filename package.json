@@ -1,0 +1,13 @@
+{
+  "name": "local-pluggable-harness",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "harness:blocks": "node harness/cli/harness.mjs blocks",
+    "harness:validate": "node harness/cli/harness.mjs validate",
+    "harness:plan": "node harness/cli/harness.mjs plan",
+    "harness:brain": "node harness/cli/brain.mjs",
+    "test": "node --test harness/tests/*.test.mjs"
+  }
+}

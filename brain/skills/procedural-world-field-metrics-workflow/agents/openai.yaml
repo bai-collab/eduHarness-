@@ -1,0 +1,4 @@
+interface:
+  display_name: "程序化場景共用世界與量測迭代工作流"
+  short_description: "建立可重現世界欄位、程序模組與量測迭代驗證工具工作流"
+  default_prompt: "請使用 $procedural-world-field-metrics-workflow 建立世界欄位、接入模組並產出量測報告。"

@@ -1,0 +1,25 @@
+{
+  "id": "<lowercase-hyphen-id>",
+  "display_name_zh_tw": "<繁體中文可見名稱>",
+  "aliases_zh_tw": ["<繁體中文別名>"],
+  "kind": "primary",
+  "path": "brain/skills/<lowercase-hyphen-id>",
+  "version": "0.1.0",
+  "triggers": ["<繁體中文觸發詞>"],
+  "anti_triggers": ["<繁體中文排除詞>"],
+  "dependencies": [],
+  "capabilities": [],
+  "preferred_platforms": ["primary-agent"],
+  "verifier_policy": "final",
+  "required_files": ["SKILL.md", "agents/openai.yaml", "VERSION"],
+  "canonical_sha256": null,
+  "source": {
+    "kind": "local-design",
+    "origin": "<來源名稱>",
+    "adaptation": "portable-local"
+  },
+  "projections": {
+    "claude": {"path": ".claude/skills/<lowercase-hyphen-id>", "status": "planned"},
+    "codex": {"path": ".agents/skills/<lowercase-hyphen-id>", "status": "planned"}
+  }
+}

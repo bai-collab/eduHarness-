@@ -1,0 +1,17 @@
+node_modules/
+
+# Local-only configuration and runtime observations.
+harness/config/env.local.json
+harness/state/
+!harness/state/.gitkeep
+
+# Disposable local work.
+workspace/
+outputs/
+scratch/
+
+# OS/editor noise.
+.DS_Store
+Thumbs.db
+.vscode/
+
