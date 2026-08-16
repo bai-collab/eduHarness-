@@ -52,12 +52,13 @@ Skill 不是全部預載：
 
 ## Migration and topology checks
 
-目前已註冊的 18 個 Skill 都必須通過相同的移植與拓樸檢查：
+目前已註冊的 17 個 Skill 都必須通過相同的移植與拓樸檢查：
 
 - package 位於 `brain/skills/<skill-id>`，且有 Registry 登錄與繁體中文可見名稱。
 - 依賴目標必須存在、條件必須受支援，並且不得形成循環。
-- `user-confirmed` 依賴必須有繁中問題與建議；目前臺南命題與 Three.js 導入各自用此條件保留可拔插性。
+- `user-confirmed` 依賴必須有繁中問題與建議；目前 Three.js 導入用此條件保留可拔插性。
 - Skill 解析結果放在 `skill_resolution`；測試必須確認 `route_plan.nodes` 不含 Skill 狀態。
 - `web-layout-topology-analysis` 另產生 `layout_plan`，先計算區塊、元件矩形與重疊關係；它不得改寫 `route_plan`。
 
 新增 Skill 時沿用同一套檢查，不要求複製既有 Skill 的固定流程。
+

@@ -22,7 +22,7 @@ Task 可以使用：
     "adapter": "rule-tool",
     "decision": "approve",
     "skill_dependency_decisions": {
-      "tainan-item-authoring->item-authoring": "skip"
+      "quest-threejs-adoption->material-to-quest-game": "skip"
     }
   }
 }
@@ -31,3 +31,4 @@ Task 可以使用：
 `skip_blocks` 只能跳過 registry 標記為 optional 的區塊。這個限制是為了避免把基本 user authority 與 verification 靜默移除；若要修改這個安全邊界，應建立新的 Kernel 版本與明確決定紀錄。
 
 Skill 的 optional dependency 另用 `skill_dependency_decisions` 表達，不把一般的 `decision: "approve"` 當成自動載入許可。若沒有決定，Harness 會在 `user_decision.skill_dependency_questions` 提出繁中問題、建議與兩個選項；使用者可以回傳 `"approve"` 載入，或 `"skip"` 保持精簡路徑。這個選擇只影響 `skill_resolution`，不會修改 `route_plan`。
+

@@ -27,7 +27,7 @@ test("portable config and registry load", () => {
   const platforms = loadPlatformRegistry(workspace);
   assert.equal(workspace.config.mode, "local-only");
   assert.equal(registry.blocks.length, 11);
-  assert.equal(skills.skills.length, 18);
+  assert.equal(skills.skills.length, 17);
   assert.equal(skills.policy.registration_required, true);
   assert.equal(skills.policy.traditional_chinese_display_name_required, true);
   assert.equal(platforms.platforms.length, 5);
@@ -177,12 +177,6 @@ test("Web production asks before loading the layout topology Skill", async () =>
 test("conditional Skill dependencies ask the user and provide a recommendation", async () => {
   const cases = [
     {
-      primary_skill: "臺南數位教學命題",
-      key: "tainan-item-authoring->item-authoring",
-      question_pattern: /一般試題命題/,
-      suggestion_pattern: /建議預設略過/
-    },
-    {
       primary_skill: "闖關遊戲 Three.js 導入",
       key: "quest-threejs-adoption->material-to-quest-game",
       question_pattern: /教材轉闖關遊戲/,
@@ -209,49 +203,6 @@ test("conditional Skill dependencies ask the user and provide a recommendation",
     assert.equal(plan.artifacts.user_decision.skill_dependency_decision_required, true);
     assert.equal(plan.artifacts.route_plan.nodes[0].skill, undefined);
   }
-});
-
-test("user can skip or load a conditional Skill dependency without changing route topology", async () => {
-  const task = {
-    goal: "準備臺南命題並決定是否共用一般題型",
-    profile: "simple",
-    route: {
-      primary_skill: "臺南數位教學命題",
-      nodes: [{ id: "author", objective: "準備命題規格", platform: "primary-agent" }]
-    }
-  };
-  const skipped = await buildPlan({
-    ...task,
-    user_directives: {
-      skill_dependency_decisions: {
-        "tainan-item-authoring->item-authoring": "skip"
-      }
-    }
-  }, ROOT);
-  assert.equal(skipped.status, "planned");
-  assert.deepEqual(skipped.artifacts.skill_resolution.selected_skills.map(skill => skill.id), ["tainan-item-authoring"]);
-  assert.deepEqual(skipped.artifacts.skill_resolution.skipped_dependencies, [{
-    parent: "tainan-item-authoring",
-    dependency: "item-authoring",
-    reason: "user-skipped"
-  }]);
-  assert.equal(skipped.artifacts.route_plan.nodes[0].skill, undefined);
-
-  const loaded = await buildPlan({
-    ...task,
-    user_directives: {
-      skill_dependency_decisions: {
-        "tainan-item-authoring->item-authoring": "approve"
-      }
-    }
-  }, ROOT);
-  assert.equal(loaded.status, "planned");
-  assert.deepEqual(loaded.artifacts.skill_resolution.selected_skills.map(skill => skill.id), [
-    "tainan-item-authoring",
-    "item-authoring"
-  ]);
-  assert.equal(loaded.artifacts.route_plan.nodes[0].skill, undefined);
-  assert.deepEqual(loaded.artifacts.route_plan.nodes.map(node => node.id), ["author"]);
 });
 
 test("Skill resolution cannot change Route Plan topology or verifier budget", async () => {
@@ -519,3 +470,4 @@ test("portable files do not contain the old fixed workspace paths", () => {
     }
   }
 });
+
