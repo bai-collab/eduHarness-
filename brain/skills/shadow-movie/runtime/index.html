@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>Shadow Movie</title>
+    <!-- __SHADOW_MOVIE_CSS__ -->
+  </head>
+  <body>
+    <main id="movie-root" class="shadow-app" aria-live="polite">
+      <section class="empty-state">
+        <h1>皮影戲網頁電影</h1>
+        <p>請先用 Build 產生可播放的 bundle。</p>
+      </section>
+    </main>
+    <!-- __SHADOW_MOVIE_BUNDLE__ -->
+    <!-- __SHADOW_MOVIE_RUNTIME__ -->
+    <script>
+      (() => {
+        const root = document.getElementById("movie-root");
+        const bundle = globalThis.__SHADOW_MOVIE_BUNDLE__;
+        if (!bundle || !globalThis.ShadowMoviePlayer) return;
+        root.replaceChildren();
+        new globalThis.ShadowMoviePlayer(root, bundle);
+      })();
+    </script>
+  </body>
+</html>

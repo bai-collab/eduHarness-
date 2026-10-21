@@ -1,0 +1,7 @@
+interface:
+  display_name: "AI 創作協作循環"
+  short_description: "跨領域引導發散、收斂與受控分支的 AI 協作循環流程"
+  default_prompt: "使用 $creative-collaboration-loop 協助我從發散到收斂，並在交付前停下來等待我的授權。"
+
+policy:
+  allow_implicit_invocation: true

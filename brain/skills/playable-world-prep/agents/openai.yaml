@@ -1,0 +1,7 @@
+interface:
+  display_name: "可玩世界備課"
+  short_description: "把教材變成會回應學生的可玩探究頁：判斷該不該做→查核事實→路由到既有生成 skill→過三道查核關"
+  default_prompt: "使用 $playable-world-prep：想把教材做成可玩互動頁時，先判斷該不該做（純記憶/選擇題型別做），跑四步 SOP（建知識庫→查錯→路由生成→部署自玩），生成一律轉派 causal-sandbox-inquiry／material-to-quest-game／educational-web-game-workflow，交付前過事實/回應/教學三關。"
+
+policy:
+  allow_implicit_invocation: false

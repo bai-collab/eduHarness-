@@ -7,6 +7,9 @@
     "skills": "brain/skills",
     "knowledge": "brain/knowledge",
     "templates": "brain/templates",
+    "experience": "brain/experience",
+    "error_log": "brain/error-log",
+    "instincts": "brain/instincts",
     "wiki_index": "brain/wiki-index.md"
   },
   "collections": [
@@ -25,11 +28,25 @@
       "authority": "reviewed-reference"
     },
     {
-      "id": "templates",
-      "path_key": "templates",
-      "kind": "reusable-templates",
+      "id": "experience",
+      "path_key": "experience",
+      "kind": "retrospective-markdown",
       "load": "on-demand",
-      "authority": "reusable-template"
+      "authority": "reusable-experience"
+    },
+    {
+      "id": "error_log",
+      "path_key": "error_log",
+      "kind": "verified-failure-markdown",
+      "load": "on-demand",
+      "authority": "failure-evidence"
+    },
+    {
+      "id": "instincts",
+      "path_key": "instincts",
+      "kind": "short-safety-rules",
+      "load": "startup-light",
+      "authority": "advisory-safety-memory"
     }
   ]
 }

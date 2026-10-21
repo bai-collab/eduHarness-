@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>silhouette gate</title>
+<style>body{margin:0;background:#fff;font-family:system-ui}#row{display:flex;gap:8px;padding:8px;flex-wrap:wrap}canvas{border:1px solid #ccc}#msg{padding:8px;color:#555}</style>
+<script type="importmap">
+{"imports":{
+  "three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+}}
+</script>
+</head>
+<body>
+<div id="msg">rendering silhouettes…</div>
+<div id="row"></div>
+<script type="module">
+// Install-free blind-read gate renderer.
+// Usage: silhouette_gate.html?glb=<url-to-glb>[&save=1]
+// - Renders 4 flat-black silhouettes (profile / three_quarter / front / top) on white.
+// - Exposes window.SILS = {name: dataURL}. Screenshot the page, OR run a tiny saver
+//   server that accepts POST /save?name=... and pass &save=1 to auto-persist PNGs.
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+const q = new URLSearchParams(location.search);
+const GLB = q.get('glb');
+const SAVE = q.get('save') === '1';
+const S = 320;
+const views = [
+  { name: 'profile',       dir: [1, 0, 0.02] },
+  { name: 'three_quarter', dir: [1, 0.25, 1] },
+  { name: 'front',         dir: [0.05, 0, 1] },
+  { name: 'top',           dir: [0, 1, 0.03] },
+];
+
+if (!GLB) { document.getElementById('msg').textContent = 'missing ?glb= parameter'; }
+else new GLTFLoader().load(GLB, (gltf) => {
+  const model = gltf.scene;
+  model.traverse(o => { if (o.isMesh) o.material = new THREE.MeshBasicMaterial({ color: 0x000000 }); });
+  const box = new THREE.Box3().setFromObject(model);
+  const center = box.getCenter(new THREE.Vector3());
+  const radius = box.getSize(new THREE.Vector3()).length() / 2;
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xffffff);
+  scene.add(model);
+  const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+  renderer.setSize(S, S); renderer.setPixelRatio(1);
+  const cam = new THREE.PerspectiveCamera(32, 1, 0.01, 1000);
+
+  const out = {}; const row = document.getElementById('row');
+  for (const v of views) {
+    const d = new THREE.Vector3(...v.dir).normalize();
+    const dist = radius / Math.sin((32 * Math.PI / 180) / 2) * 1.05;
+    cam.position.copy(center).add(d.multiplyScalar(dist));
+    cam.up.set(0, 1, 0); cam.lookAt(center); cam.updateProjectionMatrix();
+    renderer.render(scene, cam);
+    const url = renderer.domElement.toDataURL('image/png');
+    out[v.name] = url;
+    const c = document.createElement('canvas'); c.width = S; c.height = S;
+    const img = new Image(); img.onload = () => c.getContext('2d').drawImage(img, 0, 0); img.src = url;
+    row.appendChild(c);
+  }
+  window.SILS = out;
+  document.getElementById('msg').textContent = 'done: ' + Object.keys(out).join(', ') + ' (window.SILS ready)';
+  if (SAVE) (async () => {
+    let i = 0;
+    for (const [name, url] of Object.entries(out)) {
+      i++;
+      try { await fetch('/save?name=sil_' + i + '_' + name, { method: 'POST', headers: { 'content-type': 'text/plain' }, body: url }); } catch (e) {}
+    }
+    window.SILS_SAVED = true;
+  })();
+}, undefined, (err) => { document.getElementById('msg').textContent = 'load error: ' + err; window.SILS_ERR = String(err); });
+</script>
+</body>
+</html>

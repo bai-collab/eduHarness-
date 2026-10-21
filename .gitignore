@@ -1,17 +1,36 @@
+# 私人區：私人規則、私人索引、本機設定實值、禁止字串清單與掃描例外，整個資料夾不上傳。
+# 不加開頭斜線：任何深度名為 private/ 的資料夾（例如專案內的 private/）都一併排除。
+private/
+
+# 冗餘防護（2026-10-21 起索引、規則、本機設定已搬進 private/）：舊位置若被舊工具重新產生，也不會進公開範圍
+_index/
+rules/
+config/*.local.json
+
+# npm 套件相依（自動產生，可重新安裝）
 node_modules/
 
-# Local-only configuration and runtime observations.
-harness/config/env.local.json
-harness/state/
-!harness/state/.gitkeep
+# 暫存資料夾（自動產生）
+.tmp*/
 
-# Disposable local work.
+# 執行紀錄（可能含本機路徑或內容）
+*.log
+
+# 環境變數與金鑰檔，不得上傳
+.env*
+
+# C2r 建議補充（2026-10-21）：雲端同步暫存（會在工作區建立硬連結）
+.tmp.driveupload/
+.tmp.drivedownload/
+# 任何本機覆寫檔與 Claude 本機設定
+*.local.*
+.claude/settings.local.json
+# 過程暫存、匯出副本與備份不進公開 repo
 workspace/
 outputs/
-scratch/
+backup-*/
 
-# OS/editor noise.
-.DS_Store
-Thumbs.db
-.vscode/
-
+# review-loop 執行期產物（鎖檔與提醒追蹤紀錄，屬本機狀態）
+.harness-review-loop.lock
+harness/state/*
+!harness/state/.gitkeep

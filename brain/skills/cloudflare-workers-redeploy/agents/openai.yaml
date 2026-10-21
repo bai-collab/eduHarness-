@@ -1,0 +1,7 @@
+interface:
+  display_name: "重新部署 Cloudflare Workers 網站"
+  short_description: "讀工作區 sites.<site_id> 設定，把指定站台專案測試、commit、經使用者同意後部署到 Cloudflare Workers，並做線上唯讀檢查"
+  default_prompt: "使用 $cloudflare-workers-redeploy：先確認 site_id 並讀 private/config/sites.local.json（缺值就問，不猜），依專案文件執行建置與本機測試，commit 後經使用者同意再 wrangler deploy，最後做線上唯讀檢查；不 push、不印金鑰，回報 commit、內容清單、網址與檢查結果。"
+
+policy:
+  allow_implicit_invocation: false

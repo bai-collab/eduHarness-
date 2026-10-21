@@ -1,0 +1,67 @@
+{
+  "_說明": "公開範本：只放佔位值與公開安全的預設值。實際值請複製成 private/config/sites.local.json 再填（private/ 整個資料夾被 .gitignore 排除，不上傳）。含 <…> 或 example 字樣的值一律視為「缺值」，skill 遇到缺值要停下來問使用者。絕對不要在任何一個檔案放金鑰、token、密碼、cookie、email；秘密只能寫環境變數名稱。",
+  "schema_version": 1,
+
+  "sites": {
+    "example_site": {
+      "_說明": {
+        "project_dir": "站台專案資料夾，相對工作區根目錄（cloudflare-workers-redeploy、repo-to-teaching-animation 用）",
+        "worker_name": "主站 Worker 名稱，對應 wrangler 設定檔的 name",
+        "subdomain": "Cloudflare 帳號的 workers.dev 子網域（只是子網域字串，不含 .workers.dev）",
+        "main_url": "主站正式網址，部署後線上檢查用",
+        "deck_host_url": "選配：第二個 Worker（簡報／靜態內容主機）的正式網址；沒有就留佔位",
+        "oauth_origins": "選配：需登記在 OAuth 用戶端「已授權的 JavaScript 來源」的網址清單",
+        "reserved_ports": "使用者自己常開的本機埠；測試或部署時不得佔用、不得終止",
+        "secrets_env": "部署會用到的環境變數名稱；只寫名稱，值由使用者在自己的環境設定，絕不寫進任何檔案"
+      },
+      "project_dir": "projects/<your-site-project>",
+      "worker_name": "<worker-name>",
+      "subdomain": "<your-subdomain>",
+      "main_url": "https://example-site.<your-subdomain>.workers.dev",
+      "deck_host_url": "https://example-site-deck-host.<your-subdomain>.workers.dev",
+      "oauth_origins": ["https://example-site.<your-subdomain>.workers.dev"],
+      "reserved_ports": [],
+      "secrets_env": ["CLOUDFLARE_API_TOKEN"]
+    }
+  },
+
+  "services": {
+    "_說明": {
+      "gas.endpoint_url": "Google Apps Script 部署後的 Web App 網址（/exec 結尾）；只在部署或接線時使用，不寫進 repo 內的程式或 fixture（educational-card-game、teacher-workspace-ui 用）",
+      "sheet.id": "Google 試算表 ID；只作 GAS 伺服器端 allowlist 對應，不可由前端傳入（educational-card-game 用）",
+      "ai.endpoint": "教師端 AI 分析用的 Responses 相容端點網址（teacher-workspace-ui 用；金鑰另在教師頁輸入，不放這裡）"
+    },
+    "gas": { "endpoint_url": "<GAS_DEPLOYMENT_URL>" },
+    "sheet": { "id": "<GOOGLE_SHEET_ID>" },
+    "ai": { "endpoint": "<AI_ENDPOINT_URL>" }
+  },
+
+  "local": {
+    "_說明": {
+      "teacher_port": "教師工作台本機埠號（teacher-workspace-ui，以 PORT 環境變數傳入）；範本內建預設 8080",
+      "student_port": "校內學生端伺服器埠號（teacher-workspace-ui 的區網部署；工具不提供預設）",
+      "chrome_debug_port": "截圖自審時 Chrome 遠端除錯埠（repo-to-teaching-animation）；Chrome 通用預設 9222",
+      "lan_ipv4": "教師機的校內 IPv4（teacher-workspace-ui 的區網部署）；仍須用 list 對照本機網卡，文件範例請用 203.0.113.0/24 或 198.51.100.0/24 這類文件專用網段"
+    },
+    "teacher_port": 8080,
+    "student_port": "<STUDENT_PORT>",
+    "chrome_debug_port": 9222,
+    "lan_ipv4": "<LAN_IPV4>"
+  },
+
+  "tools": {
+    "_說明": {
+      "github.default_owner": "取材 repo 時 gh api 預設的 GitHub owner（repo-to-teaching-animation）；缺值就請使用者給完整 owner/repo",
+      "claude_cli.launcher": "開 Claude CLI 接手用的啟動檔路徑，相對工作區根目錄或絕對路徑（codex-handoff）；預設指向隨附的 tools/claude-cli/start-claude-api.cmd（API 金鑰計費），可直接使用；缺值就在交接檔寫「由使用者自行開啟」並問位置"
+    },
+    "github": { "default_owner": "<github-owner>" },
+    "claude_cli": { "launcher": "tools/claude-cli/start-claude-api.cmd" }
+  },
+
+  "upstream": {
+    "_說明": {
+      "anycreature_repo_url": "anyCreature 引擎的公開上游 git 網址（text-to-creature）；可改成自己的 fork"
+    },
+    "anycreature_repo_url": "https://github.com/Ariescar/anyCreature"
+  }
+}

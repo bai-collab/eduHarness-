@@ -1,0 +1,27 @@
+{
+  "shots": [
+    {
+      "id": "legacy_shot_01",
+      "scene": "scene_legacy",
+      "duration": 3,
+      "startX": 0,
+      "startY": 0,
+      "endX": 120,
+      "endY": 10,
+      "scale": 1,
+      "toScale": 1.1,
+      "bgGroup": "bg_village",
+      "characters": [
+        {
+          "id": "char_xiaoming",
+          "startX": 10,
+          "startY": 20,
+          "endX": 80,
+          "endY": 20,
+          "forced_facing": "right",
+          "walk": true
+        }
+      ]
+    }
+  ]
+}

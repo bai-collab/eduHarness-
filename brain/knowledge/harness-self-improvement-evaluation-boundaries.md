@@ -4,11 +4,6 @@ description: Lilian Weng 對 harness、自我改進、評估器與人類監督�
 type: knowledge-reference
 status: recorded-reference
 source: https://lilianweng.github.io/posts/2026-07-04-harness/
-source_collection: linebot-notes
-primary_source: github
-primary_source_repo: https://example.invalid/source-omitted-for-share-build/notes
-legacy_source_sheet_row: 394
-source_fingerprint: sha256:79289fd6f4c4a6f4a80e7bf7cc8da18a1dabe987b4c6973049054071461a9dc7
 verified_at: 2026-07-24
 ---
 # Harness 自我改進：評估與監督邊界

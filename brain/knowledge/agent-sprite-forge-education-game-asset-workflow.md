@@ -9,7 +9,7 @@ verified_at: 2026-07-13
 
 ## 記錄目的
 
-供未來開發教育遊戲時規劃角色、NPC、怪物、特效、地圖及引擎素材。本文只記錄已查核的上游流程及本工作區預定的使用方式；目前未安裝、未匯入程式碼，也未完成 F 槽實機驗證。
+供未來開發教育遊戲時規劃角色、NPC、怪物、特效、地圖及引擎素材。本文只記錄已查核的上游流程及本工作區預定的使用方式；目前未安裝、未匯入程式碼，也未完成本機實機驗證。
 
 ## 資訊狀態
 
@@ -18,7 +18,7 @@ verified_at: 2026-07-13
 - ✅ `video2dsprite` 的生成階段限定 Grok Build，Codex／Claude 缺少其要求的 `image_to_video`。
 - ✅ Python requirements 列出 `numpy>=1.26`、`Pillow>=10.0`；video pipeline 另需 PATH 上的 `ffmpeg`。
 - ✅ 上游採 MIT License。
-- ⏳ 尚未在 `source-root` 安裝或執行 smoke test。
+- ⏳ 尚未在本工作區安裝或執行 smoke test。
 - ⏳ Claude、Codex bridge 與 image output 本機落檔能力仍待實測。
 
 ## 上游核心生產流程
@@ -107,7 +107,7 @@ base still
 
 ## 教育遊戲的本地應用流程（規劃）
 
-以下是 `source-root` 的預定整合方式，不是上游已完成能力：
+以下是本工作區的預定整合方式，不是上游已完成能力：
 
 ```text
 教學目標／學習者／遊戲機制
@@ -115,7 +115,7 @@ base still
 → Pixel AI Secretary 或專案美術規格產生角色 prompt package
 → Claude Code 透過 bridge 派給 Codex
 → Codex 執行 generate2dsprite／generate2dmap
-→ F 槽隔離輸出與 QC
+→ 工作區內隔離輸出與 QC
 → Result Packet 回收檔案、metadata、限制與驗證
 → 教師／使用者審查
 → Web-first：PixiJS Atlas Adapter 產生 PNG atlas＋spritesheet JSON
@@ -144,17 +144,17 @@ base still
 - `video2dsprite` 不進 Claude＋Codex 核心 runtime。
 - PixiJS 已納入為 Web-first 2D Runtime 候選，但目前不安裝、不建立專案、不寫入 Harness runtime Registry。
 - Sprite Forge 輸出不可直接視為 PixiJS-ready；需另建 deterministic Atlas Adapter 並驗證 JSON frame、animation name、anchor 與 scale。
-- 執行環境、依賴與輸出全部限制在 `source-root`。
-- 每個 task 使用獨立 `outputs/sprite-forge/<task-id>/`，禁止將 output 指向 root、Brain、references 或舊 D 槽。
+- 執行環境、依賴與輸出全部限制在 `<工作區根>`。
+- 每個 task 使用獨立 `outputs/sprite-forge/<task-id>/`，禁止將 output 指向 root、Brain、references 或舊工作區。
 - 上游 video processor 會刪除輸出目錄內既有 `frame_*.png` 並以 `ffmpeg -y` 覆寫；導入前必須增加路徑 confinement、精確 write/delete preview 與 rollback。
 - 只使用自行擁有、獲授權或適合使用的角色與素材；MIT License 適用於上游軟體，不等於自動授權所有生成內容、第三方角色或參考圖。
 
 ## 未來 Pilot 驗收項目
 
 - [ ] 固定並記錄完整 upstream commit SHA。
-- [ ] 建立 F 槽專屬 Python environment 與精確 dependency lock。
+- [ ] 建立工作區專屬 Python environment 與精確 dependency lock。
 - [ ] 驗證 Codex image generation 的 PNG 可被本地 processor 取得。
-- [ ] 驗證禁止寫入 `source-root`、Brain、references 與非核准 project paths。
+- [ ] 驗證禁止寫入舊工作區、Brain、references 與非核准 project paths。
 - [ ] 驗證透明邊緣、洋紅殘留、frame 邊界、anchor、角色尺度與 GIF loop。
 - [ ] 產出一組教育遊戲 NPC 的 sprite pilot，不直接整合遊戲程式。
 - [ ] 將核准的 sprite pilot 轉為 PixiJS spritesheet JSON，完成最小動畫、點擊／觸控與鍵盤操作驗證。
@@ -178,11 +178,28 @@ base still
 - Requirements: https://github.com/0x0funky/agent-sprite-forge/blob/main/requirements.txt
 - License: https://github.com/0x0funky/agent-sprite-forge/blob/main/LICENSE
 - Issues: https://github.com/0x0funky/agent-sprite-forge/issues/3, https://github.com/0x0funky/agent-sprite-forge/issues/4, https://github.com/0x0funky/agent-sprite-forge/issues/7
-- Related Web Runtime decision: `brain/knowledge-base/pixijs-education-game-web-runtime.md`
+- Related Web Runtime decision: `brain/knowledge/pixijs-education-game-web-runtime.md`
 
 ## Provenance
 
-- 查核日期：2026-07-13（Asia/Taipei）
+- 查核日期：2026-07-13
 - 查核分支：`main`
 - 查核時最新 commit 前綴：`64fd0b57`
 - 狀態：僅記錄流程；未安裝、未匯入、未執行
+
+## 2026-10-09 實機試用結果（獨立試用資料夾）
+
+- 安裝：只在試用資料夾建 `.venv`（numpy／Pillow／scipy 等），未裝成全域 skill。官方測試 3061 passed、11 skipped、0 failed（約 23 分鐘）。
+- 路由：本機只有 `local:codex-cli` 可生圖（不經 API 金鑰、estimateUsd 0）；影片路由 no-route（無 Grok CLI、無付費金鑰）。`--route` 要用 `local`，不是 `local:codex-cli`。
+- **網頁動畫不需要影片**：master_still 生主圖並核准 → 以主圖當 `--reference` 讓 Codex 生 2x2 動作 sheet → `generate2dsprite.py process --target asset --mode idle --rows 2 --cols 2`（QA pass，每格 128×128）→ 拼成橫條精靈圖＋JSON → HTML（CSS `steps()` 或 Canvas）播放。
+- 產物：`out/web/index.html`（圖片已內嵌，雙擊即可開）、`secretary-wave.png`、`secretary-wave.json`。
+- 注意：Claude 預覽窗格會把本機頁面轉成 data: 網址，相對路徑圖片載不到；預覽環境開了 reduced-motion，CSS 動畫會依設計停住。
+
+## 2026-10-09 側面走路教訓（暫停，未完成）
+
+- 正面走路看不出左右腳交替；要驗交替必須做側面，並用 `sheet_qc.py frames --cycle walk` 的 `leg_alternation`＋`phase_coverage` 量測。
+- 一次生 2x4：Codex 把下排照抄上排（leg_alternation fail）。
+- 前後兩半分兩次生：角色顏色（外套）與哪條腿是淺色會漂移，兩半對不上；交替通過只是碰巧（sw2），補上「通過」姿勢後又失敗（sw3）。
+- 用程式對調腿部膚色做後半步：三種做法都失敗（腿的亮暗、描邊與兩條腿顏色範圍重疊，無法按顏色分腿）。結論：不要用顏色分割換腳。
+- 提示要把「第 3、4 格只有一隻腳著地、另一腳膝蓋往前懸空」寫成檢查條件，Codex 才會畫出通過姿勢。
+- 下一步候選：同一張圖生完整 8 格＋逐格寫清哪腳著地，通過 QC 才上線。

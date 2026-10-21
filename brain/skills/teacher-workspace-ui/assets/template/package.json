@@ -1,0 +1,9 @@
+{
+  "name": "teacher-workspace-template",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=22"},
+  "scripts": {"start": "node server.mjs", "demo": "node server.mjs --demo", "test": "node --test tests/*.test.mjs"},
+  "license": "GPL-3.0"
+}

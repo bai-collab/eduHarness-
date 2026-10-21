@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "shadow-movie/movie.schema.json",
+  "title": "ShadowMovieManifestV020",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["title", "version", "fps", "resolution", "style", "scenes", "files"],
+  "properties": {
+    "title": {"type": "string", "minLength": 1},
+    "version": {"const": "0.2.0"},
+    "fps": {"type": "integer", "minimum": 12, "maximum": 60},
+    "resolution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["width", "height"],
+      "properties": {
+        "width": {"type": "integer", "minimum": 1},
+        "height": {"type": "integer", "minimum": 1}
+      }
+    },
+    "style": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": {"enum": ["shadow_puppet", "paper_cut", "silhouette"]},
+        "lighting": {"type": "string"},
+        "color_palette": {"type": "array", "items": {"type": "string"}},
+        "parallax": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["sky", "far", "middle", "ground"],
+          "properties": {
+            "sky": {"type": "number", "minimum": 0, "maximum": 1},
+            "far": {"type": "number", "minimum": 0, "maximum": 1},
+            "middle": {"type": "number", "minimum": 0, "maximum": 1},
+            "ground": {"type": "number", "minimum": 0, "maximum": 1}
+          }
+        }
+      }
+    },
+    "render": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "backend": {"enum": ["auto", "svg-cpu", "webgpu"]},
+        "interpolation": {"type": "boolean"}
+      }
+    },
+    "scenes": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "files": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["script", "storyboard", "assets"],
+      "properties": {
+        "script": {"type": "string", "pattern": "^(?!/)(?!.*\\.\\.).+\\.json$"},
+        "storyboard": {"type": "string", "pattern": "^(?!/)(?!.*\\.\\.).+\\.json$"},
+        "assets": {"type": "string", "pattern": "^(?!/)(?!.*\\.\\.).+\\.json$"}
+      }
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "shots": [
+    {
+      "shot_id": "shot_01",
+      "scene_id": "scene_village_encounter",
+      "duration": 4,
+      "camera": {
+        "type": "wide",
+        "from": {"x": 0, "y": 0, "scale": 1},
+        "to": {"x": 220, "y": 0, "scale": 1}
+      },
+      "background": "bg_village",
+      "characters": [
+        {
+          "id": "char_xiaoming",
+          "from": {"x": 650, "y": 590},
+          "to": {"x": 1320, "y": 590},
+          "scale": 1,
+          "view": "side",
+          "facing": "forward",
+          "animation": "walk"
+        }
+      ],
+      "subtitles": [
+        {"start": 0.4, "end": 3.4, "text": "山風停了，村口只剩下紙影在晃動。"}
+      ]
+    },
+    {
+      "shot_id": "shot_02",
+      "scene_id": "scene_village_encounter",
+      "duration": 4.5,
+      "camera": {
+        "type": "zoom",
+        "from": {"x": 220, "y": 0, "scale": 1.12},
+        "to": {"x": 220, "y": 0, "scale": 1.12}
+      },
+      "background": "bg_village",
+      "characters": [
+        {
+          "id": "char_xiaoming",
+          "from": {"x": 1320, "y": 590},
+          "to": {"x": 1320, "y": 590},
+          "scale": 1,
+          "view": "side",
+          "facing": "right",
+          "animation": "look_up"
+        },
+        {
+          "id": "char_dragon",
+          "from": {"x": 2400, "y": 100},
+          "to": {"x": 1580, "y": 300},
+          "scale": 1.15,
+          "rotation": -6,
+          "view": "side",
+          "facing": "left",
+          "animation": "fly"
+        }
+      ],
+      "subtitles": [
+        {"start": 0.5, "end": 2.7, "text": "小明抬頭：那不是雲，是一條龍！"},
+        {"start": 2.9, "end": 4.3, "text": "龍影從山後掠過，留下金色的風。"}
+      ]
+    },
+    {
+      "shot_id": "shot_03",
+      "scene_id": "scene_flying_sky",
+      "duration": 4.5,
+      "camera": {
+        "type": "tracking",
+        "from": {"x": 0, "y": 0, "scale": 1},
+        "to": {"x": 350, "y": 0, "scale": 1}
+      },
+      "background": "bg_clouds",
+      "characters": [
+        {
+          "id": "char_dragon",
+          "from": {"x": 750, "y": 480},
+          "to": {"x": 2150, "y": 120},
+          "scale": 1.1,
+          "rotation": -18,
+          "view": "side",
+          "facing": "right",
+          "animation": "fly"
+        },
+        {
+          "id": "char_xiaoming",
+          "mount_on": "char_dragon",
+          "mount_offset": {"x": -40, "y": -95},
+          "scale": 0.65,
+          "view": "side",
+          "facing": "right",
+          "animation": "riding"
+        }
+      ],
+      "subtitles": [
+        {"start": 0.8, "end": 3.9, "text": "小明抓緊龍背，第一次看見山谷的另一面。"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "eventColumns": 24,
+  "eventsPerSession": 30,
+  "sessionsPerPeriod": 300,
+  "sessionSummaryColumns": 18,
+  "masteryColumns": 14,
+  "summaryRows": 1200,
+  "rosterColumns": 13,
+  "rosterRows": 900,
+  "credentialColumns": 16,
+  "credentialRows": 900,
+  "reservedHeaderAndFormulaCells": 2500,
+  "capacityCells": 10000000,
+  "warningRatio": 0.7
+}

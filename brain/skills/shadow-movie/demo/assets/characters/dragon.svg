@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 260" width="520" height="260">
+  <g id="shadow-dragon" fill="#111827" stroke="#0b1020" stroke-width="6" stroke-linejoin="round">
+    <path id="dragon-tail" data-joint="tail" d="M125 160 Q42 186 18 236 Q94 226 171 189 Z" />
+    <path id="dragon-neck" data-joint="neck" d="M130 145 Q134 66 205 40 L248 92 L211 164 Z" />
+    <path id="dragon-chest" data-joint="chest" d="M185 92 Q254 44 345 93 L382 177 Q288 222 179 168 Z" fill="#26364a" />
+    <path id="dragon-saddle" data-joint="saddle" d="M220 94 Q278 70 332 98 L319 124 Q268 106 230 123 Z" fill="#d9a441" />
+    <path id="dragon-head" data-joint="jaw" d="M188 43 Q205 2 263 24 L294 56 L258 89 L214 78 Z" />
+    <path d="M236 24 L225 -8 L249 18 L275 -4 L270 28 Z" fill="#d9a441" />
+    <path id="dragon-whiskers" d="M258 52 Q316 30 348 51 M263 61 Q320 70 350 96" fill="none" stroke="#d9a441" stroke-width="4" />
+    <path d="M211 167 L157 222 L232 189 Z" fill="#d9a441" />
+    <path d="M345 111 L418 66 L380 144 Z" fill="#d9a441" />
+    <circle cx="247" cy="48" r="6" fill="#f6e7c1" stroke="none" />
+  </g>
+</svg>

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "shadow-movie/storyboard.schema.json",
+  "title": "ShadowMovieStoryboardV020",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["shots"],
+  "$defs": {
+    "position": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x", "y"],
+      "properties": {"x": {"type": "number"}, "y": {"type": "number"}}
+    },
+    "cameraPosition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x", "y", "scale"],
+      "properties": {"x": {"type": "number"}, "y": {"type": "number"}, "scale": {"type": "number", "exclusiveMinimum": 0}}
+    },
+    "subtitle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start", "end", "text"],
+      "properties": {"start": {"type": "number", "minimum": 0}, "end": {"type": "number", "exclusiveMinimum": 0}, "text": {"type": "string"}}
+    },
+    "character": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id"],
+      "anyOf": [{"required": ["from"]}, {"required": ["mount_on", "mount_offset"]}],
+      "properties": {
+        "id": {"type": "string"},
+        "from": {"$ref": "#/$defs/position"},
+        "to": {"$ref": "#/$defs/position"},
+        "scale": {"type": "number", "exclusiveMinimum": 0},
+        "rotation": {"type": "number"},
+        "view": {"enum": ["side", "front", "back"]},
+        "facing": {"enum": ["forward", "left", "right", "static"]},
+        "animation": {"enum": ["idle", "walk", "fly", "look_up", "riding"]},
+        "mount_on": {"type": "string"},
+        "mount_offset": {"$ref": "#/$defs/position"}
+      }
+    }
+  },
+  "properties": {
+    "shots": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["shot_id", "scene_id", "duration", "camera", "background", "characters"],
+        "properties": {
+          "shot_id": {"type": "string"},
+          "scene_id": {"type": "string"},
+          "duration": {"type": "number", "exclusiveMinimum": 0},
+          "camera": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type", "from"],
+            "properties": {
+              "type": {"enum": ["wide", "medium", "close-up", "extreme-close-up", "pan", "zoom", "static", "tracking"]},
+              "from": {"$ref": "#/$defs/cameraPosition"},
+              "to": {"$ref": "#/$defs/cameraPosition"}
+            }
+          },
+          "background": {"type": "string"},
+          "characters": {"type": "array", "items": {"$ref": "#/$defs/character"}},
+          "subtitles": {"type": "array", "items": {"$ref": "#/$defs/subtitle"}}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+interface:
+  display_name: "因子模擬探究沙盒"
+  short_description: "把多變因互相牽動的教材做成會回應學生的活系統模擬，讓學生親手戳出因果拓樸圖，再橋接到真實手作驗證"
+  default_prompt: "使用 $causal-sandbox-inquiry：先判斷變因是否互相牽動（不適合就直說），萃取 3–7 個可操作變因、設計交互拓樸表（疊加、跨域副作用、甜蜜點、時間延遲），以活物件呈現即時回饋，產出發現式因果圖、自由段＋挑戰段關卡與模擬到真實手作的橋接；缺輸入只出缺件報告。"
+
+policy:
+  allow_implicit_invocation: false

@@ -1,7 +1,7 @@
 ---
 name: web-layout-topology-analysis
 description: >-
-  在開始製作 Web 頁面、教育 Web 遊戲、Dashboard、表單或互動場景前，先把 viewport、頁面區塊、元件矩形、anchor、safe area、z-order、containment、overlap、pointer collision 與 2D／3D collision channel 整理成可稽核的 layout_plan。用於使用者要求先規劃版面、切割區塊、避免重疊／遮擋／點擊衝突、responsive layout 或 DOM／Canvas／Three.js 混合頁面；不取代瀏覽器實測、DOM／CUA 或物理引擎。
+  在開始製作或重構一般 Web 遊戲、塔防、Canvas、教育 Web 遊戲、Dashboard、表單或互動場景前，先把 viewport、頁面區塊、元件矩形、anchor、safe area、z-order、containment、overlap、pointer collision 與 2D／3D collision channel 整理成可稽核的 layout_plan；遊戲還必須先繪製區塊與核心圖示預覽。用於使用者要求先規劃版面、切割區塊、避免重疊／遮擋／點擊衝突、responsive layout 或 DOM／Canvas／Three.js 混合頁面；不取代瀏覽器實測、DOM／CUA 或物理引擎。
 ---
 
 # 網頁版面拓樸分析
@@ -11,6 +11,20 @@ description: >-
 在寫 HTML／CSS／React 或建立 Three.js 場景前，先建立版面與元件的空間模型。輸出 `layout_plan`，不直接修改程式、不宣稱瀏覽器實測通過，也不改寫 Harness 的 `route_plan`。
 
 使用者對內容優先級、固定與可捲動區域、可接受的裝飾重疊及 responsive 取捨擁有最後決定權。資料不足時提出問題與建議，不能用固定螢幕尺寸或猜測內容代替。
+
+## 遊戲製作硬性 Gate
+
+當任務包含遊戲、塔防、敵人、地圖、Canvas 或可互動戰鬥區時，先完成版面與圖示規劃，再允許建立或修改 HTML／CSS／JavaScript。不可先把下方工具列、商店或裝飾塞滿畫面，再回頭壓縮主要遊戲區。
+
+執行以下順序：
+
+1. 先建立至少一個桌面、一個平板或窄版的 `viewport_profile`，使用 normalized `0..1` 座標描述可視範圍、safe area 與固定／可捲動策略。
+2. 先切割 `layout_blocks`，明確分配主要遊戲區、HUD、孳生／入口區、目標／終點區、次要控制區與裝飾區的比例、最小尺寸、最大尺寸及 priority。主要遊戲區與核心目標優先於下方道具列。
+3. 在 `component_rects` 先列出敵人、路線、障礙物、玩家武器、目標、孳生點、按鈕與每個必要 hit area；每個核心物件要有暫定圖示、visual rect、hit rect、z-index 與 anchor。
+4. 在計畫書中先放入圖示草圖／圖示圖例，至少呈現核心敵人、障礙物、武器、目標、事件與主要操作的形狀或 emoji／SVG placeholder。圖示預覽不是完成素材，但不得等到程式完成後才第一次決定圖示與尺寸。
+5. 先計算 `containment`、`overlap`、`occlusion`、`overflow`、`hit-collision` 與明確 collision channel。區分「視覺重疊」「UI 點擊衝突」「2D 互動碰撞」「3D proxy 碰撞」，不可混稱。
+6. 先處理所有核心區塊與必要 hit target 的 `error`；對可接受的內部 overflow 指定實際承載捲軸的父區塊。整頁不得靠 body 捲軸逃避布局規劃；若控制內容超高，讓控制面板或遊戲框架自己捲動。
+7. `layout_plan.status` 未達 `ready` 前，停止遊戲程式實作。完成程式後才可依 DOM／瀏覽器／CUA 量測把狀態推進到 `verified`；預覽圖與預估矩形不可冒充實測證據。
 
 ## 適用範圍與邊界
 
@@ -93,6 +107,7 @@ description: >-
 - `viewport_profiles`
 - `layout_blocks`
 - `component_rects`
+- `icon_specs`
 - `relations`
 - `responsive_variants`
 - `warnings`

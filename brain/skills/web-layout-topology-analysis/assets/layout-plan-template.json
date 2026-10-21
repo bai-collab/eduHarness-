@@ -17,6 +17,7 @@
   "layers": ["dom", "svg", "canvas", "threejs", "overlay", "pointer"],
   "layout_blocks": [],
   "component_rects": [],
+  "icon_specs": [],
   "relations": [],
   "responsive_variants": [],
   "warnings": [],

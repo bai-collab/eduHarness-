@@ -1,0 +1,7 @@
+interface:
+  display_name: "claude修復"
+  short_description: "安全診斷 Windows Claude Desktop 啟動與更新錯誤"
+  default_prompt: "使用 $claude-repair 安全診斷並處理 Windows Claude Desktop 顯示「其他程式正在用這個檔案」的問題。"
+
+policy:
+  allow_implicit_invocation: true

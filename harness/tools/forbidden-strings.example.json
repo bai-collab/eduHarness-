@@ -1,0 +1,30 @@
+{
+  "_說明": "公開範本：只示範結構與類別，所有值都是假的示範值。使用方式：複製成 private/scan/forbidden-strings.local.json（private/ 整個資料夾由 .gitignore 排除），把每條規則的 re 換成你自己的私人字串（正規表達式），不需要的類別刪掉。先跑 node harness/tools/scan-public.mjs --self-test 確認規則可用，再跑 node harness/tools/scan-public.mjs 掃描公開範圍。真正的私人字串永遠不要寫回本檔。",
+  "_類別": [
+    "磁碟或家目錄路徑、使用者名稱",
+    "私人 GitHub 組織、個人帳號、私人 repo",
+    "私人專案代號、內部命名空間代號、私人評測代號",
+    "學校、縣市（含拼音）、學校網域",
+    "私網與學術網路 IP",
+    "email（可用 allow 放行示範網域）",
+    "金鑰與 token 的樣式",
+    "雲端同步暫存資料夾名"
+  ],
+  "_欄位": "scope_all：全庫都禁止；scope_brain_only：只在 --scope brain 時禁止；warn_only：只提醒不擋。每條規則 {id, re, flags?, allow?}；re 是 JavaScript 正規表達式字串，flags 可放 i；allow 只用在 email 類，列出放行的網域。",
+  "scope_all": [
+    { "id": "example-username", "re": "(?<![A-Za-z])example-user-name(?![A-Za-z])", "flags": "i" },
+    { "id": "example-private-org", "re": "example-private-org", "flags": "i" },
+    { "id": "example-private-repo", "re": "example-secret-repo|example-internal-repo", "flags": "i" },
+    { "id": "example-codename", "re": "(?<![A-Za-z])projectcodename(?![A-Za-z])", "flags": "i" },
+    { "id": "example-school", "re": "example-school-name|exampletown", "flags": "i" },
+    { "id": "example-private-ip", "re": "(?<![0-9])203\\.0\\.113\\.", "flags": "" },
+    { "id": "example-email", "re": "[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+\\.[A-Za-z0-9.-]+", "flags": "", "allow": ["example.com", "example.org"] },
+    { "id": "example-token", "re": "EXAMPLE_FAKE_TOKEN_[A-Z0-9]{8,}", "flags": "" }
+  ],
+  "scope_brain_only": [
+    { "id": "example-research-topic", "re": "example-research-topic", "flags": "i" }
+  ],
+  "warn_only": [
+    { "id": "example-public-repo-name", "re": "example-public-repo", "flags": "i" }
+  ]
+}

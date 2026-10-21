@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0",
+  "requestId": "req-events-synthetic-001",
+  "action": "event-batch",
+  "gameId": "fraction-market",
+  "courseKey": "math-grade-4",
+  "studentSessionToken": "synthetic-session-token",
+  "sessionId": "session-synthetic-001",
+  "batchId": "batch-synthetic-001",
+  "events": [
+    {
+      "eventId": "event-synthetic-001",
+      "seq": 1,
+      "type": "answer.submitted",
+      "objectiveId": "compare-fractions",
+      "cardId": "fraction-compare-01",
+      "answerCode": "choice-b",
+      "stateRevision": 2,
+      "occurredAtMs": 1787913600000
+    }
+  ]
+}

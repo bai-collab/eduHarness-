@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1.0",
+  "requestId": "req-invalid-synthetic-001",
+  "action": "teacher-read",
+  "teacherPrincipal": "attacker@example.invalid",
+  "reauthPassed": true,
+  "courseKey": "math-grade-4"
+}

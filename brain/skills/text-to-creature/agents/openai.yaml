@@ -1,0 +1,7 @@
+interface:
+  display_name: "文字造獸"
+  short_description: "一句生物描述 → 遊戲可用 3D 生物 GLB（anyCreature 引擎，engine 零依賴，品管用瀏覽器+盲讀 subagent 免裝替代）"
+  default_prompt: "使用 $text-to-creature：接一句生物描述、最多問兩個澄清問題 → 寫 ACS JSON spec → node engine/cli.js 編 GLB（免裝）→ 用瀏覽器 render 四視角剪影＋不知情 subagent 盲讀做免裝品管閘（設計者不能自評）→ 交付 GLB＋離線 viewer。動畫要順：線性內插引擎須加密關鍵影格、驅動關節根、子關節跟隨、端點回原點無縫循環。"
+
+policy:
+  allow_implicit_invocation: false

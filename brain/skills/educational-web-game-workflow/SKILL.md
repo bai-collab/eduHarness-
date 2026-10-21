@@ -20,6 +20,7 @@ description: >-
 6. 從教材與學習目標開始，且要求規格、資產、Web 實作與驗證串接：由本 Workflow 編排，仍需呼叫上述專門 skill。
 7. physical／both 分支不由本 Workflow 實作；回到 material-to-quest-game。
 8. 要建立程式、導入資產或安裝套件：先完成本 Workflow 的契約、Task Packet 與 implementation preview，取得精確變更核准後才執行。
+9. 只要任務包含遊戲畫面或互動戰鬥區，先完成 `web-layout-topology-analysis` 的版面先行 Gate；未達 `layout_plan.status=ready` 不進入 HTML／CSS／JavaScript 實作。
 
 ## Gate 0：教師 Intake
 
@@ -40,7 +41,7 @@ description: >-
 - asset spec、accessibility and safety review、playtest plan、teacher guide。
 - 每一關的學習目標、DOM-only 任務、評量指標與停止條件。
 
-每個題目必須有答案、理由、提示、錯誤回饋與補救路徑。若只能描述世界觀或美術，尚未達到 spec-ready。
+每個題目必須有答案、理由、提示、錯誤回饋與補救路徑。若只能描述世界觀或美術，尚未達到 spec-ready。題庫是 JSON 時，交付前先跑 `node harness/cli/harness.mjs lint item-fields <題庫.json>`（欄位 `answer`、`rationale`、`hint`、`feedback.incorrect`、`remediation`），失敗就不算 spec-ready。
 
 ## Gate 2：2D／3D 必要性
 
@@ -84,6 +85,18 @@ description: >-
 img2threejs 仍是 `experimental-blocked` candidate。沒有核准的 AI-to-GLB executor、pinned commit、隔離測試、P0 fidelity 修復、認證方式與授權證據時，只能保留 asset brief 或驗證使用者已提供的 GLB；不得自行下載未知遠端模型、生成 GLB 或進正式 Pilot。
 
 每個上線資產都要能回溯 assetId、來源、授權／SPDX、輸入影像、版本、SHA-256、尺寸、單位、up axis、元件、動畫、貼圖、預算與 fallback。
+
+## Gate 3.5：遊戲版面先行
+
+只要任務建立或重構 Web 遊戲介面，即使是既有遊戲，也先載入 `web-layout-topology-analysis`，完成 `layout_plan`；不得把它視為可略過的視覺選配。
+
+執行順序：
+
+1. 先在計畫書畫出 viewport／區塊線框與核心圖示預覽。
+2. 填寫 `layout_blocks`、`component_rects`、`icon_specs`、`relations`，包含 visual／hit rect、z-order、overflow 與 collision channel。
+3. 讓主要遊戲區、路線、敵人、目標和必要 HUD 先取得尺寸；下方道具列、商店與裝飾只能使用剩餘空間，超高時在自身父區塊提供內部捲軸。
+4. 解決未預期 overlap／occlusion／hit collision 與 `error`；`layout_plan.status` 達 `ready` 且 unresolved error=0 後才能進 HTML／CSS／JavaScript。
+5. 完成後才做 DOM → CUA；預覽圖不算 browser evidence。
 
 ## Gate 4：DOM-first 實作契約
 

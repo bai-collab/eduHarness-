@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "1.0",
+  "catalogId": "fraction-market-catalog",
+  "gameId": "fraction-market",
+  "title": "合成分數市場",
+  "sourcePolicy": {
+    "teacherApprovalRequired": true,
+    "traceabilityRequired": true
+  },
+  "cards": [
+    {
+      "cardId": "fraction-compare-01",
+      "cardType": "question",
+      "objectiveIds": ["compare-fractions"],
+      "conceptId": "same-denominator-comparison",
+      "prompt": "哪一個分數比較大？",
+      "answerSpec": {
+        "kind": "single-choice",
+        "accepted": ["choice-b"],
+        "options": ["choice-a", "choice-b"]
+      },
+      "rationale": "分母相同時，分子較大的分數較大。",
+      "hint": "先比較兩個分數的分母。",
+      "misconceptionTags": ["larger-denominator-means-larger"],
+      "feedback": {
+        "correct": "你先找到相同的分母，再比較分子。",
+        "incorrect": "不要只看分母，先找出可以直接比較的部分。",
+        "hint": "把兩個分數放在同一條數線上想想看。"
+      },
+      "remediation": ["fraction-compare-remedial-01"],
+      "difficulty": 2,
+      "effects": [
+        {"type": "match", "target": "answer"},
+        {"type": "gain-resource", "target": "confidence", "amount": 1}
+      ],
+      "source": {
+        "kind": "teacher-input",
+        "reference": "教師核准教材第 3 頁",
+        "approved": true
+      },
+      "a11y": {
+        "altText": "兩個分數卡片",
+        "nonColorCue": "每張卡顯示分子與分母文字",
+        "keyboardAction": "使用 Tab 選取卡片，Enter 提交"
+      },
+      "schemaVersion": "1.0"
+    },
+    {
+      "cardId": "fraction-compare-remedial-01",
+      "cardType": "remediation",
+      "objectiveIds": ["compare-fractions"],
+      "conceptId": "number-line-fractions",
+      "prompt": "把分數放到數線的正確位置。",
+      "answerSpec": {
+        "kind": "ordered",
+        "accepted": ["order-1"]
+      },
+      "rationale": "數線位置能協助比較分數的大小。",
+      "hint": "先找 0 與 1，再看每一格代表多少。",
+      "misconceptionTags": [],
+      "feedback": {
+        "correct": "數線幫你看見分數的大小。",
+        "incorrect": "重新確認每一格的單位。",
+        "hint": "先數總共有幾等分。"
+      },
+      "remediation": [],
+      "difficulty": 1,
+      "effects": [{"type": "pass"}],
+      "source": {
+        "kind": "teacher-input",
+        "reference": "教師核准教材第 3 頁",
+        "approved": true
+      },
+      "a11y": {
+        "altText": "標示分數位置的數線",
+        "nonColorCue": "位置旁顯示數字標籤",
+        "keyboardAction": "使用方向鍵移動，Enter 確認"
+      },
+      "schemaVersion": "1.0"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "educational-card-game/card-data.schema.json",
+  "title": "Educational Card Game Catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "catalogId", "gameId", "cards", "sourcePolicy"],
+  "properties": {
+    "schemaVersion": {"const": "1.0"},
+    "catalogId": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,63}$"},
+    "gameId": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,63}$"},
+    "title": {"type": "string", "minLength": 1},
+    "sourcePolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["teacherApprovalRequired", "traceabilityRequired"],
+      "properties": {
+        "teacherApprovalRequired": {"const": true},
+        "traceabilityRequired": {"const": true}
+      }
+    },
+    "cards": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/card"}
+    }
+  },
+  "$defs": {
+    "answerSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind"],
+      "properties": {
+        "kind": {"enum": ["single-choice", "multi-select", "ordered", "match", "numeric", "short-text", "teacher-judged"]},
+        "accepted": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "ruleId": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{1,63}$"},
+        "options": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "feedback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["correct", "incorrect", "hint"],
+      "properties": {
+        "correct": {"type": "string", "minLength": 1},
+        "incorrect": {"type": "string", "minLength": 1},
+        "hint": {"type": "string", "minLength": 1}
+      }
+    },
+    "effect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": {"enum": ["draw", "reveal", "match", "sequence", "hint", "remediate", "gain-resource", "lose-resource", "queue-event", "pass"]},
+        "target": {"type": "string", "minLength": 1},
+        "amount": {"type": "integer"},
+        "value": {"type": "string", "minLength": 1},
+        "poolId": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{1,63}$"}
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "reference", "approved"],
+      "properties": {
+        "kind": {"enum": ["textbook", "teacher-input", "open-license", "user-provided", "other"]},
+        "reference": {"type": "string", "minLength": 1},
+        "approved": {"const": true}
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["altText", "nonColorCue", "keyboardAction"],
+      "properties": {
+        "altText": {"type": "string", "minLength": 1},
+        "nonColorCue": {"type": "string", "minLength": 1},
+        "keyboardAction": {"type": "string", "minLength": 1}
+      }
+    },
+    "card": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cardId", "cardType", "objectiveIds", "conceptId", "prompt", "answerSpec", "rationale", "hint", "misconceptionTags", "feedback", "remediation", "difficulty", "effects", "source", "a11y", "schemaVersion"],
+      "properties": {
+        "cardId": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,63}$"},
+        "cardType": {"enum": ["question", "concept", "action", "event", "remediation"]},
+        "objectiveIds": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{1,63}$"}},
+        "conceptId": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{1,63}$"},
+        "prompt": {"type": "string", "minLength": 1},
+        "answerSpec": {"$ref": "#/$defs/answerSpec"},
+        "rationale": {"type": "string", "minLength": 1},
+        "hint": {"type": "string", "minLength": 1},
+        "misconceptionTags": {"type": "array", "items": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{1,63}$"}},
+        "feedback": {"$ref": "#/$defs/feedback"},
+        "remediation": {"type": "array", "items": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{1,63}$"}},
+        "difficulty": {"type": "integer", "minimum": 1, "maximum": 5},
+        "effects": {"type": "array", "items": {"$ref": "#/$defs/effect"}},
+        "source": {"$ref": "#/$defs/source"},
+        "a11y": {"$ref": "#/$defs/a11y"},
+        "schemaVersion": {"const": "1.0"}
+      }
+    }
+  }
+}

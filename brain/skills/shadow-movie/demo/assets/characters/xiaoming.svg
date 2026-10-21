@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 360" width="220" height="360">
+  <g id="shadow-xiaoming" fill="#111827" stroke="#0b1020" stroke-width="5" stroke-linejoin="round">
+    <circle id="part-head" data-joint="neck" cx="110" cy="48" r="32" />
+    <path id="part-chest" data-joint="waist" d="M75 86 L145 86 L158 188 L62 188 Z" />
+    <path id="part-waist" data-joint="hip" d="M66 180 L154 180 L148 214 L72 214 Z" fill="#26364a" />
+    <g id="part-arm-back" data-joint="shoulder-back">
+      <path d="M78 98 L42 118 L28 188 L47 192 L68 137 L91 121 Z" />
+    </g>
+    <g id="part-arm-front" data-joint="shoulder-front">
+      <path d="M142 98 L178 118 L194 182 L174 188 L151 137 L129 121 Z" />
+    </g>
+    <g id="part-leg-back" data-joint="hip-back">
+      <path d="M78 208 L102 210 L91 330 L64 330 Z" />
+    </g>
+    <g id="part-leg-front" data-joint="hip-front">
+      <path d="M118 208 L142 210 L159 330 L132 330 Z" />
+    </g>
+    <path d="M55 28 Q110 -8 165 28 L151 45 Q110 24 69 45 Z" fill="#d9a441" />
+    <circle cx="98" cy="48" r="4" fill="#f6e7c1" stroke="none" />
+    <circle cx="122" cy="48" r="4" fill="#f6e7c1" stroke="none" />
+  </g>
+</svg>

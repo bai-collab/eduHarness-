@@ -6,16 +6,15 @@
 |---|---|---|---|
 | Skills | `brain/skills/` | 任務觸發 | 可執行 Skill 與流程契約 |
 | Knowledge | `brain/knowledge/` | 按需 | 經審核的技術與領域知識 |
-| Templates | `brain/templates/` | 按需 | 可重用的範本與測試素材 |
+| Instincts | `brain/instincts/` | 啟動輕量載入 | 短小的安全與證據提醒 |
+| Error Log | `brain/error-log/` | 按需 | 失敗證據、根因與 Do Not Repeat |
+| Experience | `brain/experience/` | 按需 | 可重用的任務後經驗 |
 
 ## 治理入口
 
 - Brain 載入規則：[`SKILL.md`](SKILL.md)
 - 機器索引：[`index.json`](index.json)
-- Harness Brain adapter：[`harness/core/brain.mjs`](../harness/core/brain.mjs)
-- Brain CLI：[`harness/cli/brain.mjs`](../harness/cli/brain.mjs)
 
 ## 讀取邊界
 
-Harness 先讀索引，再依任務目標搜尋候選。除非任務明確要求，系統不會預載全部技術文件或範本內容。
-本副本只會搜尋與載入索引中列出的 collection；未列出的來源資料不屬於可攜副本。
+Harness 先讀索引，再依任務目標搜尋候選。除非任務明確要求，系統不會預載全部技術文件或錯誤紀錄全文。

@@ -1,0 +1,6 @@
+interface:
+  display_name: "教師工作台建立"
+  short_description: "建立暖米色教師工作台，整合學生紀錄、AI分析、連線設定及校內區網接線"
+  default_prompt: "使用 $teacher-workspace-ui 為目前教學專案建立教師工作台，沿用紀錄與登入，整合學生查找、AI分析、API金鑰、GAS及校內學生端Node.js區網設定。"
+policy:
+  allow_implicit_invocation: true

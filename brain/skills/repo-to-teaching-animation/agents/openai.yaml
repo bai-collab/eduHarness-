@@ -1,0 +1,7 @@
+interface:
+  display_name: "repo 轉教學動畫網頁"
+  short_description: "把 repo 或講義做成單檔 HTML 教學解說動畫：已查證事實 brief、分段計時、核准分鏡後寫碼、畫面只由時間 t 決定、截圖自審，可轉成研習平台內建簡報"
+  default_prompt: "使用 $repo-to-teaching-animation：唯讀取材指定 repo 的檔案，寫 brief.md（已查證事實附出處）與 timing.json，先交節拍表與 4 張關鍵影格請使用者核准，再從 assets/template.html 複製寫 index.html（DURATION＋SEGS＋seek(t)＋embed＋postMessage），截圖自審後交付事實對照表；不改取材 repo、不輸出 MP4。"
+
+policy:
+  allow_implicit_invocation: false

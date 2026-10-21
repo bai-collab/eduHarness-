@@ -1,0 +1,288 @@
+{
+  "kind": "agy-capabilities-ledger",
+  "agy_version": "1.2.10",
+  "generated": "2026-09-25",
+  "source": "舊工作區 2026-09-25 AGY 探測實測紀錄（未隨附）",
+  "note": "兩軸分開：availability=能不能用，restriction=被限制到什麼程度。單一案例只記 case-denied，不得推論整個模式已隔離。",
+  "modes": {
+    "ask": {
+      "default_model": "gemini-3.8-flash-low"
+    },
+    "review": {
+      "default_model": "gemini-3.8-flash-high",
+      "default_model_note": "2026-10-15 使用者決定：審查預設用非 Claude、非 OpenAI 家族的 Gemini，免每次手選；模型下架時改這裡一處。"
+    },
+    "research": {
+      "default_model": "gemini-3.8-flash-high"
+    },
+    "staffer": {
+      "default_model": "gemini-3.8-flash-medium"
+    }
+  },
+  "models": {
+    "gemini-3.8-flash-high": {
+      "availability": "available",
+      "restriction": "unverified",
+      "evidence": "F9 2026-09-25 agy 1.2.10 呼叫成功；2026-10-15 agy 1.3.5 review-loop 實跑 init.model=gemini-3.8-flash-high、回覆完整（舊工作區實測紀錄，未隨附）"
+    },
+    "gemini-3.8-flash-medium": {
+      "availability": "available",
+      "restriction": "unverified",
+      "evidence": "F3/F4/F6/F6b/F6c/F6d/F10/F12 2026-09-25 agy 1.2.10：呼叫皆成功；F3/F4 的拒絕屬 write_file／run_command 能力層級，非模型本身不可用；2026-10-15 agy 1.3.5 `agy models` 仍列出"
+    },
+    "gemini-3.8-flash-low": {
+      "availability": "available",
+      "restriction": "unverified",
+      "evidence": "F1/F1b/F7/F11/F11b 2026-09-25 agy 1.2.10：多次呼叫成功；2026-10-15 agy 1.3.5 `agy models` 仍列出"
+    },
+    "gpt-oss-120b-medium": {
+      "availability": "available",
+      "restriction": "unverified",
+      "evidence": "F8c 2026-09-25 agy 1.2.10：呼叫成功；2026-10-15 agy 1.3.5 `agy models` 仍列出"
+    },
+    "claude-opus-5-5-low": {
+      "availability": "unverified",
+      "restriction": "unverified",
+      "evidence": "2026-10-15 agy 1.3.5 `agy models` 列出，未實測；Claude 家族不得審 Claude 家族作者"
+    },
+    "claude-opus-5-5-medium": {
+      "availability": "unverified",
+      "restriction": "unverified",
+      "evidence": "2026-10-15 agy 1.3.5 `agy models` 列出，未實測；Claude 家族不得審 Claude 家族作者"
+    },
+    "claude-opus-5-5-high": {
+      "availability": "unverified",
+      "restriction": "unverified",
+      "evidence": "2026-10-15 agy 1.3.5 `agy models` 列出，未實測；Claude 家族不得審 Claude 家族作者"
+    },
+    "claude-sonnet-5-5-low": {
+      "availability": "unverified",
+      "restriction": "unverified",
+      "evidence": "2026-10-15 agy 1.3.5 `agy models` 列出，未實測；Claude 家族不得審 Claude 家族作者"
+    },
+    "claude-sonnet-5-5-medium": {
+      "availability": "unverified",
+      "restriction": "unverified",
+      "evidence": "2026-10-15 agy 1.3.5 `agy models` 列出，未實測；Claude 家族不得審 Claude 家族作者"
+    },
+    "claude-sonnet-5-5-high": {
+      "availability": "unverified",
+      "restriction": "unverified",
+      "evidence": "2026-10-15 agy 1.3.5 `agy models` 列出，未實測；Claude 家族不得審 Claude 家族作者"
+    },
+    "gemini-3.1-pro-high": {
+      "availability": "unavailable",
+      "restriction": "unverified",
+      "evidence": "2026-10-15 agy 1.3.5 `agy models` 未列出（已下架）；歷史：F8a 2026-09-25 agy 1.2.10：stream-json init.model 確認、回應正常"
+    },
+    "gemini-3.1-pro-low": {
+      "availability": "unavailable",
+      "restriction": "unverified",
+      "evidence": "2026-10-15 agy 1.3.5 `agy models` 未列出（已下架）；歷史：2026-09-24 agy models 列出，P2 未實測"
+    },
+    "gemini-3.7-flash-low": {
+      "availability": "unavailable",
+      "restriction": "unverified",
+      "evidence": "2026-10-15 agy 1.3.5 `agy models` 未列出（已下架）；歷史：2026-09-24 agy models 列出，P2 未實測"
+    },
+    "gemini-3.7-flash-medium": {
+      "availability": "unavailable",
+      "restriction": "unverified",
+      "evidence": "2026-10-15 agy 1.3.5 `agy models` 未列出（已下架）；歷史：2026-09-24 agy models 列出，P2 未實測"
+    },
+    "gemini-3.7-flash-high": {
+      "availability": "unavailable",
+      "restriction": "unverified",
+      "evidence": "2026-10-15 agy 1.3.5 `agy models` 未列出（已下架）；歷史：2026-09-24 agy models 列出，P2 未實測"
+    },
+    "gemini-3.6-flash-low": {
+      "availability": "unavailable",
+      "restriction": "unverified",
+      "evidence": "2026-10-15 agy 1.3.5 `agy models` 未列出（已下架）；歷史：2026-09-24 agy models 列出，P2 未實測"
+    },
+    "gemini-3.6-flash-medium": {
+      "availability": "unavailable",
+      "restriction": "unverified",
+      "evidence": "2026-10-15 agy 1.3.5 `agy models` 未列出（已下架）；歷史：2026-09-24 agy models 列出，P2 未實測"
+    },
+    "gemini-3.6-flash-high": {
+      "availability": "unavailable",
+      "restriction": "unverified",
+      "evidence": "2026-10-15 agy 1.3.5 `agy models` 未列出（已下架）；歷史：2026-09-24 agy models 列出，P2 未實測"
+    },
+    "claude-opus-4-6-thinking": {
+      "availability": "unavailable",
+      "restriction": "unverified",
+      "evidence": "2026-10-15 agy 1.3.5 `agy models` 未列出（已下架）；歷史：F8b 2026-09-25 agy 1.2.10：呼叫成功"
+    },
+    "claude-sonnet-4-6": {
+      "availability": "unavailable",
+      "restriction": "unverified",
+      "evidence": "2026-10-15 agy 1.3.5 `agy models` 未列出（已下架）；歷史：2026-09-24 agy models 列出，P2 未實測"
+    }
+  },
+  "capabilities": {
+    "call_baseline": {
+      "availability": "available",
+      "restriction": "none",
+      "evidence": "F1/F1b 2026-09-25 agy 1.2.10：不加 --disable-slash-commands，plan 模式呼叫成功（F1 顯示加該旗標會使 plan 失效，已從固定旗標移除）"
+    },
+    "read_file": {
+      "availability": "available",
+      "restriction": "unverified",
+      "evidence": "F5 2026-09-25 agy 1.2.10：讀取工作區 package.json 成功；workspace 外讀取邊界未測"
+    },
+    "write_file": {
+      "availability": "unavailable",
+      "restriction": "case-denied",
+      "evidence": "F3 2026-09-25 agy 1.2.10：write_to_file 被拒，回覆文字含「Permission denied ... Matches user-configured deny rule」；denied_actions 為空，僅回覆文字揭露。單一案例。拒絕訊息明示「Matches user-configured deny rule」，故該案例由全機 settings.json 的工作區 write_file deny 規則擋下（主 session 2026-09-25 複核原始輸出）；plan 模式本身是否也會擋未驗證，deny 規則被移除後即不成立"
+    },
+    "run_command": {
+      "availability": "unavailable",
+      "restriction": "case-denied",
+      "evidence": "F4 2026-09-25 agy 1.2.10：denied_actions=[{action:\"command\",display_name:\"RunCommand\"}]；stderr：headless 模式無法詢問 command 權限，自動拒絕。單一案例"
+    },
+    "search_web": {
+      "availability": "available",
+      "restriction": "none",
+      "evidence": "F9 2026-09-25 agy 1.2.10：search_web 回傳官方文件網址，未見拒絕證據"
+    },
+    "continuation": {
+      "availability": "available",
+      "restriction": "unverified",
+      "evidence": "F7 2026-09-25 agy 1.2.10：--conversation 帶入上一輪 id，正確複述"
+    },
+    "structured_output_json_schema": {
+      "availability": "unavailable",
+      "restriction": "unverified",
+      "evidence": "F6/F6b/F6c/F6d 2026-09-25 agy 1.2.10：檔案路徑／JSON 字串／json／stream-json 四種組合皆未依 --json-schema 輸出"
+    },
+    "structured_review": {
+      "availability": "unavailable",
+      "restriction": "unverified",
+      "evidence": "目前無 companion 端本地驗證成功的獨立證據；--json-schema 不可用（見 structured_output_json_schema），review 改由提示詞要求 JSON＋companion 本地驗證，尚無 F 編號證明整體成功率"
+    },
+    "long_prompt_stdin": {
+      "availability": "available",
+      "restriction": "unverified",
+      "evidence": "F11b 2026-09-25 agy 1.2.10：47KB 擬真內容經 stdin 正確回覆暗號；F11 同尺寸（48KB）重複填充文字回覆為空，原因未知（見舊工作區實測紀錄 F11，未隨附；與內容重複性有關的推論未證實）"
+    },
+    "add_dir_relative_path": {
+      "availability": "available",
+      "restriction": "unverified",
+      "evidence": "F12 2026-09-25 agy 1.2.10：--add-dir 指向測試目錄，相對檔名讀取路徑解析正確"
+    },
+    "mcp_google_drive": {
+      "availability": "unverified",
+      "restriction": "unverified",
+      "evidence": "F10/F8a 2026-09-25 agy 1.2.10：僅見於 init.tools 工具清單中的 call_mcp_tool，未實際呼叫 Drive"
+    },
+    "tool_step_events": {
+      "availability": "available",
+      "restriction": "none",
+      "evidence": "F13 2026-09-25 agy 1.2.10：stream-json 的 step_update 事件含 step_type=tool、tool_name=view_file、state ACTIVE→DONE、tool_info.parameters.AbsolutePath、tool_info.output；review 據此核對 evidence 是否真的讀過（V1 第 3 輪結構性修正）。註：F13 輸出檔時間 15:02:22，agy 執行檔於 15:02:30 被自動更新為 1.2.11，故 F13 視為 1.2.10 下執行"
+    }
+  },
+  "tools_listed_untested": {
+    "note": "F8a stream-json init.tools 清單中，除 write_to_file(F3)、run_command(F4) 外，其餘工具僅列出、未實際呼叫，一律 unverified。",
+    "browser_operations": {
+      "availability": "unverified",
+      "restriction": "unverified",
+      "evidence": "F8a init.tools：browser_click_element 等瀏覽器工具，未實際呼叫"
+    },
+    "generate_image": {
+      "availability": "unverified",
+      "restriction": "unverified",
+      "evidence": "F8a init.tools 列出，未實際呼叫"
+    },
+    "send_message": {
+      "availability": "unverified",
+      "restriction": "unverified",
+      "evidence": "F8a init.tools 列出，未實際呼叫；屬外部副作用類，Skill 說明須標未隔離"
+    },
+    "schedule": {
+      "availability": "unverified",
+      "restriction": "unverified",
+      "evidence": "F8a init.tools 列出，未實際呼叫；屬外部副作用類"
+    },
+    "invoke_subagent": {
+      "availability": "unverified",
+      "restriction": "unverified",
+      "evidence": "F8a init.tools 列出，未實際呼叫"
+    },
+    "manage_subagents": {
+      "availability": "unverified",
+      "restriction": "unverified",
+      "evidence": "F8a init.tools 列出，未實際呼叫"
+    },
+    "define_subagent": {
+      "availability": "unverified",
+      "restriction": "unverified",
+      "evidence": "F8a init.tools 列出，未實際呼叫"
+    },
+    "manage_inbox": {
+      "availability": "unverified",
+      "restriction": "unverified",
+      "evidence": "F8a init.tools 列出，未實際呼叫"
+    },
+    "call_mcp_tool": {
+      "availability": "unverified",
+      "restriction": "unverified",
+      "evidence": "F8a init.tools 列出，未實際呼叫；屬外部副作用類"
+    },
+    "read_url_content": {
+      "availability": "unverified",
+      "restriction": "unverified",
+      "evidence": "F8a init.tools 列出，未實際呼叫"
+    },
+    "notebook_edit": {
+      "availability": "unverified",
+      "restriction": "unverified",
+      "evidence": "F8a init.tools 列出，未實際呼叫"
+    },
+    "notebook_execution": {
+      "availability": "unverified",
+      "restriction": "unverified",
+      "evidence": "F8a init.tools 列出，未實際呼叫"
+    },
+    "delete_knowledge": {
+      "availability": "unverified",
+      "restriction": "unverified",
+      "evidence": "F8a init.tools 列出，未實際呼叫"
+    }
+  },
+  "route_capability_mapping": {
+    "review": {
+      "requires": [
+        "call_baseline"
+      ],
+      "note": "review 模式所需能力皆 available 才發布"
+    },
+    "research": {
+      "requires": [
+        "search_web"
+      ],
+      "note": "search_web available 才發布"
+    },
+    "verification": {
+      "requires": [
+        "structured_review"
+      ],
+      "note": "只有帳本有 structured_review: available 證據時才發布；目前沒有"
+    },
+    "coding": {
+      "requires": null,
+      "note": "本期不發布"
+    },
+    "execution": {
+      "requires": null,
+      "note": "本期不發布"
+    }
+  },
+  "models_checked": {
+    "agy_version": "1.3.5",
+    "date": "2026-10-15",
+    "source": "`agy models`（非沙箱）",
+    "note": "只更新模型清單；能力（capabilities）證據仍是 agy_version 所記版本的探測結果，未重驗。"
+  }
+}

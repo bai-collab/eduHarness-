@@ -26,6 +26,10 @@ description: Differentiate an existing lesson or explicitly supplied lesson sour
 
 若來源沒有足夠證據，不得自行補成學科事實；改列待確認、intake-gap 或 deferred，並保留 evidence reference。
 
+## 課綱條目
+
+來源 lesson 已標示的學習表現、學習內容代碼，是不可降低的核心標準：各 tier 都要保留同一組代碼的對應，不得在 below tier 刪除或換成較低學習階段的代碼。需要核對代碼原文或補查時，依 `lesson-plan-authoring` 的「課綱知識庫來源與查詢契約」查詢本機鏡像 `references/tw-curriculum-108/`（`node harness/scripts/tw-curriculum/lookup.mjs`）；補救可引用前一學習階段的條目作為先備依據，但要標明是先備、不是本課目標。
+
 ## 執行流程
 
 1. 讀取來源 lesson，鎖定核心目標、任務、評量與不可降低的標準。

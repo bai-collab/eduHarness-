@@ -22,6 +22,10 @@ description: Prepare Taiwan digital-learning improvement lesson plans with a sel
 
 既有教案或課程脈絡、學段／科目／節數、學習目標、數位平台、教師／學生操作、設備與網路條件、評量與學習證據、profile 來源與日期、隱私／AI 揭露需求。
 
+## 課綱條目
+
+格式中的核心素養、學習表現、學習內容欄位，依 `lesson-plan-authoring` 的「課綱知識庫來源與查詢契約」查詢本機鏡像 `references/tw-curriculum-108/`（`node harness/scripts/tw-curriculum/lookup.mjs`），保留代碼、原文與 `file:line` 來源；查不到或原文無法確認時填 `⏳ 待確認`，不自行補寫。
+
 ## 執行流程
 
 1. 建立 `submission-profile.md` 與 `platform-evidence-ledger.md`，記錄來源版本與適用年度；未指定其他 profile 時，`submission-profile.md` 預設綁定 `assets/moe-digital-teaching-plan-format.md` 並以其欄位為交付骨架。

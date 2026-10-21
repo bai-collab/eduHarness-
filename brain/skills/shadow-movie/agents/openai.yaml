@@ -1,0 +1,4 @@
+interface:
+  display_name: "皮影戲網頁電影"
+  short_description: "混用 SVG／PNG，製作皮影動畫與響應式 HTML 舞台"
+  default_prompt: "使用 $shadow-movie 將故事轉換為皮影戲風格網頁電影；若有主視覺，先鎖定先生圖 Prompt，依骨架樹與物件掛載拆解部件，為每個可動件保存 joint_anchor 並校準父子關節；同一份 JSON 可混用 SVG 骨架、PNG 背景與 PNG frame_sequence，視需要使用 WebGPU rig 與 SVG／PNG fallback，再依 v0.2 contract 完成 C／D／E 視覺對照與使用者確認。"

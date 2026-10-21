@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "shadow-movie/rig.schema.json",
+  "title": "ShadowMovieRigV010",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "bones"],
+  "$defs": {
+    "position": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x", "y"],
+      "properties": {
+        "x": {"type": "number"},
+        "y": {"type": "number"}
+      }
+    },
+    "scale": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x", "y"],
+      "properties": {
+        "x": {"type": "number", "exclusiveMinimum": 0},
+        "y": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "position_control": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "x": {"type": "string", "minLength": 1},
+        "y": {"type": "string", "minLength": 1}
+      }
+    },
+    "joint_anchor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "source_size", "source_px"],
+      "properties": {
+        "role": {"type": "string", "minLength": 1},
+        "source_size": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["width", "height"],
+          "properties": {
+            "width": {"type": "number", "exclusiveMinimum": 0},
+            "height": {"type": "number", "exclusiveMinimum": 0}
+          }
+        },
+        "source_px": {"$ref": "#/$defs/position"}
+      }
+    },
+    "bone": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "parent", "local_position"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "parent": {"type": ["string", "null"]},
+        "local_position": {"$ref": "#/$defs/position"},
+        "local_rotation": {"type": "number"},
+        "local_scale": {"$ref": "#/$defs/scale"},
+        "control": {"type": ["string", "null"]},
+        "position_control": {"$ref": "#/$defs/position_control"},
+        "rest_stage_origin": {"$ref": "#/$defs/position"}
+      }
+    },
+    "attachment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "bone", "asset", "local_position"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "kind": {"enum": ["part", "object", "prop"]},
+        "bone": {"type": "string", "minLength": 1},
+        "asset": {"type": "string", "minLength": 1},
+        "local_position": {"$ref": "#/$defs/position"},
+        "local_rotation": {"type": "number"},
+        "local_scale": {"$ref": "#/$defs/scale"},
+        "mirror": {"type": "boolean"},
+        "joint_anchor": {"$ref": "#/$defs/joint_anchor"},
+        "inherit_rotation": {"type": "boolean"},
+        "inherit_scale": {"type": "boolean"},
+        "z": {"type": "number"}
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": ["mirror"],
+            "properties": {"mirror": {"const": true}}
+          },
+          "then": {"required": ["joint_anchor"]}
+        }
+      ]
+    }
+  },
+  "properties": {
+    "version": {"const": "0.1.0"},
+    "bones": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/bone"}
+    },
+    "attachments": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/attachment"}
+    },
+    "objects": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/attachment"}
+    }
+  }
+}

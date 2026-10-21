@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>教師工作台 · 公開範本</title><link rel="stylesheet" href="./teacher.css"></head>
+<body><div class="workspace">
+<nav class="rail" aria-label="工作台導覽">
+<a class="brand" href="./teacher.html" aria-label="教師工作台首頁">師</a>
+<button id="toggle-sidebar" title="學生清單" aria-label="切換學生清單" aria-expanded="true">☷</button>
+<button class="nav-button active" data-view="records" title="作答紀錄" aria-label="作答紀錄" aria-pressed="true">▤</button>
+<button class="nav-button" data-view="analysis" title="AI 分析" aria-label="AI 分析" aria-pressed="false">✧</button>
+<button class="nav-button" data-view="settings" title="連線設定" aria-label="連線設定" aria-pressed="false">⚙</button>
+<div class="rail-bottom"><span class="avatar" title="教師">師</span></div>
+</nav>
+<aside class="sidebar" id="sidebar" aria-label="學生與題目">
+<div class="sidebar-top"><strong>教師工作台</strong><span class="eyebrow">學習觀察 · 可重用範本</span></div>
+<button id="all-students" class="wide">全部學生</button>
+<label for="student-search">找學生</label><input id="student-search" type="search" placeholder="輸入學生代號" autocomplete="off">
+<div class="sidebar-heading"><strong>學生</strong><span id="student-count">0 位</span></div>
+<div id="student-list" class="student-list"></div>
+<div class="sidebar-footer"><span class="eyebrow">資料連線</span><p id="connection-status" role="status">確認設定中…</p>
+<button id="open-settings" class="wide">管理連線設定</button><button id="logout" class="wide" hidden>登出教師頁</button></div>
+</aside>
+<main class="main">
+<header class="topbar"><div><span class="eyebrow">教學觀察工作區</span><h1 id="view-title">作答紀錄</h1></div>
+<div class="topbar-actions"><button id="refresh">更新紀錄</button><button id="sync">同步試算表</button></div></header>
+<div class="notice-bar"><p id="status" role="status">讀取中…</p><label><input id="auto-refresh" type="checkbox" checked>自動更新</label></div>
+<p id="error" role="alert" class="error" hidden></p>
+<form id="login" class="login-card" hidden><span class="eyebrow">教師專用</span><h2>登入後查看學生紀錄</h2>
+<p>請輸入在這台電腦設定的教師密碼。</p><label for="teacher-password">教師密碼</label>
+<input id="teacher-password" type="password" autocomplete="current-password" required><button class="primary">登入教師工作台</button></form>
+<section id="selection-bar" class="selection-bar" aria-label="紀錄篩選" hidden>
+<div class="selection-title"><strong id="selected-title">全部學生</strong><button id="clear-filters">清除篩選</button></div>
+<div class="filters"><label>學生代號<select id="student"><option value="">全部學生</option></select></label>
+<label>題目<select id="task"><option value="">全部題目</option></select></label>
+<label>紀錄類型<select id="record-type"><option value="">全部類型</option><option value="grade">評分紀錄</option><option value="ai">導師求助</option></select></label>
+<label>開始日期<input id="date-from" type="date"></label><label>結束日期<input id="date-to" type="date"></label></div>
+</section>
+<section id="records-view" class="pane" aria-label="作答紀錄">
+<div id="metrics" class="metrics"></div><div class="section-heading"><div><h2>目前各題成績</h2><p>採最後一次有效評分；範例、失敗或評分時程式變更不納入，不改原分數。</p></div><button id="analyze-selection">分析這些紀錄 ↗</button></div>
+<div id="summary" class="cards"></div>
+<div class="section-heading"><div><h2>歷次紀錄</h2><p>展開查看學生提問、引導及提交程式。代號由學生自填，供教學觀察。</p></div><span id="record-count"></span></div>
+<div id="records"></div><button id="more" hidden>顯示更多紀錄</button></section>
+<section id="analysis-view" class="pane analysis-pane" aria-label="AI 分析" hidden>
+<div class="analysis-heading"><div><h2>✧ 學習分析助手</h2><p>先在作答紀錄選範圍，再問你想了解的事。</p></div><div><button id="edit-analysis-scope">篩選紀錄</button><button id="new-analysis">新分析</button></div></div>
+<p id="analysis-scope" class="scope" role="status"></p>
+<div id="chat" class="chat" aria-live="polite"><div class="welcome"><span class="welcome-icon">✧</span><h2>從學生的作答開始理解</h2><p>AI 協助整理紀錄與提出教學建議。你仍是最後做判斷的老師。</p></div></div>
+<div class="composer-area"><div class="quick-prompts"><button data-prompt="請依紀錄整理學生的學習進展，分開說明直接觀察與待確認的推測。">整理學習進展</button><button data-prompt="學生可能卡在哪裡？請引用紀錄，說明還需要確認什麼。">找出卡關線索</button><button data-prompt="根據這些作答紀錄，建議下一堂課可採取的小步引導。">規劃下一步引導</button></div>
+<form id="analysis-form" class="composer"><label for="analysis-question">向分析助手提問</label><textarea id="analysis-question" rows="3" maxlength="1500" placeholder="例如：他這幾次作答有哪些變化？我可以怎麼引導？" required></textarea>
+<div class="composer-controls"><label>分析方式<select id="analysis-mode"><option value="mock">本機摘要（不呼叫 AI）</option><option value="live">AI 分析（使用已保存金鑰）</option></select></label><div><button type="button" id="cancel-analysis" hidden>停止等待</button><button id="send-analysis" class="primary">送出分析 ↑</button></div></div>
+<p id="analysis-help">AI 分析會把本次選取的代號、作答與紀錄傳至 AI 服務；只有按送出才會呼叫，可能產生費用。對話只保留在本頁，關閉或登出即清除。</p><p id="analysis-status" role="status"></p></form></div></section>
+<section id="settings-view" class="pane" aria-label="連線設定" hidden>
+<div id="setup-panel" class="settings-card" hidden><span class="eyebrow">這台電腦的教師設定</span><h2>把教學工具接起來</h2><p>首次先設定至少12字的教師密碼。之後留白代表保留原值；既有密鑰不會讀回。</p>
+<form id="settings-form"><fieldset><legend>教師登入</legend><label for="settings-password">教師密碼</label><input id="settings-password" type="password" autocomplete="new-password" minlength="12" maxlength="256" placeholder="首次必填；之後留白保留"></fieldset>
+<fieldset><legend>AI 服務</legend><p>金鑰只保存於本機後端。AI 端點與模型由啟動環境設定，詳見範本說明。</p><label for="settings-ai">API 金鑰</label><input id="settings-ai" type="password" autocomplete="off" maxlength="512" placeholder="貼上新金鑰；留白保留原值"><label class="check"><input id="clear-ai" type="checkbox">清除已保存的 AI 金鑰</label></fieldset>
+<fieldset><legend>Google 試算表</legend><p>GAS 網址與 RECORD_TOKEN 要一起設定。未設定仍可查本機紀錄。</p><label for="settings-url">GAS 正式部署網址</label><input id="settings-url" type="url" autocomplete="off" placeholder="https://script.google.com/macros/s/部署代碼/exec"><label for="settings-token">試算表 RECORD_TOKEN（8～200碼）</label><input id="settings-token" type="password" minlength="8" autocomplete="off" maxlength="200" placeholder="留白保留原值"><label class="check"><input id="clear-sheet" type="checkbox">停用並清除試算表連線</label></fieldset>
+<button id="save-settings" class="primary">保存到這台電腦</button><p id="settings-result" role="status"></p></form>
+<p class="settings-footnote">金鑰保存在本機後端，學生頁不會取得。能控制電腦或讀取檔案的人仍可能取得；請保管好這台教師機。教師頁只在本機提供。</p></div></section>
+</main></div><script defer src="./teacher.js"></script></body></html>

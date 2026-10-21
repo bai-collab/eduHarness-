@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>creature viewer</title>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+<style>
+ body{margin:0;background:#c9cdd4;font-family:system-ui;display:flex;flex-direction:column;height:100vh}
+ #bar{padding:8px 12px;background:#e7e9ee;display:flex;gap:8px;align-items:center;flex-wrap:wrap;color:#222}
+ button{padding:5px 12px;border:1px solid #999;border-radius:6px;background:#fff;cursor:pointer}
+ button.on{background:#333;color:#fff;border-color:#333}
+ model-viewer{flex:1;width:100%}
+ #msg{color:#666}
+</style>
+</head>
+<body>
+<div id="bar">clip: <b id="cur">—</b><span id="clips"></span><span id="msg" style="margin-left:auto">拖曳旋轉 · 滾輪縮放</span></div>
+<model-viewer id="mv" autoplay camera-controls shadow-intensity="1" exposure="1.2"
+ environment-image="neutral" camera-orbit="35deg 80deg auto" interpolation-decay="0"></model-viewer>
+<script>
+// Usage: viewer.html?glb=<url>[&clip=<clipName>]
+const q = new URLSearchParams(location.search);
+const mv = document.getElementById('mv'), cur = document.getElementById('cur');
+const GLB = q.get('glb'); const CLIP = q.get('clip');
+if (GLB) mv.src = GLB; else document.getElementById('msg').textContent = 'missing ?glb=';
+function set(n){ mv.animationName = n; cur.textContent = n; mv.play();
+  document.querySelectorAll('#clips button').forEach(b => b.classList.toggle('on', b.dataset.c === n)); }
+mv.addEventListener('load', () => {
+  const clips = mv.availableAnimations || [];
+  const box = document.getElementById('clips');
+  clips.forEach(n => { const b = document.createElement('button'); b.textContent = n; b.dataset.c = n; b.onclick = () => set(n); box.appendChild(b); });
+  if (clips.length) set(CLIP && clips.includes(CLIP) ? CLIP : clips[0]);
+});
+</script>
+</body>
+</html>

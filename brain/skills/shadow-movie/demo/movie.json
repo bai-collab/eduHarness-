@@ -1,0 +1,26 @@
+{
+  "title": "村莊遇龍傳奇",
+  "version": "0.2.0",
+  "fps": 24,
+  "resolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "style": {
+    "type": "shadow_puppet",
+    "lighting": "backlit",
+    "color_palette": ["#111827", "#26364a", "#d9a441", "#f6e7c1"],
+    "parallax": {
+      "sky": 0,
+      "far": 0.2,
+      "middle": 0.5,
+      "ground": 1
+    }
+  },
+  "scenes": ["scene_village_encounter", "scene_flying_sky"],
+  "files": {
+    "script": "script/script.json",
+    "storyboard": "storyboard/storyboard.json",
+    "assets": "assets/assets.json"
+  }
+}

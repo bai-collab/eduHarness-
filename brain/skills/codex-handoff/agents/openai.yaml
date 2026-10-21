@@ -1,0 +1,7 @@
+interface:
+  display_name: "交接給 Claude CLI／Codex"
+  short_description: "額度將滿或使用者要求時，總結任務進度、寫回 checkpoint，並產出 Claude CLI（預設）或 Codex 可直接貼上的接手指令檔；也處理 Claude CLI 交回桌面版的接回"
+  default_prompt: "使用 $codex-handoff：讀進行中的計畫書與 .harness 進度板，寫回交接 checkpoint，在 workspace/<主題>/ 產出 handoff-to-claude-cli-日期.md（使用者指定 Codex 時為 handoff-to-codex-日期.md）（依第 4 節的 12 段：目標範圍、使用者限制原話、進度、已驗證／未驗證、失敗做法、已查事實、工具環境、下一步、待決定 gate，加上可貼上的接手指令與延後事項），第一回合只做唯讀 preflight；不含秘密、只用 repo 相對路徑。"
+
+policy:
+  allow_implicit_invocation: false

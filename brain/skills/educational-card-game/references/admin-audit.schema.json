@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "educational-card-game/admin-audit.schema.json",
+  "title": "Educational Card Game Administrative Audit Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "auditId", "adminPrincipal", "action", "schoolKey", "reasonCode", "result", "occurredAtMs", "requestId", "plaintextIncluded"],
+  "properties": {
+    "schemaVersion": {"const": "1.0"},
+    "auditId": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,63}$"},
+    "adminPrincipal": {"type": "string", "minLength": 1, "maxLength": 256},
+    "action": {"enum": ["provision-roster", "reset-pin", "disable-credential", "reveal-pin", "rotate-key", "change-scope"]},
+    "credentialId": {"type": ["string", "null"], "pattern": "^[a-z0-9][a-z0-9-]{2,63}$"},
+    "schoolKey": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{1,63}$"},
+    "courseKey": {"type": ["string", "null"], "pattern": "^[a-z0-9][a-z0-9-]{1,63}$"},
+    "reasonCode": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,63}$"},
+    "result": {"enum": ["accepted", "rejected", "failed", "rate-limited"]},
+    "occurredAtMs": {"type": "integer", "minimum": 0},
+    "requestId": {"type": "string", "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]{2,127}$"},
+    "auditSinkRef": {"type": ["string", "null"], "maxLength": 256},
+    "plaintextIncluded": {"const": false}
+  }
+}

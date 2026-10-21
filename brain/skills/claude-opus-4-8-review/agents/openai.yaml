@@ -1,0 +1,7 @@
+interface:
+  display_name: "Claude Opus 4.8 高強度唯讀驗收"
+  short_description: "用 Claude Opus 4.8 高強度唯讀審查指定證據"
+  default_prompt: "使用 $claude-opus-4-8-review，以 Claude Opus 4.8 high 唯讀審查指定程式與驗收證據。"
+
+policy:
+  allow_implicit_invocation: true

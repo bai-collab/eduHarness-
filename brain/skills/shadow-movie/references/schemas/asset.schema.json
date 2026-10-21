@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "shadow-movie/asset.schema.json",
+  "title": "ShadowMovieAssetManifestV020MixedMedia",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {
+    "mediaPath": {
+      "type": "string",
+      "minLength": 1
+    },
+    "frameSequence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["frames"],
+      "properties": {
+        "frames": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/mediaPath"}},
+        "hold_ticks": {"type": "integer", "minimum": 1},
+        "phase_ticks": {"type": "integer", "minimum": 0},
+        "loop": {"type": "boolean"}
+      }
+    }
+  },
+  "required": ["assets"],
+  "properties": {
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "type", "format"],
+        "properties": {
+          "id": {"type": "string"},
+          "name": {"type": "string"},
+          "type": {"enum": ["character", "background"]},
+          "format": {"enum": ["svg", "png"]},
+          "src": {"$ref": "#/$defs/mediaPath"},
+          "views": {"type": "object", "additionalProperties": {"$ref": "#/$defs/mediaPath"}},
+          "layers": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "far": {"$ref": "#/$defs/mediaPath"},
+              "middle": {"$ref": "#/$defs/mediaPath"},
+              "ground": {"$ref": "#/$defs/mediaPath"}
+            }
+          },
+          "parts": {"type": "array", "items": {"type": "string"}},
+          "animations": {"type": "array", "items": {"type": "string"}},
+          "rig": {"$ref": "rig.schema.json"},
+          "frame_sequence": {"$ref": "#/$defs/frameSequence"}
+        }
+      }
+    }
+  }
+}

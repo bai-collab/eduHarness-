@@ -1,0 +1,7 @@
+interface:
+  display_name: "學習者行為與挑戰驗收"
+  short_description: "審查學生操作、挑戰階梯與不洩漏答案的驗收流程"
+  default_prompt: "使用 $learner-behavior-game-review 審查學生操作行為、挑戰階梯、答案洩漏與 DOM→Chrome 驗收順序。"
+
+policy:
+  allow_implicit_invocation: true

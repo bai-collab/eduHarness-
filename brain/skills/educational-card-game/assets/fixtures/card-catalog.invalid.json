@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "1.0",
+  "catalogId": "unsafe-catalog",
+  "gameId": "unsafe-game",
+  "sourcePolicy": {
+    "teacherApprovalRequired": true,
+    "traceabilityRequired": true
+  },
+  "authCode": "synthetic-only-and-forbidden",
+  "cards": []
+}

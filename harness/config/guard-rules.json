@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "id": "session-title",
+      "status": "active",
+      "lesson": "brain/error-log/2026-10-15-session-title-rule-not-enforced.md",
+      "approved": {
+        "date": "2026-10-21",
+        "quote": "重新核准",
+        "record": "2026-10-21 使用者重新核准（出處教訓於新工作區去識別改寫後）",
+        "original": {
+          "date": "2026-10-15",
+          "quote": "使用者核准守門升級計畫並開始實作（原話含舊工作區計畫路徑，已改寫為中性敘述）"
+        }
+      },
+      "when": {
+        "kind": "builtin",
+        "name": "session_title"
+      },
+      "reminder": ""
+    },
+    {
+      "id": "user-facing-absolute-paths",
+      "status": "active",
+      "lesson": "brain/error-log/2026-10-17-relative-paths-to-user-again.md",
+      "approved": {
+        "date": "2026-10-21",
+        "quote": "重新核准",
+        "record": "2026-10-21 使用者重新核准（出處教訓於新工作區去識別改寫後）",
+        "original": {
+          "date": "2026-10-17",
+          "quote": "核准加入提醒型守門"
+        }
+      },
+      "when": {
+        "kind": "always"
+      },
+      "reminder": "交付前自查：列給使用者看、點開或複製的檔案、資料夾、收據與指令路徑，一律寫當下解析的完整絕對路徑（Windows 反斜線格式），每個路徑單獨一個 text 程式碼區塊；計畫書拓樸圖、可攜規範與程式內部引用才用相對路徑。"
+    }
+  ]
+}

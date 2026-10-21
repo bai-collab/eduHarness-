@@ -8,7 +8,7 @@ description: Convert a supplied mathematics unit into 林碧珍-model five-stage
 
 把**已提供的數學單元教材**改寫成林碧珍臆測教學模式的教案：學生自己造例、自己提出猜想、用反例效化、加限制條件一般化、最後以先備知識證實。**課本直接給定義的地方，改成學生產出後才命名。**
 
-參考實作：`參考文件/博論/教案-第七單元-臆測五階段-全單元/`（五上第七單元擴約分與加減，7 節，經七輪獨立驗證）。
+參考實作：五上第七單元擴約分與加減，7 節，經七輪獨立驗證（實作檔案未隨本 Skill 公開）。
 
 ## 觸發與反觸發
 
@@ -19,6 +19,10 @@ description: Convert a supplied mathematics unit into 林碧珍-model five-stage
 ## 必要輸入
 
 單元教材（課本／教師手冊原始檔）、年級與科目、單元教學目標、課本建議節數、班級人數與組數、可用教具、學生先備狀況。
+
+## 課綱條目
+
+教案引用的數學學習表現（如 `n-III-6`）與學習內容（如 `N-5-6`），依 `lesson-plan-authoring` 的「課綱知識庫來源與查詢契約」查詢本機鏡像 `references/tw-curriculum-108/`（`node harness/scripts/tw-curriculum/lookup.mjs --domain 數學 --grade <年級>`），記入教材事實 ledger，保留代碼、原文與 `file:line` 來源。課本或教師手冊標示的代碼要與鏡像核對，不一致時照引並加註疑義，不代為修正。
 
 ## 五階段規格
 
@@ -53,7 +57,7 @@ description: Convert a supplied mathematics unit into 林碧珍-model five-stage
 
 ## 執行流程
 
-1. **語料與術語**：確認五階段術語，並記錄出處爭議。已完成者沿用 `參考文件/博論/決策-臆測五階段術語定案與語料清單.md`、`收斂-臆測五階段教學流程與階段教學目標.md`，不重跑。
+1. **語料與術語**：確認五階段術語，並記錄出處爭議。已有術語定案與語料清單者沿用既有紀錄，不重跑。
 2. **教材事實 ledger**：抽出目標、節數、活動、教學提醒、迷思清單、習作對應；數值類回原檔視覺核對（PDF 可用 `uvx --from pypdfium2 --with pillow pypdfium2 render` 隔離渲染為圖再讀）。
 3. **逐小節設計臆測任務**：核心猜想、異質造例材料、猜想池（含反例靶）、反例題組（每道須數學驗算）、一般化的限制條件與全稱量詞、證實的先備知識清單、逐事件時間帳。
 4. **全單元總表**：節數配置、目標涵蓋檢核、任務間依賴、課本活動處置對照、編號索引。
@@ -63,6 +67,7 @@ description: Convert a supplied mathematics unit into 林碧珍-model five-stage
 ## 驗證契約
 
 - 檢核項：目標涵蓋、時間帳逐層加總、**反例逐道數學驗算**、教材事實回 ledger／原檔、編號跨檔無衝突、術語一致、紅線逐條、跨檔矛盾掃描。
+- **交付前先跑機械 lint，失敗就不交付**：每份產物跑 `node harness/cli/harness.mjs lint forbidden-claims <檔案>`；學生版另跑 `lint student-term-leak <學生版檔案> --terms <本單元待命名術語,以逗號分隔>`。照引原文需要保留宣稱字眼時，用 `<!-- lint-allow forbidden-claims -->` … `<!-- /lint-allow -->` 包起來。lint 只補字面檢查，不取代上面的人工與數學驗算。
 - **判 REFUTED 後修正，必須再驗。** 參考實作中 58 項缺失有 29 項（50%）是修正過程自己製造的，三種型態：**只加不改**（加了正確的一行沒刪錯的那行）、**局部修未掃全域**（改了一個檔沒掃其他檔）、**修正引入未宣告的規則**。
 - 修正時固定自問：舊的那句刪了嗎？其他檔有同一句嗎？
 

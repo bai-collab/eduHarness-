@@ -5,11 +5,6 @@ type: knowledge-reference
 status: recorded-reference
 source: https://github.com/lopopolo/harness-engineering
 source_revision: c721b31e6a0d933e7fd6a33d63ca6f762ed4eb05
-source_collection: linebot-notes
-primary_source: github
-primary_source_repo: https://example.invalid/source-omitted-for-share-build/notes
-legacy_source_sheet_row: 460
-source_fingerprint: sha256:419c9ac1b7b3716cfa7ca59a7a13bc7d537787afd4653704479e5c5f428c5baf
 verified_at: 2026-07-24
 ---
 # Harness Engineering：讓環境承載組織判斷

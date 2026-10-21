@@ -1,0 +1,31 @@
+{
+  "title": "村莊遇龍傳奇",
+  "scenes": [
+    {
+      "scene_id": "scene_village_encounter",
+      "title": "村口的異光",
+      "location": "山腳村口",
+      "time": "黃昏",
+      "description": "小明在村口巡看時，天邊出現一片不尋常的光。",
+      "characters": ["char_xiaoming", "char_dragon"],
+      "dialogue": [
+        {"character": "小明", "text": "那道光，是從山上來的嗎？"}
+      ],
+      "narration": "風穿過紙影般的山林，一對陌生的眼睛在雲端亮起。",
+      "sound": [],
+      "duration_estimate": 8.5
+    },
+    {
+      "scene_id": "scene_flying_sky",
+      "title": "乘風而行",
+      "location": "雲海上方",
+      "time": "夜幕初起",
+      "description": "小明抓穩龍背，與巨龍一起越過山谷。",
+      "characters": ["char_xiaoming", "char_dragon"],
+      "dialogue": [],
+      "narration": "當影子學會飛翔，村莊也有了新的方向。",
+      "sound": [],
+      "duration_estimate": 4.5
+    }
+  ]
+}

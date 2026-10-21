@@ -1,13 +1,13 @@
 {
-  "name": "local-pluggable-harness",
-  "version": "0.1.0",
+  "name": "local-workspace-harness",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=20.11"
+  },
   "scripts": {
-    "harness:blocks": "node harness/cli/harness.mjs blocks",
-    "harness:validate": "node harness/cli/harness.mjs validate",
-    "harness:plan": "node harness/cli/harness.mjs plan",
-    "harness:brain": "node harness/cli/brain.mjs",
-    "test": "node --test harness/tests/*.test.mjs"
+    "test": "node --test harness/tests/review-loop.test.mjs harness/tests/review-reminder.test.mjs harness/tests/review-loop-failure-category.test.mjs harness/tests/review-loop-secret-scan.test.mjs harness/tests/review-loop-agy-isolation.test.mjs",
+    "harness:review-loop": "node harness/cli/review-loop.mjs",
+    "scan:public": "node harness/tools/scan-public.mjs"
   }
 }

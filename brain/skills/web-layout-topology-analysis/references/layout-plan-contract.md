@@ -24,6 +24,7 @@ height = element_height / viewport_height
 | `viewport_profiles` | 目標裝置、方向、safe area 與座標空間 |
 | `layout_blocks` | 具有版面責任的巢狀區塊 |
 | `component_rects` | 可見、可操作或會影響遮擋的元件矩形 |
+| `icon_specs` | 核心物件的圖示草圖／placeholder、visual rect、hit rect 與語意 |
 | `relations` | containment、overlap、occlusion、adjacency、alignment、overflow、collision |
 | `responsive_variants` | 同一元件在不同 viewport 的替代配置或隱藏規則 |
 | `warnings` | 計算結果、門檻、嚴重度與處置建議 |
@@ -58,8 +59,9 @@ intersection_area = ix * iy
 
 1. 所有目標 viewport 都有 profile。
 2. 所有必要內容與控制都有 `component_rects`。
-3. 未解決的 `error` 為零。
-4. 每個 `warning` 都有處置或使用者決定。
-5. responsive variant 沒有孤立的必要元件。
+3. 所有核心遊戲物件都有 `icon_specs`，且能對應 visual rect、hit rect、z-order 與 collision channel。
+4. 未解決的 `error` 為零。
+5. 每個 `warning` 都有處置或使用者決定。
+6. responsive variant 沒有孤立的必要元件。
 
 `verified` 另需附瀏覽器量測、截圖與實際操作證據。

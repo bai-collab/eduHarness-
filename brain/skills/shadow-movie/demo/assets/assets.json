@@ -1,0 +1,63 @@
+{
+  "assets": [
+    {
+      "id": "char_xiaoming",
+      "name": "小明",
+      "type": "character",
+      "format": "svg",
+      "views": {
+        "side": "assets/characters/xiaoming.svg"
+      },
+      "parts": ["part-head", "part-chest", "part-waist", "part-arm-front", "part-arm-back", "part-leg-front", "part-leg-back"],
+      "animations": ["idle", "walk", "look_up", "riding"]
+    },
+    {
+      "id": "char_dragon",
+      "name": "雲嵐龍",
+      "type": "character",
+      "format": "svg",
+      "views": {
+        "side": "assets/characters/dragon.svg"
+      },
+      "parts": ["dragon-head", "dragon-neck", "dragon-chest", "dragon-saddle", "dragon-tail"],
+      "animations": ["idle", "fly"]
+    },
+    {
+      "id": "char_png_frame_sample",
+      "name": "PNG 逐格角色示範",
+      "type": "character",
+      "format": "png",
+      "frame_sequence": {
+        "frames": [
+          "assets/raster/sample.png",
+          "assets/raster/sample.png"
+        ],
+        "hold_ticks": 3,
+        "phase_ticks": 0,
+        "loop": true
+      }
+    },
+    {
+      "id": "bg_village",
+      "name": "山腳村莊",
+      "type": "background",
+      "format": "svg",
+      "layers": {
+        "far": "assets/backgrounds/village-far.svg",
+        "middle": "assets/backgrounds/village-middle.svg",
+        "ground": "assets/backgrounds/village-ground.svg"
+      }
+    },
+    {
+      "id": "bg_clouds",
+      "name": "雲海",
+      "type": "background",
+      "format": "svg",
+      "layers": {
+        "far": "assets/backgrounds/clouds-far.svg",
+        "middle": "assets/backgrounds/clouds-middle.svg",
+        "ground": "assets/backgrounds/clouds-ground.svg"
+      }
+    }
+  ]
+}
