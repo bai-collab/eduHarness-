@@ -2,7 +2,7 @@
 
 本資料夾是新工作區的 Skill 正本（共 31 個）。每個 Skill 是一個資料夾，內有 `SKILL.md`、`VERSION`、`agents/openai.yaml`，部分另有 `references/`、`assets/`、`scripts/`。
 
-**待辦**：新工作區暫時沒有 harness 與 `skill-registry.json`。投影到 `.claude/skills`、`.agents/skills` 與 registry 登錄，待 harness 帶入後處理。在那之前，這些 Skill 不會被自動載入，只能當成文件參考或手動複製使用。部分 Skill 的內文仍提到 `harness/`、`references/tw-curriculum-108/` 等路徑（例如 conjecturing-five-stage 的 lint 指令、document-to-markdown-ingestion 的根目錄標記檔），這些要等 harness 與參考資料帶入後才有效。
+**待辦**：新工作區目前只帶入 harness 的 review-loop 與提醒 hook，尚無 skill 投影工具與 `skill-registry.json`。投影到 `.claude/skills`、`.agents/skills` 與 registry 登錄，待相關 harness 模組帶入後處理。在那之前，這些 Skill 不會被自動載入，只能當成文件參考或手動複製使用。部分 Skill 的內文仍提到 `harness/`、`references/tw-curriculum-108/` 等路徑（例如 conjecturing-five-stage 的 lint 指令、document-to-markdown-ingestion 的根目錄標記檔），這些要等 harness 與參考資料帶入後才有效。
 
 ## 設定鍵怎麼用
 
